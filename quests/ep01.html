@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EP.01 · AI로 PPT 만들면 왜 다시 손대게 될까?</title>
+</head>
+<body>
+<!-- RE:Quest EP.01 본문. 사이트(index.html)가 이 파일을 불러와 .quest-body 안쪽만 보여줍니다.
+     원본: RE:Quest EP.01 PPT 구성안 슬라이드(25장). 영상은 제주 실습을 직접 수행해 채팅 화면으로 재현한 것. -->
+<article class="quest-body">
+
+<!-- ================= 1. 알고 시작하기 ================= -->
+<section data-part="learn">
+  <h3 class="sub">혹시 이런 경험, 있으셨나요?</h3>
+  <p>처음엔 “오, 꽤 잘 만드네?” 싶다가도 막상 열어보면 손댈 곳이 한가득입니다. 대부분 이 네 가지 중 하나예요.</p>
+  <ul class="mini4">
+    <li><img src="assets/ep01/symptom-1.png" alt="글자가 빽빽하게 채워진 슬라이드 예시" loading="lazy"><b><span class="no">①</span>글자가 빽빽하다</b><span>보고서를 붙여놓은 느낌</span></li>
+    <li><img src="assets/ep01/symptom-2.png" alt="장마다 색과 스타일이 다른 슬라이드 예시" loading="lazy"><b><span class="no">②</span>장마다 따로 논다</b><span>폰트·색·정렬이 제각각</span></li>
+    <li><img src="assets/ep01/symptom-3.png" alt="같은 레이아웃이 반복되는 슬라이드 예시" loading="lazy"><b><span class="no">③</span>전부 똑같이 생겼다</b><span>같은 레이아웃이 계속 반복</span></li>
+    <li><img src="assets/ep01/symptom-4.png" alt="원본과 숫자, 이름이 다른 슬라이드 예시" loading="lazy"><b><span class="no">④</span>숫자·이름이 다르다</b><span>원본과 다른 수치, 틀린 고유명사</span></li>
+  </ul>
+
+  <h3 class="sub">‘딸깍’ 한 번에 완성을 기대하지 말자</h3>
+  <p>결과물은 그럴싸해 보이지만, 그 아래에서는 AI가 알려주지 않은 수많은 것을 짐작으로 채웁니다. “이 자료로 PPT 만들어줘” 한 줄에는 <b>목적, 대상, 분량, 디자인, 레이아웃, 수치 확인</b>이 하나도 없어요. AI는 이걸 스스로 정한 채로, 목적이 정해지지 않은 채 진행합니다.</p>
+  <figure class="fig"><img src="assets/ep01/iceberg.png" alt="빙산 그림. 한 줄 요청 아래에 AI가 짐작으로 정한 목적, 대상, 분량, 디자인, 레이아웃, 수치 확인이 숨어 있다" loading="lazy"><figcaption>그래서 ‘딸깍’ 한 번으로는 완성되지 않습니다.</figcaption></figure>
+
+  <h3 class="sub">한 번에 만들지 말고, 이 순서로</h3>
+  <p>배울 건 딱 다섯 단계입니다. 기준과 규칙을 먼저 세우고, 전체 생성은 그다음입니다.</p>
+  <div class="flow5">
+    <div class="flow-group" style="--n:3">
+      <ol>
+        <li><button type="button" data-go="learn-s1"><small>STEP 1</small>슬라이드 구성안 잡기</button></li>
+        <li><button type="button" data-go="learn-s2"><small>STEP 2</small>디자인 규칙 정하기</button></li>
+        <li><button type="button" data-go="learn-s3"><small>STEP 3</small>기준 슬라이드 2장 만들기</button></li>
+      </ol>
+      <span class="flow-cap">기준과 규칙 먼저</span>
+    </div>
+    <div class="flow-group" style="--n:2">
+      <ol>
+        <li><button type="button" data-go="learn-s4"><small>STEP 4</small>전체 슬라이드로 확장하기</button></li>
+        <li><button type="button" data-go="learn-s5"><small>STEP 5</small>마무리 완성도 올리기</button></li>
+      </ol>
+      <span class="flow-cap">그다음 전체 생성과 검수</span>
+    </div>
+  </div>
+  <p class="rule">“단계마다 지킬 규칙은 사람이 정하고, AI는 그 규칙대로 만든다”</p>
+  <figure class="fig"><img src="assets/ep01/compare.png" alt="같은 제주 여행 메모로 만든 PPT 비교. 한 번에 만든 쪽은 글자가 빽빽하고 장마다 스타일이 다르다. 다섯 단계로 만든 쪽은 같은 규칙에 내용별 레이아웃이 다르다" loading="lazy"><figcaption>같은 여행 메모로 직접 만들어 본 결과예요. 위는 한 번에, 아래는 다섯 단계로.</figcaption></figure>
+
+  <!-- STEP 1 · 슬라이드 구성안 잡기 (PPT 9~10) -->
+  <h3 class="sub" id="learn-s1" data-step="STEP 1 · 슬라이드 구성안 잡기">디자인 보단 목적과 내용부터</h3>
+  <p>AI에게 먼저 알려줘야 하는 건 디자인이 아니라 목적과 대상, 내용입니다. AI가 앞으로 지켜 나갈 방향을 먼저 정해 줘야 올바른 길로 일을 수행합니다.</p>
+  <dl class="ls-trio">
+    <div><dt>목적</dt><dd>무엇을 위해?</dd></div>
+    <div><dt>대상</dt><dd>누구에게?</dd></div>
+    <div><dt>내용</dt><dd>장마다 어떤 내용을,<br>얼마만큼?</dd></div>
+  </dl>
+
+  <h3 class="sub" data-step="STEP 1 실전 예시 · 슬라이드 구성안 잡기">자료만 주지 말고, 세 가지를 함께 알려주세요</h3>
+  <p>자료를 첨부하고, 앞에서 본 세 가지를 한 문장씩 덧붙입니다.</p>
+  <dl class="ls-say">
+    <div><dt>목적<small>무엇을 위해?</small></dt><dd>“광고주 미팅용 PPT야. 협찬을 결정하게 만드는 게 목적이야”</dd></div>
+    <div><dt>대상<small>누구에게?</small></dt><dd>“보는 사람은 협찬을 검토 중인 광고주야”</dd></div>
+    <div><dt>내용<small>무엇을 얼마만큼?</small></dt><dd>“장마다 핵심 메시지 1개, 설명은 최대 3개로 정리해줘”</dd></div>
+  </dl>
+  <div class="ls-tip">
+    <b>TIP · 막막할 땐 말부터 걸어보세요</b>
+    <p>모든 프롬프트는 AI에게 목적을 설명하고 상의하면서 만들 수 있습니다.</p>
+    <q>“이런 PPT를 만들려는데 뭐부터 정할까?”</q>
+  </div>
+
+  <!-- STEP 2 · 디자인 규칙 정하기 (PPT 12~14) -->
+  <h3 class="sub" id="learn-s2" data-step="STEP 2 · 디자인 규칙 정하기">“깔끔하게”는 AI도 모릅니다</h3>
+  <p>내용이 정리됐다면 이제 그 내용을 담을 그릇을 만들 차례입니다. 느낌 대신 AI가 이해할 수 있는 규칙을 줘야 원하는 디자인에 가까워집니다.</p>
+  <div class="ls-vs">
+    <div class="ls-box">
+      <span class="ls-k">추상적인 요청</span>
+      <p class="ls-q">“자료를 보고 PPT를 <mark>깔끔하고 눈에 띄게</mark> 만들어줘”</p>
+      <small>사람마다 떠올리는 그림이 다르다</small>
+    </div>
+    <span class="ls-arrow" aria-hidden="true">→</span>
+    <div class="ls-box good">
+      <span class="ls-k">구체적인 요청</span>
+      <p class="ls-q">“화면 비율은 <em>16:9</em>로 만들어줘.<br>배경은 <em>흰색</em>, 강조색은 <em>파란색 한 가지</em>만 써줘.<br>폰트는 <em>고딕체</em>, 제목 <em>40pt</em> · 본문 <em>24pt</em>로 맞춰줘.<br>제목은 <em>항상 왼쪽 위</em>, 본문은 한 장에 <em>최대 3영역</em>까지만”</p>
+      <small>눈으로 확인할 수 있다</small>
+    </div>
+  </div>
+
+  <h3 class="sub" data-step="STEP 2 실전 예시 · 디자인 규칙 정하기">복잡한 디자인 규칙, 직접 쓰지 않아도 됩니다</h3>
+  <p>느낌으로 바로 만들게 하지 말고, 먼저 그 느낌을 규칙으로 바꿔 달라고 합니다. 색 코드나 크기 같은 값은 AI가 채워 줍니다.</p>
+  <div class="ls-vs">
+    <div class="ls-box dashed">
+      <span class="ls-k">직접 정하려면</span>
+      <b class="ls-h">복잡한 색상 코드와 수치들</b>
+      <ul class="ls-chips"><li>#2A63CC</li><li>#1C1F26</li><li>제목 40pt</li><li>본문 24pt</li><li>줄 간격 1.45</li><li>여백 128px</li></ul>
+      <small>하나하나 적기는 어렵습니다</small>
+    </div>
+    <span class="ls-arrow" aria-hidden="true">→</span>
+    <div class="ls-box good">
+      <span class="ls-k">이렇게 정합니다</span>
+      <b class="ls-h">원하는 디자인을 말하면, AI가 규칙으로 정리합니다</b>
+      <div class="ls-sum">
+        <p class="ls-q">“여백은 여유 있게, 컬러는 바다 같은 자연색으로”<small>코드 대신 편하게 말로</small></p>
+        <span class="ls-plus" aria-hidden="true">+</span>
+        <p class="ls-q">“이 내용을 규칙으로 정리해줘”</p>
+      </div>
+      <small>색 코드와 폰트 · 크기 값은 AI가 정리해 줍니다</small>
+    </div>
+  </div>
+  <p class="ls-bar"><b>정리된 규칙은 →</b><span>“앞으로 만드는 모든 슬라이드에 이 기준을 유지해줘”</span></p>
+
+  <h3 class="sub" data-step="STEP 2 심화 · 레퍼런스로 완성도 높이기">레퍼런스는 복사본이 아니라 참고서</h3>
+  <p>참고하고 싶은 레퍼런스가 있다면, 특징만 뽑아 기본 규칙에 더합니다.</p>
+  <div class="ls-vs">
+    <div class="ls-box">
+      <b class="ls-h">참고하고 싶은 레퍼런스가 있다면?</b>
+      <div class="ls-ref" aria-hidden="true"><i></i><span></span><span></span><span></span></div>
+      <span class="ls-k coral">“똑같이” 말고 “특징만”</span>
+      <p class="ls-q coral">“그대로 복사하지 말고, 특징만 뽑아서 규칙에 반영해줘”</p>
+    </div>
+    <span class="ls-arrow coral" aria-hidden="true">→</span>
+    <div class="ls-box">
+      <p class="ls-base">기본 규칙</p>
+      <span class="ls-plus coral" aria-hidden="true">+</span>
+      <div class="ls-refrules">
+        <b>레퍼런스에서 뽑은 규칙</b>
+        <ul><li>핵심 숫자는 크게</li><li>도형은 단순하게</li><li>제목 · 본문 위치는 일관되게</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 · 기준 슬라이드 2장 만들기 (PPT 16~17) -->
+  <h3 class="sub" id="learn-s3" data-step="STEP 3 · 기준 슬라이드 2장 만들기">전체 말고, 딱 2장만 먼저</h3>
+  <p>전체를 만들고 하나씩 고치는 것보다, 2장으로 기준을 잡고 나머지를 만드는 편이 빠릅니다. <b>단, 성격이 다른 2장이어야 합니다.</b></p>
+  <div class="ls-two">
+    <figure><img src="assets/ep01/base-explain.jpg" alt="설명형 슬라이드 예시: 프로그램 A, 왜 지금 협찬해야 할까. 분명한 타깃, 이어지는 화제, 자연스러운 노출 세 가지 카드" loading="lazy"><figcaption><b>설명형 슬라이드</b><span>제목 · 본문 · 구조 확인</span></figcaption></figure>
+    <figure><img src="assets/ep01/base-data.jpg" alt="데이터형 슬라이드 예시: 4회 만에 시청률이 두 배 가까이 올랐습니다. 최고 시청률 5.2%와 회차별 막대그래프" loading="lazy"><figcaption><b>데이터형 슬라이드</b><span>숫자 · 그래프 확인</span></figcaption></figure>
+  </div>
+
+  <h3 class="sub" data-step="STEP 3 실전 예시 · 기준 슬라이드 2장 만들기">먼저 만든 2장이 주는 세 가지</h3>
+  <p>전체를 만들기 전에 성격이 다른 2장부터 확인하면, 뒤 작업이 가벼워집니다.</p>
+  <ol class="ls-gains">
+    <li><span class="ls-n">1</span><div><b>빠른 수정</b><p>고칠 곳이 2장뿐입니다</p></div><div class="ls-x"><s>전체를 만든 뒤 장마다 수정</s><span aria-hidden="true">→</span><em>2장만 수정</em></div></li>
+    <li><span class="ls-n">2</span><div><b>구조 미리 확인</b><p>규칙이 실제 화면에서 맞는지 봅니다</p></div><div class="ls-x"><em class="ok">✓ 제목 위치</em><em class="ok">✓ 색 · 폰트</em><em class="ok">✓ 본문 분량</em></div></li>
+    <li><span class="ls-n">3</span><div><b>전체 구성 짐작</b><p>성격이 다른 2장이면 나머지가 보입니다</p></div><div class="ls-x"><img src="assets/ep01/expand-thumbs.jpg" alt="같은 규칙으로 이어서 만든 나머지 슬라이드 세 장의 축소 이미지" loading="lazy"></div></li>
+  </ol>
+
+  <!-- STEP 4 · 전체 슬라이드로 확장하기 (PPT 19) -->
+  <h3 class="sub" id="learn-s4" data-step="STEP 4 · 전체 슬라이드로 확장하기">전체 생성, 규칙은 같게 모양은 다르게</h3>
+  <p>한 계단씩 쌓아 온 규칙 위에서, 이제 전체 슬라이드를 펼칩니다.</p>
+  <ol class="ls-stairs">
+    <li><small>STEP 1</small><b>목적 · 대상 · 내용</b></li>
+    <li><small>STEP 2</small><b>디자인 규칙</b></li>
+    <li><small>STEP 3</small><b>기준 2장</b></li>
+    <li class="now"><small>STEP 4 · 지금 여기</small><b>쌓은 규칙 위에서 전체로 펼칩니다</b>
+      <span class="ls-lays" aria-hidden="true"><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i></span>
+      <span class="ls-rule"><em>규칙 유지</em>색 · 폰트 · 제목 위치는 모든 장에서 같게</span>
+      <span class="ls-rule"><em>반복 금지</em>레이아웃은 내용에 맞게 다르게</span>
+    </li>
+  </ol>
+  <div class="ls-tip row">
+    <b>TIP · 레이아웃을 전부 설명할 필요는 없습니다</b>
+    <q>“내용에 적합한 구조를 직접 생각해서 만들어줘”</q>
+  </div>
+
+  <!-- STEP 5 · 마무리 완성도 올리기 (PPT 21~22) -->
+  <h3 class="sub" id="learn-s5" data-step="STEP 5 · 마무리 완성도 올리기">AI는 완벽하지 않다</h3>
+  <p>마지막 검증은 디자인이 아니라 사실 확인입니다. 원본 자료와 비교해 숫자 하나, 이름 하나가 틀리지 않았는지 확인합니다.</p>
+  <div class="ls-neq">
+    <figure><figcaption>원본 자료</figcaption><img src="assets/ep01/check-source.jpg" alt="원본 자료: 프로그램 A 회차별 시청률 보고. 4회 시청률 5.2%" loading="lazy"></figure>
+    <span class="ls-ne" aria-label="다르다">≠</span>
+    <figure><figcaption>완성된 PPT</figcaption><img src="assets/ep01/check-ppt.jpg" alt="완성된 PPT: 최고 시청률이 6.2%로 잘못 들어가 있다" loading="lazy"></figure>
+  </div>
+  <p class="checkpoint"><b>원본과 꼭 맞춰 볼 것</b>숫자 · 날짜 · 금액 · 고유명사 · 그래프값</p>
+
+  <h3 class="sub" data-step="STEP 5 실전 예시 · 마무리 완성도 올리기">완성도를 올리는 세 가지, 마지막 확인은 사람이</h3>
+  <p>AI에게 맡길 수 있는 부분은 맡기되, 마지막 확인은 직접 합니다.</p>
+  <ol class="ls-cards3">
+    <li><span class="ls-n">1</span><b>AI에게 1차 검수</b><p>원본 자료와 비교해 다른 곳 찾기</p><span class="ls-pill">숫자 · 날짜 · 금액 · 고유명사 · 그래프값</span></li>
+    <li><span class="ls-n">2</span><b>AI에게 리뷰 시키기</b><p>부족한 점을 직접 뽑아내게 하기</p><span class="ls-pill">“이 PPT를 리뷰하고 부족한 점을 뽑아줘”</span></li>
+    <li><span class="ls-n">3</span><b>수정 가능한 파일로 받기</b><p>직접 고칠 수 있는 형태로 요청</p><span class="ls-pill">PPTX</span></li>
+  </ol>
+  <p class="ls-final">완성 전, 최종 검수는 꼭 사람이 합니다</p>
+
+  <div class="take">
+    <p class="take-h">이것만 기억하세요</p>
+    <ol>
+      <li><span>01</span><p>디자인보다 <b>목적·대상·분량</b>을 먼저 알려준다</p></li>
+      <li><span>02</span><p>“깔끔하게” 대신 <b>눈에 보이는 규칙</b>을 주고, <b>2장으로 먼저 확인</b>한다</p></li>
+      <li><span>03</span><p>숫자·날짜·이름은 <b>마지막에 사람이 원본과 대조</b>한다</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= 2. 직접 해보기 ================= -->
+<section data-part="try">
+  <div class="mission">
+    <span class="eyebrow">실습 · 약 25분</span>
+    <h3>제주 4박 5일 여행 계획을 PPT 5장으로</h3>
+    <p>가벼운 주제로 다섯 단계를 한 번 끝까지 해봐요. 쓰는 AI 채팅 도구 하나만 있으면 돼요. 단계마다 프롬프트를 복사해서 같은 대화창에 이어서 보내세요.</p>
+  </div>
+
+  <ol class="steps">
+
+    <li>
+      <h3>구성안부터 받기</h3>
+      <p class="step-why">디자인은 아직이에요. 목적, 보는 사람, 장마다 담을 분량부터 정해야 AI가 엉뚱한 방향으로 가지 않아요.</p>
+      <ol class="todo">
+        <li>아래 빈칸을 내 여행 계획으로 채워요.</li>
+        <li>완성된 프롬프트를 복사해서 AI에게 보내요.</li>
+        <li>장별 표가 나오면, 바꿀 장이 없는지 훑어봐요.</li>
+      </ol>
+      <figure class="clip"><video poster="assets/ep01/step1.jpg" muted loop playsinline preload="none"><source src="assets/ep01/step1.mp4" type="video/mp4"><source src="assets/ep01/step1.webm" type="video/webm"></video><figcaption>재현 화면 · 디자인 없이 장별 구성안 표가 먼저 나와요</figcaption></figure>
+      <div class="builder" data-id="s1" data-label="STEP 1 프롬프트">
+        <pre class="builder-template">제주도 4박 5일 여행 계획을 PPT 5장으로 만들려고 해.
+디자인은 아직 하지 말고, 장별 구성안부터 표로 정리해줘.
+
+[목적] {{목적|같이 가는 친구들과 일정을 정하고 동의를 받는 것}}
+[대상] {{보는 사람|여행을 함께 가는 친구 3명}}
+[내용] 장마다 핵심 메시지 1개, 설명은 최대 3개로 정리해줘.
+
+[여행 메모]
+{{여행 메모|1일차 애월, 2일차 협재·오설록, 3일차 한라산, 4일차 성산·우도, 5일차 동문시장. 예산 1인 60만 원}}
+
+표 형식: 장 번호 | 제목 | 핵심 메시지 | 설명(최대 3개)</pre>
+      </div>
+      <p class="checkpoint"><b>확인</b>목적 · 대상이 들어갔나 · 장마다 설명 3개 이내인가</p>
+      <details class="work"><summary>업무에선 이렇게</summary>
+        <p>광고주 미팅 자료라면 자료를 첨부하고 이렇게 세 문장만 덧붙여요.</p>
+        <div class="prompt" data-label="업무 예시"><pre>광고주 미팅용 PPT야. 협찬을 결정하게 만드는 게 목적이야.
+보는 사람은 협찬을 검토 중인 광고주야.
+장마다 핵심 메시지 1개, 설명은 최대 3개로 정리해줘.</pre></div>
+        <p>뭘 정해야 할지 막막하면 먼저 물어봐도 돼요. “이런 PPT를 만들려는데 뭐부터 정할까?”</p>
+      </details>
+    </li>
+
+    <li>
+      <h3>디자인 규칙 정하기</h3>
+      <p class="step-why">“깔끔하게”는 사람마다 떠올리는 그림이 달라요. 느낌을 말하고, 그 느낌을 AI가 <b>색 코드·크기 같은 규칙</b>으로 바꾸게 해요.</p>
+      <ol class="todo">
+        <li>원하는 느낌을 한 문장으로 적어요.</li>
+        <li>같은 대화창에 프롬프트를 보내요.</li>
+        <li>비율, 색, 폰트 크기, 제목 위치가 숫자로 나왔는지 봐요.</li>
+      </ol>
+      <figure class="clip"><video poster="assets/ep01/step2.jpg" muted loop playsinline preload="none"><source src="assets/ep01/step2.mp4" type="video/mp4"><source src="assets/ep01/step2.webm" type="video/webm"></video><figcaption>재현 화면 · “바다 같은 자연색”이 색 코드와 크기 규칙으로 바뀌어요</figcaption></figure>
+      <div class="builder" data-id="s2" data-label="STEP 2 프롬프트">
+        <pre class="builder-template">원하는 느낌은 "{{원하는 느낌|여백은 여유 있게, 컬러는 바다 같은 자연색으로}}"이야.
+이 느낌을 규칙으로 정리해줘. (화면 비율, 배경색·강조색, 폰트와 크기, 제목 위치, 한 장에 담을 본문 영역 수)
+정리된 규칙은 앞으로 만드는 모든 슬라이드에 유지해줘.</pre>
+      </div>
+      <p class="checkpoint"><b>확인</b>비율 · 색 · 폰트 · 제목 위치가 값으로 정해졌나</p>
+      <details class="work"><summary>레퍼런스가 있다면</summary>
+        <p>마음에 드는 자료가 있으면 같이 올리되, 똑같이 말고 특징만 가져오게 해요.</p>
+        <div class="prompt" data-label="레퍼런스와 함께"><pre>그대로 복사하지 말고, 특징만 뽑아서 규칙에 반영해줘.</pre></div>
+      </details>
+    </li>
+
+    <li>
+      <h3>기준 2장만 먼저</h3>
+      <p class="step-why">전부 만들고 고치면 고칠 곳도 다섯 군데예요. <b>성격이 다른 2장</b>(글 중심 1장, 숫자 중심 1장)으로 규칙이 맞는지 먼저 봐요.</p>
+      <ol class="todo">
+        <li>프롬프트를 보내 설명형 1장, 데이터형 1장을 받아요.</li>
+        <li>제목 위치, 색, 본문 분량이 마음에 드는지 봐요.</li>
+        <li>고칠 게 있으면 지금 말해요. 이후 장에 그대로 반영돼요.</li>
+      </ol>
+      <figure class="clip"><video poster="assets/ep01/step3.jpg" muted loop playsinline preload="none"><source src="assets/ep01/step3.mp4" type="video/mp4"><source src="assets/ep01/step3.webm" type="video/webm"></video><figcaption>재현 화면 · 일정(설명형)과 예산(데이터형) 2장으로 기준을 잡아요</figcaption></figure>
+      <div class="prompt" data-label="STEP 3 프롬프트"><pre>구성안 중 성격이 다른 2장만 먼저 만들어줘.
+설명형은 일정 개요, 데이터형은 예산으로.
+앞에서 정한 디자인 규칙을 그대로 적용해줘.</pre></div>
+      <p class="checkpoint"><b>확인</b>2장에 규칙이 그대로 반영됐나</p>
+    </li>
+
+    <li>
+      <h3>전체로 펼치기</h3>
+      <p class="step-why">이제 나머지를 만들어요. 규칙은 같게, 모양은 내용에 맞게. 레이아웃을 하나하나 설명할 필요는 없어요.</p>
+      <ol class="todo">
+        <li>프롬프트를 보내 나머지 3장을 받아요.</li>
+        <li>다섯 장의 색·폰트·제목 위치가 같은지 봐요.</li>
+        <li>똑같은 모양이 반복되는 장이 있으면 바꿔 달라고 해요.</li>
+      </ol>
+      <figure class="clip"><video poster="assets/ep01/step4.jpg" muted loop playsinline preload="none"><source src="assets/ep01/step4.mp4" type="video/mp4"><source src="assets/ep01/step4.webm" type="video/webm"></video><figcaption>재현 화면 · 같은 규칙으로 5장이 완성돼요</figcaption></figure>
+      <div class="prompt" data-label="STEP 4 프롬프트"><pre>기준 2장과 같은 규칙으로 나머지 3장도 만들어줘.
+색·폰트·제목 위치는 모든 장에서 같게,
+레이아웃은 내용에 적합한 구조를 직접 생각해서 장마다 다르게.</pre></div>
+      <p class="checkpoint"><b>확인</b>규칙은 유지됐나 · 같은 레이아웃이 반복되지 않나</p>
+    </li>
+
+    <li>
+      <h3>원본과 대조하고 파일로 받기</h3>
+      <p class="step-why">AI는 완벽하지 않아요. 마지막 확인은 디자인이 아니라 <b>사실</b>이에요. 실제로 해보니 예산 한 칸이 틀려 있었어요.</p>
+      <ol class="todo">
+        <li>메모와 PPT를 비교해 달라고 해요.</li>
+        <li>찾아준 곳을 고치고, 수정 가능한 PPTX 파일로 받아요.</li>
+        <li>숫자·날짜·장소 이름은 내 눈으로 한 번 더 봐요.</li>
+      </ol>
+      <figure class="clip"><video poster="assets/ep01/step5.jpg" muted loop playsinline preload="none"><source src="assets/ep01/step5.mp4" type="video/mp4"><source src="assets/ep01/step5.webm" type="video/webm"></video><figcaption>재현 화면 · 렌터카 비용 8만 원이 9만 원으로 들어간 걸 찾아 고쳐요</figcaption></figure>
+      <div class="prompt" data-label="STEP 5 프롬프트"><pre>내 여행 메모와 완성된 PPT를 비교해서
+날짜·금액·장소 이름이 다른 곳을 모두 찾아줘.
+고친 다음 이 PPT를 리뷰하고 부족한 점을 뽑아줘.
+마지막으로 내가 직접 고칠 수 있게 PPTX 파일로 만들어줘.</pre></div>
+      <p class="checkpoint"><b>확인</b>숫자 · 날짜 · 금액 · 고유명사 · 그래프값</p>
+      <details class="work"><summary>PPTX 파일이 안 나온다면</summary><p>도구에 따라 PPT 파일을 바로 만들지 못하기도 해요. 파일을 만들 수 있는 도구로 옮겨 마지막 단계만 진행하거나, 장별 텍스트를 받아 직접 옮겨 담으세요.</p></details>
+    </li>
+
+  </ol>
+</section>
+
+<!-- ================= 3. 정리 ================= -->
+<section data-part="finish">
+  <h3 class="sub">완성 예시</h3>
+  <p>다섯 단계를 따라 실제로 만든 5장이에요. 내 결과와 비교해 보세요.</p>
+  <div class="gallery">
+    <img src="assets/ep01/jeju-1.jpg" alt="1장: 제주 4박 5일, 서쪽에서 동쪽으로" loading="lazy">
+    <img src="assets/ep01/jeju-2.jpg" alt="2장: 일정 한눈에 보기" loading="lazy">
+    <img src="assets/ep01/jeju-3.jpg" alt="3장: 이건 꼭 하자" loading="lazy">
+    <img src="assets/ep01/jeju-4.jpg" alt="4장: 예산, 1인 60만 원 안에서" loading="lazy">
+    <img src="assets/ep01/jeju-5.jpg" alt="5장: 금요일까지 3가지만 정해요" loading="lazy">
+  </div>
+
+  <h3 class="sub">‘딸깍’은 시나리오 없이 외치는 ‘액션!’</h3>
+  <p>무엇을 왜 찍는지 감독이 정해 주지 않으면, 제작진이 아무리 빨라도 영화는 나오지 않아요. AI도 같아요. 감독은 사람이에요.</p>
+  <figure class="fig"><img src="assets/ep01/director.png" alt="감독은 사람: 목적과 방향을 정하고, 단계별로 지시하고, 결과를 보고 OK를 낸다. AI는 각본팀, 촬영팀, 미술팀, 편집팀 역할" loading="lazy"></figure>
+
+  <div class="realquest">
+    <b>실전 퀘스트 · 내 업무로 한 번 더</b>
+    <p>다음에 만들 기획안, 제안서, 광고주 미팅 자료를 같은 다섯 단계로 만들어 보세요. STEP 2에서 받은 디자인 규칙을 저장해 두면, 다음 PPT부터는 STEP 3에서 바로 시작할 수 있어요.</p>
+  </div>
+</section>
+
+</article>
+</body>
+</html>

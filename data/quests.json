@@ -1,0 +1,44 @@
+{
+  "settings": {
+    "audience": "본부 PD · CD",
+    "siteUrl": "https://claude.ai/artifact/9mi8QjGERm97SQgdXgWVEV",
+    "kakaoRoomUrl": "",
+    "formUrl": "",
+    "googleForm": {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLSdo-lO8stIXgF7xBafwkqc2UWSeO2DbkfgCkEc6d1zUI35Wnw/viewform",
+      "entries": { "what": "entry.1609069810", "now": "entry.1259426913", "cats": "entry.636797304", "who": "entry.2031356924" }
+    },
+    "nextIssue": ""
+  },
+  "episodes": [
+    {
+      "id": "ep01",
+      "no": 1,
+      "date": "2026-10-08",
+      "title": "AI로 PPT 만들면 왜 다시 손대게 될까?",
+      "titleEm": "왜 다시 손대게 될까?",
+      "lead": "딸깍 한 번이면 끝날 줄 알았는데, 어느새 한 장씩 고치고 있는 분들을 위한 30분",
+      "summary": "한 번에 만들지 말고 기준과 규칙부터. PPT를 AI로 만드는 다섯 단계",
+      "goal": { "label": "오늘의 질문", "line": "AI가 할 일과 사람이 직접 해야 할 일은 무엇일까요?" },
+      "category": "문서·PPT",
+      "minutes": 30,
+      "practice": "제주도 4박 5일 여행 계획 PPT 5장",
+      "needs": "생성형 AI 채팅 도구, PPT로 만들 자료",
+      "thumb": "assets/ep01/thumb.svg",
+      "cover": "assets/ep01/cover.svg",
+      "coverAlt": "한 번에 만든 빽빽한 슬라이드가 다섯 단계를 거쳐 정돈된 슬라이드로 바뀌는 예시 그림",
+      "slides": {
+        "dir": "slides/ep01",
+        "count": 25,
+        "ext": "jpg",
+        "labels": ["AI, 잘 쓰는 몇 명이면 충분할까요?", "RE:Quest", "궁금한 건 저희가 먼저 해보겠습니다", "AI로 PPT 만들면 왜 다시 손대게 될까?", "혹시 이런 경험, 있으셨나요?", "‘딸깍’ 한 번에 완성을 기대하지 말자", "한 번에 만들지 말고, 이 순서로", "스탭 1 · 슬라이드 구성안 잡기", "디자인 보단 목적과 내용부터", "자료만 주지 말고, 세 가지를 함께 알려주세요", "스탭 2 · 디자인 규칙 정하기", "“깔끔하게”는 AI도 모릅니다", "복잡한 디자인 규칙, 직접 쓰지 않아도 됩니다", "레퍼런스는 복사본이 아니라 참고서", "스탭 3 · 기준 슬라이드 2장 만들기", "전체 말고, 딱 2장만 먼저", "먼저 만든 2장이 주는 세 가지", "스탭 4 · 전체 슬라이드로 확장하기", "전체 생성, 규칙은 같게 모양은 다르게", "스탭 5 · 마무리 완성도 올리기", "AI는 완벽하지 않다", "완성도를 올리는 세 가지, 마지막 확인은 사람이", "전체 흐름 복습: 다섯 단계를 한 번에", "‘딸깍’은 시나리오 없이 외치는 ‘액션!’입니다", "이제 직접 해 볼 차례"]
+      }
+    }
+  ],
+  "requests": [
+    { "text": "촬영 전에 콘티를 AI로 미리 시뮬레이션해볼 수 있을까?", "category": "생성형 이미지·영상", "status": "next" },
+    { "text": "프로그램 포스터·키비주얼 시안을 AI로 만들어볼 수 있을까?", "category": "생성형 이미지·영상", "status": "next" },
+    { "text": "기획 중 국내·해외 트렌드와 포맷 현황 조사를 맡길 수 있을까?", "category": "에이전트", "status": "next" },
+    { "text": "시청자가 직접 참여하는 페이지를 AI로 만들 수 있을까?", "category": "페이지 제작", "status": "next" }
+  ]
+}

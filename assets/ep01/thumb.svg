@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <!-- EP.01 썸네일: 노션 스타일 선화. AI로 만든 슬라이드를 연필로 다시 고치는 장면 -->
+  <rect width="640" height="360" fill="#F7F5EE"/>
+  <g fill="none" stroke="#1C1F26" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 바닥 그림자 -->
+    <ellipse cx="320" cy="318" rx="210" ry="12" fill="#E8E4D8" stroke="none"/>
+
+    <!-- 이젤 다리 -->
+    <path d="M250 268 L222 316"/>
+    <path d="M390 268 L418 316"/>
+    <path d="M320 268 L320 312"/>
+
+    <!-- 슬라이드 보드 -->
+    <rect x="170" y="62" width="300" height="206" rx="14" fill="#fff"/>
+    <!-- 제목 줄 -->
+    <path d="M196 96 H330" stroke="#2A63CC" stroke-width="10"/>
+    <!-- 빽빽한 글줄: 일부는 지워짐 -->
+    <path d="M196 124 H300" stroke-width="4"/>
+    <path d="M196 144 H286" stroke-width="4"/>
+    <path d="M196 164 H296" stroke-width="4"/>
+    <!-- 지운 줄 (취소선) -->
+    <path d="M196 186 H292" stroke-width="4" stroke="#C9C7BD"/>
+    <path d="M190 180 L298 192" stroke="#C9521F" stroke-width="4"/>
+    <!-- 막대그래프 -->
+    <path d="M326 236 H446" stroke-width="4"/>
+    <rect x="336" y="200" width="20" height="36" rx="3" fill="#BFD2F6" stroke-width="4"/>
+    <rect x="366" y="180" width="20" height="56" rx="3" fill="#BFD2F6" stroke-width="4"/>
+    <rect x="396" y="156" width="20" height="80" rx="3" fill="#BFD2F6" stroke-width="4"/>
+    <rect x="426" y="128" width="20" height="108" rx="3" fill="#2A63CC" stroke-width="4"/>
+    <!-- 숫자에 동그라미: 확인 필요 -->
+    <ellipse cx="436" cy="104" rx="26" ry="15" stroke="#C9521F" stroke-width="4"/>
+    <path d="M420 104 h8 m6 0 h16" stroke-width="4"/>
+  </g>
+
+  <!-- 왼쪽: 딸깍 마우스 커서 -->
+  <g transform="translate(92 150)" stroke="#1C1F26" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M0 0 L0 62 L16 48 L28 74 L40 68 L28 43 L50 43 Z" fill="#FFD84D"/>
+    <path d="M-10 -14 L-20 -30 M8 -16 L10 -36 M-24 2 L-42 -2" fill="none"/>
+  </g>
+
+  <!-- 오른쪽: 슬라이드를 고치는 연필 -->
+  <g transform="translate(498 132) rotate(32)" stroke="#1C1F26" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="-14" y="0" width="28" height="118" rx="4" fill="#FFD84D"/>
+    <rect x="-14" y="-22" width="28" height="22" rx="4" fill="#F4A3A3"/>
+    <path d="M-14 0 H14" fill="none"/>
+    <path d="M-14 118 L0 150 L14 118 Z" fill="#F3E2C3"/>
+    <path d="M-5 138 L0 150 L5 138 Z" fill="#1C1F26"/>
+  </g>
+  <!-- AI 반짝임 -->
+  <g fill="#2A63CC">
+    <path d="M520 52 l7 17 l17 7 l-17 7 l-7 17 l-7 -17 l-17 -7 l17 -7 z"/>
+    <path d="M572 104 l4 9 l9 4 l-9 4 l-4 9 l-4 -9 l-9 -4 l9 -4 z"/>
+  </g>
+</svg>

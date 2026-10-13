@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EP.00 · 새 에피소드 템플릿</title>
+</head>
+<body>
+<!--
+  RE:Quest 새 에피소드 템플릿
+
+  가장 쉬운 방법: 발표 자료(HTML, PPT, PDF 등)를 Claude에게 첨부하고
+  "RE:Quest EP.02로 추가해줘"라고 요청하세요. 이 파일 작성, 목록 등록, 슬라이드 보기까지 만들어 같은 주소에 올립니다.
+
+  직접 만들 때
+  1. 이 파일을 복사해 quests/ep02.html 처럼 저장하세요.
+  2. 아래 세 칸(알고 시작하기, 직접 해보기, 정리)의 내용만 바꾸세요. 칸 제목, STEP 번호, 체크박스, 복사 버튼,
+     완료·공유(RE:QUEST) 칸은 사이트가 자동으로 붙입니다.
+  3. data/quests.json 의 "episodes" 맨 위에 추가하세요.
+     {
+       "id": "ep02",                   ← 파일 이름과 같게
+       "no": 2,
+       "date": "2026-10-22",           ← 공개일 (가장 최근이 홈 맨 위)
+       "title": "질문 형태의 제목",
+       "titleEm": "제목 중 파란색으로 강조할 부분",
+       "lead": "한 줄 소개",
+       "category": "생성형 이미지·영상",
+       "minutes": 30,
+       "practice": "실습 과제 한 줄",
+       "needs": "준비물",
+       "slides": { "dir": "slides/ep02", "count": 20, "ext": "jpg", "labels": ["1번 슬라이드 제목", "..."] }
+     }
+     slides 가 없으면 '발표 슬라이드로 보기'는 나오지 않아요. 슬라이드 이미지는 slides/ep02/01.jpg 처럼 넣어요.
+
+  페이지 나누기 (본문은 한 쪽씩 넘겨 보는 형태)
+  - 소제목 <h3 class="sub">, "이것만 기억하세요" <div class="take">, 실습 과제 <div class="mission">에서 새 쪽이 시작돼요.
+  - 직접 해보기의 STEP 하나하나가 각각 한 쪽이에요. "완료하고 다음"을 누르면 그 단계가 체크돼요.
+  - 원하는 곳에서 직접 나누려면 <hr class="page-break"> 를 넣으세요.
+  - 쪽 제목은 그 쪽의 소제목에서 자동으로 가져와 목차와 '다음 · 제목' 안내에 써요.
+
+  쓸 수 있는 부품
+  - 소제목: <h3 class="sub">
+  - 그림: <figure class="fig"><img src="assets/ep02/그림.png" alt="설명"><figcaption>캡션</figcaption></figure>
+  - 문제 카드 4개: <ol class="symptoms"> (ep01.html 참고)
+  - 단계: <ol class="steps"><li><h3>단계 이름</h3> ... </li></ol>
+  - 단계 첫 문단: <p class="step-lead"><b>한 줄 요약</b>설명</p>
+  - 프롬프트 복사 상자: <div class="prompt" data-label="라벨"><pre>프롬프트</pre></div>
+  - 비교: <div class="compare"><div class="bad">…</div><div class="good">…</div></div>
+  - 팁: <div class="tip"><b>TIP · 제목</b><p>내용</p></div>
+  - 체크포인트: <p class="checkpoint"><b>체크포인트</b>항목 · 항목</p>
+  - 번호 목록 카드: <ol class="three"><li><span class="n">1</span><div><b>제목</b><span>설명</span></div></li></ol>
+  - 심화 접기: <details class="more"><summary>심화 · 제목</summary> … </details>
+  - 복습 표: <table class="recap">
+  - 실습 과제: <div class="mission"> … <ul class="clear-when"><li>완료 조건</li></ul></div>
+  - 빈칸 채우는 프롬프트: <div class="tpl-step builder" data-id="s1" data-label="라벨"><b>제목</b><pre class="builder-template">{{빈칸 이름|예시}}</pre></div>
+  - pre 안에서 < 기호가 필요하면 &lt; 로 쓰세요.
+-->
+<article class="quest-body">
+
+<!-- 1. 알고 시작하기: 짧은 개념, 그림 1~2개, "이것만 기억하세요" 3줄 -->
+<section data-part="learn">
+  <h3 class="sub">왜 이런 문제가 생길까?</h3>
+  <p>짧은 설명 두세 문장.</p>
+  <figure class="fig"><img src="assets/ep02/그림.png" alt="설명" loading="lazy"></figure>
+  <div class="take">
+    <p class="take-h">이것만 기억하세요</p>
+    <ol>
+      <li><span>01</span><p>핵심 1</p></li>
+      <li><span>02</span><p>핵심 2</p></li>
+      <li><span>03</span><p>핵심 3</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 2. 직접 해보기: 실습 과제 + 단계(왜 → 할 일 → 짧은 영상 → 프롬프트 → 확인) -->
+<section data-part="try">
+  <div class="mission">
+    <span class="eyebrow">실습 · 약 20분</span>
+    <h3>실습 과제 이름</h3>
+    <p>무엇을 만들어 보는지 한두 문장.</p>
+  </div>
+  <ol class="steps">
+    <li>
+      <h3>단계 이름</h3>
+      <p class="step-why">이 단계를 하는 이유 한두 문장.</p>
+      <ol class="todo">
+        <li>할 일 1</li>
+        <li>할 일 2</li>
+      </ol>
+      <figure class="clip"><video poster="assets/ep02/step1.jpg" muted loop playsinline preload="none"><source src="assets/ep02/step1.mp4" type="video/mp4"><source src="assets/ep02/step1.webm" type="video/webm"></video><figcaption>영상 설명 한 줄</figcaption></figure>
+      <div class="builder" data-id="s1" data-label="STEP 1 프롬프트">
+        <pre class="builder-template">{{빈칸 이름|예시}}을 넣은 프롬프트</pre>
+      </div>
+      <!-- 빈칸이 필요 없으면: <div class="prompt" data-label="STEP 1 프롬프트"><pre>프롬프트</pre></div> -->
+      <p class="checkpoint"><b>확인</b>확인할 것</p>
+      <details class="work"><summary>업무에선 이렇게</summary><p>실제 업무 예시.</p></details>
+    </li>
+  </ol>
+</section>
+
+<!-- 3. 정리: 완성 예시, 마무리 한마디, 실전 퀘스트 -->
+<section data-part="finish">
+  <h3 class="sub">완성 예시</h3>
+  <div class="gallery"><img src="assets/ep02/result-1.jpg" alt="설명" loading="lazy"></div>
+  <div class="realquest">
+    <b>실전 퀘스트 · 내 업무로 한 번 더</b>
+    <p>내 업무에 적용하는 과제.</p>
+  </div>
+</section>
+
+</article>
+</body>
+</html>
