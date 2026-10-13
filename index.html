@@ -596,6 +596,9 @@ li.step.done .step-next{background:var(--surface);color:var(--blue);border-color
 .berg .bg-pop{animation:bg-pop .55s cubic-bezier(.34,1.56,.64,1) var(--d) both}
 .berg .bg-float{animation:bg-float 3.4s ease-in-out calc(var(--f) + 3s) infinite}
 .berg .bg-warn{animation:bg-warn .6s cubic-bezier(.34,1.56,.64,1) 2.85s both}
+@keyframes rmWave{0%,100%{transform:skewY(0) scaleX(1)}25%{transform:skewY(-6deg) scaleX(.94)}50%{transform:skewY(2deg) scaleX(1.04)}75%{transform:skewY(6deg) scaleX(.96)}}
+@keyframes rmFlap{0%,100%{d:path('M1 -37 C 10 -42, 16 -32, 26 -36 L 26 -18 C 16 -14, 10 -24, 1 -19 Z')}33%{d:path('M1 -37 C 9 -31, 17 -43, 26 -37 L 26 -19 C 17 -25, 9 -13, 1 -19 Z')}66%{d:path('M1 -37 C 10 -40, 18 -34, 27 -33 L 27 -15 C 18 -16, 10 -22, 1 -19 Z')}}
+@keyframes rmHop{from{transform:translateY(0)}to{transform:translateY(-2px)}}
 @keyframes bg-bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(7px) rotate(.4deg)}}
 @keyframes bg-wave{from{transform:translateX(0)}to{transform:translateX(-200px)}}
 @keyframes bg-wave2{from{transform:translateX(-240px)}to{transform:translateX(0)}}
@@ -897,6 +900,15 @@ html.lb-open,html.lb-open body{overflow:hidden}
   .rm-dot{fill:var(--surface);stroke:var(--ink);stroke-width:3}
   .rm-pole{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
   .rm-cloth{fill:var(--coral);stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round}
+  /* 깃발: 마우스를 올리면 펄럭펄럭 */
+  .rm-road{pointer-events:none;z-index:2}
+  .rm-node{z-index:3}
+  .rm-here{z-index:4}
+  .rm-goal{pointer-events:auto;cursor:default}
+  .rm-hit{fill:transparent}
+  .rm-cloth{transform-box:fill-box;transform-origin:0 50%}
+  .rm-goal:hover .rm-cloth{animation:rmWave .55s ease-in-out infinite,rmFlap .55s ease-in-out infinite}
+  .rm-goal:hover .rm-lbl.goal{animation:rmHop .55s ease-in-out infinite alternate}
   .rm-lbl{font:900 10.5px var(--font);letter-spacing:.12em;fill:var(--muted)}
   .rm-lbl.goal{fill:var(--coral)}
   .rm{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
@@ -1718,7 +1730,8 @@ function drawRoad(){
     '<path class="rm-lane" d="'+path(all)+'"/>'+
     '<circle class="rm-dot" cx="'+st[0]+'" cy="'+st[1]+'" r="7"/>'+
     '<text class="rm-lbl" x="'+(st[0]-8)+'" y="'+(st[1] > 65 ? st[1]+26 : st[1]-16)+'">START</text>'+
-    '<g transform="translate('+g[0]+' '+g[1]+')">'+
+    '<g class="rm-goal" transform="translate('+g[0]+' '+g[1]+')">'+
+      '<rect class="rm-hit" x="-22" y="-48" width="56" height="'+(g[1] > 65 ? 82 : 78)+'"/>'+
       '<line class="rm-pole" x1="0" y1="6" x2="0" y2="-38"/>'+
       '<path class="rm-cloth" d="M1 -37 C 10 -42, 16 -32, 26 -36 L 26 -18 C 16 -14, 10 -24, 1 -19 Z"/>'+
       '<circle cx="0" cy="-39" r="3" fill="var(--ink)"/>'+
