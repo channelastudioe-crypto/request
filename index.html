@@ -66,6 +66,13 @@ em{font-style:normal;color:var(--blue)}
 .brand{display:flex;align-items:baseline;gap:10px;text-decoration:none}
 .brand b{font-weight:900;font-size:22px;color:var(--blue);letter-spacing:-.02em}
 .brand span{font-size:12px;color:var(--faint);font-weight:500}
+.brand{align-items:center}
+.brand-logo{display:block;height:30px;width:auto}
+.brand-logo.dk{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .brand-logo.lt{display:none}:root:not([data-theme="light"]) .brand-logo.dk{display:block}}
+:root[data-theme="dark"] .brand-logo.lt{display:none}
+:root[data-theme="dark"] .brand-logo.dk{display:block}
+@media (max-width:420px){.brand-logo{height:26px}.brand span{display:none}}
 .nav{display:none;gap:2px}
 .nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:15px;padding:8px 12px;border-radius:8px}
 .nav a:hover{color:var(--ink);background:var(--surface-2)}
@@ -1077,11 +1084,17 @@ body.in-ep .site-foot{display:none}
 }
 
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}}
+
+/* ---------- 상단 진행 바: 채널A 그라데이션 (하늘색 → 파랑 → 남색) ---------- */
+:root{--grad:linear-gradient(90deg,#7FD6FF 0%,#1D6FFF 52%,#0D2E8E 100%)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--grad:linear-gradient(90deg,#9BE1FF 0%,#6EA0FF 55%,#5A7FEA 100%)}}
+:root[data-theme="dark"]{--grad:linear-gradient(90deg,#9BE1FF 0%,#6EA0FF 55%,#5A7FEA 100%)}
+.top-progress span{background:var(--grad);background-size:calc(100vw) 100%;background-repeat:no-repeat}
 </style>
 
 <header class="top">
   <div class="wrap top-in">
-    <a class="brand" href="#home" aria-label="RE:Quest 홈"><b>RE:Quest</b><span>AI 리터러시 콘텐츠</span></a>
+    <a class="brand" href="#home" aria-label="RE:Quest 홈"><img class="brand-logo lt" src="assets/brand/logo.png" alt="RE:Quest" width="148" height="30"><img class="brand-logo dk" src="assets/brand/logo-dark.png" alt="" aria-hidden="true" width="148" height="30"><span>AI 리터러시 콘텐츠</span></a>
     <nav class="nav" aria-label="주요 메뉴">
       <a href="#home" data-nav="home">에피소드</a>
       <a href="#request" data-nav="request">리퀘스트 보내기</a>
