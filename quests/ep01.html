@@ -23,7 +23,92 @@
 
   <h3 class="sub">‘딸깍’ 한 번에 완성을 기대하지 말자</h3>
   <p>결과물은 그럴싸해 보이지만, 그 아래에서는 AI가 알려주지 않은 수많은 것을 짐작으로 채웁니다. “이 자료로 PPT 만들어줘” 한 줄에는 <b>목적, 대상, 분량, 디자인, 레이아웃, 수치 확인</b>이 하나도 없어요. AI는 이걸 스스로 정한 채로, 목적이 정해지지 않은 채 진행합니다.</p>
-  <figure class="fig"><img src="assets/ep01/iceberg.png" alt="빙산 그림. 한 줄 요청 아래에 AI가 짐작으로 정한 목적, 대상, 분량, 디자인, 레이아웃, 수치 확인이 숨어 있다" loading="lazy"><figcaption>그래서 ‘딸깍’ 한 번으로는 완성되지 않습니다.</figcaption></figure>
+  <figure class="fig berg-fig"><svg class="berg" viewBox="0 0 1600 663" role="img" aria-label="빙산 그림. 한 줄 요청 아래에 AI가 짐작으로 정한 목적, 대상, 분량, 디자인, 레이아웃, 수치 확인이 숨어 있다">
+    <defs>
+      <linearGradient id="bg-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1F5FD"/><stop offset="1" stop-color="#E2EAF8"/></linearGradient>
+      <linearGradient id="bg-sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B76D8"/><stop offset=".55" stop-color="#22479A"/><stop offset="1" stop-color="#15295A"/></linearGradient>
+      <linearGradient id="bg-ice" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6EEFB"/><stop offset="1" stop-color="#B9CCEE"/></linearGradient>
+      <clipPath id="bg-up"><rect x="0" y="0" width="1600" height="184"/></clipPath>
+      <clipPath id="bg-dn"><rect x="0" y="184" width="1600" height="479"/></clipPath>
+      <clipPath id="bg-all"><rect width="1600" height="663" rx="22"/></clipPath>
+    </defs>
+    <g clip-path="url(#bg-all)">
+      <rect width="1600" height="184" fill="url(#bg-sky)"/>
+      <rect y="184" width="1600" height="479" fill="url(#bg-sea)"/>
+      <!-- 물속 빛줄기 -->
+      <g class="bg-rays" fill="#fff">
+        <path d="M300 184 L380 184 L250 663 L120 663 Z"/>
+        <path d="M1180 184 L1240 184 L1420 663 L1300 663 Z"/>
+      </g>
+
+      <!-- 둥실 떠 있는 빙산 (물 위/물 아래를 따로 칠함) -->
+      <g class="bg-bob">
+        <g clip-path="url(#bg-dn)">
+          <path d="M663 170 L980 170 L1165 320 L1203 410 L1120 520 L825 590 L495 512 L423 418 L450 325 Z" fill="url(#bg-ice)" opacity=".93"/>
+          <path d="M663 170 L760 300 L825 590 L495 512 L423 418 L450 325 Z" fill="#fff" opacity=".18"/>
+          <path d="M820 170 L825 590" stroke="#fff" stroke-opacity=".55" stroke-width="2"/>
+        </g>
+        <g clip-path="url(#bg-up)">
+          <path d="M722 190 L803 52 L832 92 L865 68 L930 190 Z" fill="#fff" stroke="#8FAEE6" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M722 190 L803 52 L832 92 L818 190 Z" fill="#CFDDF5"/>
+        </g>
+        <!-- 반짝 -->
+        <path class="bg-spark" d="M884 38 l5 13 l13 5 l-13 5 l-5 13 l-5 -13 l-13 -5 l13 -5 z" fill="#2A63CC"/>
+
+        <text class="bg-in bg-d4" x="816" y="280" text-anchor="middle" font-size="27" font-weight="700" fill="#1C2E5C">AI가 짐작으로 정한 것들</text>
+        <g font-size="25" font-weight="700" text-anchor="middle" fill="#1C1F26">
+          <g class="bg-pop" style="--d:1.75s"><g class="bg-float" style="--f:0s"><rect x="546" y="303" width="170" height="54" rx="27" fill="#fff" stroke="#2A63CC" stroke-width="2.5" stroke-dasharray="7 6"/><text x="631" y="339">목적?</text></g></g>
+          <g class="bg-pop" style="--d:1.9s"><g class="bg-float" style="--f:.6s"><rect x="733" y="303" width="170" height="54" rx="27" fill="#fff" stroke="#2A63CC" stroke-width="2.5" stroke-dasharray="7 6"/><text x="818" y="339">대상?</text></g></g>
+          <g class="bg-pop" style="--d:2.05s"><g class="bg-float" style="--f:1.2s"><rect x="919" y="303" width="170" height="54" rx="27" fill="#fff" stroke="#2A63CC" stroke-width="2.5" stroke-dasharray="7 6"/><text x="1004" y="339">분량?</text></g></g>
+          <g class="bg-pop" style="--d:2.2s"><g class="bg-float" style="--f:.3s"><rect x="546" y="371" width="170" height="54" rx="27" fill="#fff" stroke="#2A63CC" stroke-width="2.5" stroke-dasharray="7 6"/><text x="631" y="407">디자인?</text></g></g>
+          <g class="bg-pop" style="--d:2.35s"><g class="bg-float" style="--f:.9s"><rect x="733" y="371" width="170" height="54" rx="27" fill="#fff" stroke="#2A63CC" stroke-width="2.5" stroke-dasharray="7 6"/><text x="818" y="407">레이아웃?</text></g></g>
+          <g class="bg-pop" style="--d:2.5s"><g class="bg-float" style="--f:1.5s"><rect x="919" y="371" width="170" height="54" rx="27" fill="#fff" stroke="#2A63CC" stroke-width="2.5" stroke-dasharray="7 6"/><text x="1004" y="407">수치 확인?</text></g></g>
+        </g>
+        <g class="bg-warn">
+          <rect x="587" y="456" width="461" height="57" rx="9" fill="#A8431E"/>
+          <text x="817" y="494" text-anchor="middle" font-size="27" font-weight="700" fill="#fff">목적이 정해지지 않은 채 진행</text>
+        </g>
+      </g>
+
+      <!-- 물결 (계속 흐름) -->
+      <g class="bg-wave">
+        <path d="M0 184 q50 -9 100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 V194 H0 Z" fill="#5C8FE3" opacity=".55"/>
+        <path d="M0 184 q50 -9 100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0 t100 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <g class="bg-wave bg-wave2" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2.5" stroke-linecap="round">
+        <path d="M0 202 q60 -7 120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0"/>
+      </g>
+
+      <!-- 물방울 -->
+      <g class="bg-bubbles" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2">
+        <circle class="bg-bub" cx="560" cy="560" r="6" style="--d:0s;--t:6s"/>
+        <circle class="bg-bub" cx="1080" cy="540" r="5" style="--d:1.4s;--t:5.2s"/>
+        <circle class="bg-bub" cx="720" cy="600" r="4" style="--d:2.6s;--t:6.6s"/>
+        <circle class="bg-bub" cx="960" cy="600" r="7" style="--d:3.6s;--t:7s"/>
+        <circle class="bg-bub" cx="380" cy="520" r="4" style="--d:4.4s;--t:5.6s"/>
+        <circle class="bg-bub" cx="1250" cy="560" r="5" style="--d:.8s;--t:6.2s"/>
+      </g>
+
+      <!-- 물 위: 한 줄 요청과 '딸깍' -->
+      <text class="bg-in" x="93" y="58" font-size="21" font-weight="700" fill="#6B7280">딸깍 한 번</text>
+      <g class="bg-click">
+        <rect x="93" y="77" width="450" height="73" rx="12" fill="#fff" stroke="#C9CDD6" stroke-width="2.5"/>
+        <text x="318" y="124" text-anchor="middle" font-size="30" font-weight="700" fill="#1C1F26">“이 자료로 PPT 만들어줘”</text>
+      </g>
+      <rect class="bg-ring" x="93" y="77" width="450" height="73" rx="12" fill="none" stroke="#2A63CC" stroke-width="3"/>
+      <g class="bg-cursor">
+        <g stroke="#C9521F" stroke-width="3.5" stroke-linecap="round" class="bg-burst"><path d="M516 132 l-8 -12 M530 128 l2 -15 M502 144 l-14 -4"/></g>
+        <path d="M520 140 L520 180 L530 171 L538 188 L546 184 L538 167 L552 167 Z" fill="#1C1F26" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+      </g>
+      <path class="bg-link" d="M545 113 L746 134" stroke="#7C8496" stroke-width="2.5" stroke-dasharray="6 6" fill="none"/>
+      <circle class="bg-in bg-d1" cx="746" cy="134" r="6" fill="#7C8496"/>
+
+      <text class="bg-in bg-d2" x="1000" y="96" font-size="30" font-weight="700" fill="#1C1F26">그럴싸해 보이는 결과물,</text>
+      <text class="bg-in bg-d3" x="1000" y="140" font-size="30" font-weight="700" fill="#A8431E">하지만 그 아래에는…</text>
+
+      <text class="bg-in bg-d5" x="800" y="637" text-anchor="middle" font-size="32" font-weight="700" fill="#fff">그래서 ‘딸깍’ 한 번으로는 완성되지 않습니다</text>
+    </g>
+  </svg><figcaption>그래서 ‘딸깍’ 한 번으로는 완성되지 않습니다.</figcaption></figure>
 
   <h3 class="sub">한 번에 만들지 말고, 이 순서로</h3>
   <p>배울 건 딱 다섯 단계입니다. 기준과 규칙을 먼저 세우고, 전체 생성은 그다음입니다.</p>

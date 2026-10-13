@@ -548,6 +548,39 @@ li.step.done .step-next{background:var(--surface);color:var(--blue);border-color
 #part-learn .mini4 b{font-size:16px}
 #part-learn .fig{margin-top:32px}
 #part-learn .fig figcaption{margin-top:12px;font-size:14px}
+/* 빙산 그림: 들어올 때 순서대로 나타나고, 물결·빙산·물방울은 계속 움직임 (움직임 줄이기 설정이면 정지 화면) */
+.berg{display:block;width:100%;height:auto;border-radius:var(--r);border:1px solid var(--line);background:#E2EAF8;font-family:inherit}
+.berg *{transform-box:fill-box;transform-origin:center}
+.berg .bg-rays{opacity:.06;animation:bg-rays 7s ease-in-out infinite alternate}
+.berg .bg-bob{transform-box:view-box;animation:bg-bob 4.8s ease-in-out infinite}
+.berg .bg-wave{transform-box:view-box;animation:bg-wave 9s linear infinite}
+.berg .bg-wave2{animation:bg-wave2 14s linear infinite}
+.berg .bg-spark{animation:bg-spark 2.6s ease-in-out 1s infinite}
+.berg .bg-bub{opacity:0;animation:bg-bub var(--t) ease-in var(--d) infinite}
+.berg .bg-in{animation:bg-in .6s ease-out both}
+.berg .bg-d1{animation-delay:.75s}.berg .bg-d2{animation-delay:.95s}.berg .bg-d3{animation-delay:1.25s}.berg .bg-d4{animation-delay:1.55s}.berg .bg-d5{animation-delay:3.2s}
+.berg .bg-click{animation:bg-click .5s ease-out .35s both}
+.berg .bg-ring{opacity:0;animation:bg-ring .9s ease-out .4s}
+.berg .bg-cursor{opacity:0;animation:bg-cursor 1.3s ease-out both}
+.berg .bg-burst{opacity:0;animation:bg-in .35s ease-out .4s both}
+.berg .bg-link{stroke-dashoffset:0;animation:bg-link .6s ease-out .55s both}
+.berg .bg-pop{animation:bg-pop .55s cubic-bezier(.34,1.56,.64,1) var(--d) both}
+.berg .bg-float{animation:bg-float 3.4s ease-in-out calc(var(--f) + 3s) infinite}
+.berg .bg-warn{animation:bg-warn .6s cubic-bezier(.34,1.56,.64,1) 2.85s both}
+@keyframes bg-bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(7px) rotate(.4deg)}}
+@keyframes bg-wave{from{transform:translateX(0)}to{transform:translateX(-200px)}}
+@keyframes bg-wave2{from{transform:translateX(-240px)}to{transform:translateX(0)}}
+@keyframes bg-rays{from{opacity:.04}to{opacity:.1}}
+@keyframes bg-spark{0%,100%{opacity:.2;transform:scale(.6) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(45deg)}}
+@keyframes bg-bub{0%{opacity:0;transform:translateY(0)}15%{opacity:1}85%{opacity:.8}100%{opacity:0;transform:translateY(-330px)}}
+@keyframes bg-in{from{opacity:0;transform:translateY(10px)}}
+@keyframes bg-click{0%{transform:scale(1)}35%{transform:scale(.95)}100%{transform:scale(1)}}
+@keyframes bg-ring{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.12)}}
+@keyframes bg-cursor{0%{opacity:0;transform:translate(40px,30px)}25%{opacity:1;transform:translate(0,0)}35%{transform:scale(.85)}45%{transform:scale(1)}80%{opacity:1}100%{opacity:0}}
+@keyframes bg-link{from{stroke-dasharray:6 6;stroke-dashoffset:0;opacity:0}}
+@keyframes bg-pop{from{opacity:0;transform:translateY(24px) scale(.6)}}
+@keyframes bg-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes bg-warn{from{opacity:0;transform:scale(.8)}}
 #part-learn .flow5{margin-top:32px;gap:24px}
 #part-learn .flow-group{gap:12px}
 #part-learn .flow-group ol{gap:10px}
