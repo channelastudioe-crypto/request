@@ -450,9 +450,31 @@ table.recap td:last-child{color:var(--blue);font-weight:500;background:var(--blu
 .done-badge h3{font-size:clamp(18px,3vw,22px);font-weight:900;line-height:1.4}
 .done-d{font-size:13.5px;color:var(--muted)}
 .done-badge .linkish{font-size:12.5px;margin-top:4px}
-.share{display:grid;gap:10px}
-.share:not(.on) .prompt{opacity:.55}
-.share .btn{justify-self:start}
+/* 에피소드 피드백: 남기기 + 함께 쌓인 피드백 목록 */
+.fb{display:grid;gap:18px;padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.fb-head h3{font-size:clamp(18px,2.6vw,21px);font-weight:900;line-height:1.4}
+.fb-head p{font-size:14.5px;color:var(--muted);margin-top:4px}
+.fb-form{display:grid;gap:10px}
+.fb-form textarea{width:100%;min-height:96px;padding:10px 12px;border:1px solid var(--line-strong);border-radius:10px;background:var(--bg);font-size:15.5px;line-height:1.6;resize:vertical}
+.fb-form input[type="text"]{flex:1 1 160px;min-width:0;min-height:44px;padding:0 12px;border:1px solid var(--line-strong);border-radius:10px;background:var(--bg);font-size:15px}
+.fb-form textarea:focus,.fb-form input[type="text"]:focus{border-color:var(--blue);outline:none;box-shadow:0 0 0 3px var(--blue-wash)}
+.fb-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.fb-row .btn{flex:0 0 auto}
+.fb-note{font-size:12.5px;color:var(--faint)}
+.fb-count-n{color:var(--blue)}
+.fb .fb-list{list-style:none;padding:0 !important;margin:0 !important;display:grid;gap:10px}
+.fb .fb-list li{margin:0 !important;font-weight:400}
+.fb .fb-list li::before{content:none !important}
+.fb-list li{display:grid;gap:6px;padding:14px 16px;border-radius:12px;background:var(--bg);border:1px solid var(--line)}
+.fb-list li.mine{border-color:var(--blue-line,var(--blue));background:var(--blue-wash)}
+.fb-list li.fresh{animation:fbIn .5s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes fbIn{from{opacity:0;transform:translateY(-8px) scale(.98)}}
+.fb-list p{font-weight:400;font-size:15px;line-height:1.65;white-space:pre-wrap;word-break:break-word}
+.fb-tag{justify-self:start;font-size:12px;font-weight:700;color:var(--blue);background:var(--blue-wash);border-radius:999px;padding:1px 9px}
+.fb-list li.mine .fb-tag{background:var(--surface)}
+.fb-by{font-size:12.5px;color:var(--faint)}
+.fb-empty{font-size:14.5px;color:var(--muted);padding:14px 16px;border:1px dashed var(--line-strong);border-radius:12px}
+.fb-foot{display:flex;gap:14px;align-items:center;margin-top:10px}
 .done-box{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:space-between;padding:18px;border:1.5px solid var(--blue);border-radius:14px;background:var(--surface)}
 .done-box p{font-size:15.5px}
 .done-box.cleared{background:var(--blue-wash)}
@@ -2050,9 +2072,7 @@ function renderReport(e, celebrate){
           '<p class="done-d num">'+dotFull(P.cleared)+(doneCount(e.id) ? ' · 따라 한 단계 '+doneCount(e.id)+' / '+(P.total || 5) : '')+'</p>'+
           '<button type="button" class="linkish" data-act="unclear">완료 취소</button></div></div>'
       : '<div class="done-box"><p>실습까지 해봤다면 완료 버튼을 눌러 주세요. 완료 배지가 생겨요.</p><button type="button" class="btn btn-primary" data-act="clear">'+epNo(e)+' 완료하기</button></div>')+
-    '<div class="share'+(cleared ? ' on' : '')+'"><p class="sublabel">'+(cleared ? '카톡방에 인증하기 · 아래 문구를 복사해서 결과물 캡처와 함께 올려주세요' : '완료하면 카톡방 인증용 공유 문구가 준비돼요')+'</p>'+
-      '<div class="prompt"><div class="prompt-bar"><span class="prompt-label">공유 메시지</span><button type="button" class="copy">복사</button></div><pre class="prompt-text">'+esc(shareMsg(e, P))+'</pre></div>'+
-      (cleared && s.kakaoRoomUrl ? '<a class="btn btn-primary btn-sm" href="'+esc(s.kakaoRoomUrl)+'" target="_blank" rel="noopener">카톡방 열기</a>' : '')+'</div>'+
+    '<div id="fb-slot"></div>'+
     (nexts.length ? '<div><p class="sublabel">NEXT RE:Quest · 다음에 풀어 볼 질문들</p><div class="next-grid">'+nextCardsHTML()+'</div></div>' : '')+
     '<div class="ask-more"><p>해보다가 막힌 점, 더 궁금해진 점이 다음 리퀘스트가 됩니다.</p><button type="button" class="btn btn-sm" data-act="ask">리퀘스트 보내기</button></div>';
   box.onclick = function(ev){
@@ -2065,6 +2085,118 @@ function renderReport(e, celebrate){
     if (act === 'unclear') { P.cleared = null; save(); renderReport(e); updateProgress(e); toast('완료 표시를 취소했어요'); }
     if (act === 'ask') { prefill = '['+epNo(e)+' 보고 생긴 질문] '; location.hash = 'request'; }
   };
+  fbMount(e);
+}
+/* ---------- 에피소드 피드백 (구글 폼으로 저장, 웹에 게시한 구글 시트에서 불러오기) ---------- */
+var FB = { ep:null, rows:null, at:0, err:false, shown:5, busy:false };
+var FB_MOODS = ['도움 됐어요','바로 써볼래요','조금 어려웠어요','더 알고 싶어요'];
+function fbCfg(){ var f = (DATA.settings || {}).feedback; return f && f.form && f.entries ? f : null; }
+function parseCSV(t){
+  var rows = [], row = [], f = '', q = false, i, c;
+  for (i = 0; i < t.length; i++) {
+    c = t[i];
+    if (q) { if (c === '"') { if (t[i+1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+    else if (c === '"') q = true;
+    else if (c === ',') { row.push(f); f = ''; }
+    else if (c === '\n' || c === '\r') { if (c === '\r' && t[i+1] === '\n') i++; row.push(f); rows.push(row); row = []; f = ''; }
+    else f += c;
+  }
+  if (f || row.length) { row.push(f); rows.push(row); }
+  return rows;
+}
+function fbDate(s){
+  s = String(s || ''); var m = s.match(/(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})/) || s.match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+  if (m) return (+m[2])+'월 '+(+m[3])+'일';
+  m = s.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); return m ? (+m[1])+'월 '+(+m[2])+'일' : '';
+}
+function fbMatchEp(v, e){ v = String(v || '').replace(/\s/g,'').toLowerCase(); return v === epNo(e).replace(/\s/g,'').toLowerCase() || v === String(e.id).toLowerCase(); }
+function fbMine(e){
+  var all = store.fbMine || [], now = Date.now();
+  store.fbMine = all.filter(function(m){ return now - m.at < 3*864e5; });
+  return store.fbMine.filter(function(m){ return m.ep === e.id; });
+}
+function fbLoad(e, force){
+  var cfg = fbCfg();
+  if (!cfg || !cfg.csv) { FB.ep = e.id; FB.rows = []; FB.err = false; fbRender(e); return; }
+  if (!force && FB.ep === e.id && FB.rows && Date.now() - FB.at < 60000) { fbRender(e); return; }
+  FB.ep = e.id; FB.rows = null; FB.err = false; fbRender(e);
+  fetch(cfg.csv + (cfg.csv.indexOf('?') < 0 ? '?' : '&') + 't=' + Date.now())
+    .then(function(r){ if (!r.ok) throw 0; return r.text(); })
+    .then(function(t){
+      var rows = parseCSV(t), head = rows.shift() || [];
+      function col(k, d){ for (var i = 0; i < head.length; i++) if (head[i].indexOf(k) >= 0) return i; return d; }
+      var ci = { at:0, ep:col('에피소드',1), name:col('이름',2), mood:col('반응',3), text:col('피드백',4) };
+      FB.rows = rows.filter(function(r){ return (r[ci.text] || '').trim() && fbMatchEp(r[ci.ep], e); })
+        .map(function(r){ return { name:(r[ci.name]||'').trim(), mood:(r[ci.mood]||'').trim(), text:(r[ci.text]||'').trim(), date:fbDate(r[ci.at]) }; })
+        .reverse();
+      FB.at = Date.now(); fbRender(e);
+    })
+    .catch(function(){ FB.err = true; FB.rows = []; fbRender(e); });
+}
+function fbItem(r, cls){
+  return '<li'+(cls ? ' class="'+cls+'"' : '')+'>'+(r.mood ? '<span class="fb-tag">'+esc(r.mood)+'</span>' : '')+
+    '<p>'+esc(r.text)+'</p><span class="fb-by">'+esc(r.name || '익명')+(r.date ? ' · '+esc(r.date) : '')+'</span></li>';
+}
+function fbRender(e, freshAt){
+  var list = $('#fb-list'); if (!list) return;
+  var rows = FB.rows || [], seen = {};
+  rows.forEach(function(r){ seen[r.text] = 1; });
+  var mine = fbMine(e).filter(function(m){ return !seen[m.text]; }).reverse();
+  var total = rows.length + mine.length, html = '';
+  mine.forEach(function(m){ html += fbItem({ name:'나'+(m.name ? ' ('+m.name+')' : ''), mood:m.mood, text:m.text, date:'방금 남김' }, 'mine'+(m.at === freshAt ? ' fresh' : '')); });
+  rows.slice(0, FB.shown).forEach(function(r){ html += fbItem(r); });
+  if (!FB.rows) html = '<li class="fb-empty">피드백을 불러오는 중이에요…</li>';
+  else if (!total) html = '<li class="fb-empty">'+(FB.err ? '지금은 피드백 목록을 불러오지 못했어요. 잠시 뒤 다시 열어 주세요.' : '아직 남긴 피드백이 없어요. 첫 피드백을 남겨 주세요.')+'</li>';
+  list.innerHTML = html;
+  $('#fb-count').innerHTML = '동료들이 남긴 피드백'+(total ? ' <span class="fb-count-n num">'+total+'</span>' : '');
+  var more = $('#fb-more'); more.hidden = rows.length <= FB.shown; more.textContent = '피드백 '+(rows.length - FB.shown)+'개 더 보기';
+}
+function fbHTML(){
+  return '<section class="fb" aria-labelledby="fb-h"><div class="fb-head"><h3 id="fb-h">이번 에피소드, 어땠나요?</h3>'+
+    '<p>좋았던 점, 어려웠던 점, 다음에 바라는 점을 남겨 주세요. 동료들이 남긴 피드백도 아래에서 함께 볼 수 있어요.</p></div>'+
+    '<form class="fb-form" id="fb-form" novalidate><div class="chips" role="radiogroup" aria-label="한마디 반응">'+
+      FB_MOODS.map(function(m){ return '<label><input type="radio" name="fb-mood" value="'+esc(m)+'"><span>'+esc(m)+'</span></label>'; }).join('')+'</div>'+
+      '<textarea id="fb-text" maxlength="500" aria-label="피드백" placeholder="예: 기준 슬라이드를 먼저 만드는 순서가 제일 도움이 됐어요"></textarea>'+
+      '<div class="fb-row"><input type="text" id="fb-name" maxlength="20" aria-label="이름" placeholder="이름 (비우면 익명)"><button type="submit" class="btn btn-primary">피드백 남기기</button></div>'+
+      '<p class="fb-note">사이트 주소를 아는 누구나 읽을 수 있어요. 사내 민감 정보는 적지 말아 주세요.</p></form>'+
+    '<div><p class="sublabel" id="fb-count">동료들이 남긴 피드백</p><ul class="fb-list" id="fb-list"></ul>'+
+      '<div class="fb-foot"><button type="button" class="linkish" id="fb-more" hidden></button><button type="button" class="linkish" id="fb-reload">새로 고침</button></div></div></section>';
+}
+function fbMount(e){
+  var slot = $('#fb-slot'); if (!slot) return;
+  slot.innerHTML = fbHTML(); FB.shown = 5;
+  var d = store.fbDraft || {}, ta = $('#fb-text'), nm = $('#fb-name');
+  if (d.ep === e.id) ta.value = d.text || '';
+  nm.value = store.fbName || '';
+  ta.addEventListener('input', function(){ store.fbDraft = { ep:e.id, text:ta.value }; save(); });
+  $('#fb-more').onclick = function(){ FB.shown += 10; fbRender(e); };
+  $('#fb-reload').onclick = function(){ fbLoad(e, true); };
+  $('#fb-form').onsubmit = function(ev){
+    ev.preventDefault(); if (FB.busy) return;
+    var text = ta.value.trim(), name = nm.value.trim(), md = $('#fb-form input[name="fb-mood"]:checked'), mood = md ? md.value : '';
+    if (text.length < 2) { ta.focus(); toast('피드백을 한 줄 이상 적어 주세요'); return; }
+    var cfg = fbCfg();
+    if (!cfg) { toast('피드백 저장소를 연결하는 중이에요. 조금만 기다려 주세요'); return; }
+    var en = cfg.entries, body = new URLSearchParams();
+    body.append(en.ep, epNo(e)); body.append(en.text, text);
+    if (en.name) body.append(en.name, name || '익명');
+    if (en.mood && mood) body.append(en.mood, mood);
+    var done = function(){
+      var at = Date.now(); store.fbMine = (store.fbMine || []).concat([{ ep:e.id, name:name, mood:mood, text:text, at:at }]);
+      store.fbName = name; store.fbDraft = null; save();
+      ta.value = ''; if (md) md.checked = false; FB.busy = false; fbRender(e, at);
+      toast('피드백을 남겼어요. 고마워요!');
+    };
+    FB.busy = true;
+    fetch(cfg.form.replace(/\/viewform.*$/, '/formResponse'), { method:'POST', mode:'no-cors', body:body })
+      .then(done)
+      .catch(function(){
+        FB.busy = false;
+        window.open(cfg.form.replace(/\?.*$/, '') + '?usp=pp_url&' + body.toString(), '_blank', 'noopener');
+        toast('구글 폼이 열리면 제출을 눌러 주세요');
+      });
+  };
+  fbLoad(e);
 }
 /* 완료 축하: 화면 위로 폭죽이 몇 번 터지는 효과 (움직임 줄이기 설정이면 생략) */
 function fireworks(){
