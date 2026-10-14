@@ -211,8 +211,8 @@ main{padding-bottom:96px}
 
 
 /* 홈: 왼쪽 소개 + 오른쪽 대표 이미지 자리(추후 일러스트), 에피소드는 아래에 최신순으로 쌓임 */
-.hero-art{display:none}
-@media (min-width:960px){.hero-art{display:block;aspect-ratio:4/3;width:100%}}
+.home-art{display:none}
+@media (min-width:960px){.home-art{display:block;aspect-ratio:4/3;width:100%}}
 .home-hero + .eps{margin-top:32px}
 .home-hero{display:grid;gap:28px;align-items:center;padding-block:8px 4px}
 @media (min-width:960px){.home-hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;padding-block:28px 8px}.home-hero .intro h1{font-size:clamp(32px,3vw,44px)}}
@@ -1129,7 +1129,7 @@ body.in-ep .site-foot{display:none}
           <p class="intro-sub">일부가 아닌 모두의 성장을, 설명이 아니라 경험을.</p>
           <a class="intro-ask" href="#request">업무하다 생긴 “이것도 AI로 될까?” 질문 보내기 →</a>
         </div>
-        <div class="hero-art" id="hero-art" aria-hidden="true"><!-- 대표 이미지 자리 (추후 일러스트) --></div>
+        <div class="home-art" id="home-art" aria-hidden="true"><!-- 대표 이미지 자리 (추후 일러스트) --></div>
       </div>
 
       <section class="eps" id="eps" aria-labelledby="h-all">
