@@ -210,7 +210,10 @@ main{padding-bottom:96px}
 .ep-card .thumb{background:#F7F5EE}
 
 
-/* 홈: 왼쪽 소개 + 오른쪽 최신 에피소드 대표 카드 (바로 시작) */
+/* 홈: 왼쪽 소개 + 오른쪽 대표 이미지 자리(추후 일러스트), 에피소드는 아래에 최신순으로 쌓임 */
+.hero-art{display:none}
+@media (min-width:960px){.hero-art{display:block;aspect-ratio:4/3;width:100%}}
+.home-hero + .eps{margin-top:32px}
 .home-hero{display:grid;gap:28px;align-items:center;padding-block:8px 4px}
 @media (min-width:960px){.home-hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;padding-block:28px 8px}.home-hero .intro h1{font-size:clamp(32px,3vw,44px)}}
 .home-hero .intro{padding:0}
@@ -1126,7 +1129,7 @@ body.in-ep .site-foot{display:none}
           <p class="intro-sub">일부가 아닌 모두의 성장을, 설명이 아니라 경험을.</p>
           <a class="intro-ask" href="#request">업무하다 생긴 “이것도 AI로 될까?” 질문 보내기 →</a>
         </div>
-        <div class="feat-wrap" id="featured"></div>
+        <div class="hero-art" id="hero-art" aria-hidden="true"><!-- 대표 이미지 자리 (추후 일러스트) --></div>
       </div>
 
       <section class="eps" id="eps" aria-labelledby="h-all">
@@ -1470,14 +1473,12 @@ function renderList(){
     return true;
   }).sort(function(a,b){ return a.date < b.date ? 1 : -1; });
   var L = latest(), filtering = !!(F.q || F.cat);
-  $('#featured').innerHTML = L ? featuredHTML(L) : '';
-  // 맨 위 대표 카드로 보여준 최신 편은 아래 목록에서 빼서 같은 카드가 두 번 나오지 않게
-  var rest = filtering ? list : list.filter(function(e){ return e !== L; });
-  var html = rest.map(function(e){ return epCardHTML(e, false); }).join('');
+  // 모든 에피소드를 대문 아래 목록에 최신순으로 쌓음 (가장 최근 편에 '최신' 표시)
+  var rest = list;
+  var html = rest.map(function(e){ return epCardHTML(e, e === L); }).join('');
   if (!rest.length && filtering) html = '<div class="empty"><p>조건에 맞는 에피소드가 없어요.</p></div>';
-  // 지난 에피소드가 아직 없으면 아래 영역은 통째로 비워 둠 (2편째부터 '지난 에피소드'로 나타남)
-  $('#eps').hidden = !rest.length && !filtering;
-  $('#h-all').textContent = filtering ? '에피소드' : '지난 에피소드';
+  $('#eps').hidden = !E.length;
+  $('#h-all').textContent = '에피소드';
   $('#ep-list').innerHTML = html;
   $('#ep-count').textContent = '총 ' + E.length + '편';
 }
