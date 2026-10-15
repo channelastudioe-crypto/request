@@ -672,11 +672,30 @@ li.step.done .step-next{background:var(--surface);color:var(--blue);border-color
 .ls-say dd{margin:0;grid-column:-2;font-weight:700;font-size:15.5px;line-height:1.55;padding:12px 16px;border-radius:10px;background:var(--blue-wash);border:1px solid var(--blue)}
 
 /* TIP */
-.ls-tip{background:var(--coral-wash);border:1px solid var(--coral-line);border-radius:12px;padding:16px 18px;display:grid;gap:6px}
-.ls-tip b{color:var(--coral);font-size:15px}
+/* TIP: 선물상자를 누르면 열리는 롤다운 */
+.ls-tip{background:var(--coral-wash);border:1px solid var(--coral-line);border-radius:12px;padding:0;transition:box-shadow .2s ease}
+.ls-tip summary{list-style:none;display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;border-radius:12px;user-select:none}
+.ls-tip summary::-webkit-details-marker{display:none}
+.ls-tip summary:hover .gift{transform:rotate(-8deg) scale(1.06)}
+.ls-tip summary:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+.ls-tip b{color:var(--coral);font-size:15px;flex:1;min-width:0}
+.gift{flex:none;width:32px;height:32px;display:grid;place-items:center;color:var(--coral);transition:transform .2s ease}
+.gift svg{width:32px;height:32px;display:block;overflow:visible}
+.gift-o{display:none !important}
+.ls-tip[open] .gift-c{display:none !important}
+.ls-tip[open] .gift-o{display:block !important}
+.ls-tip[open] .gift-lid{animation:giftLid .45s cubic-bezier(.3,1.6,.5,1) both;transform-box:fill-box;transform-origin:0% 100%}
+.ls-tip[open] .gift-spark{animation:giftSpark .6s ease .15s both}
+.ls-tip:not([open]) summary .gift{animation:giftWiggle 8s ease-in-out 2s infinite}
+.tip-body{display:grid;gap:8px;padding:0 16px 16px 60px}
+.ls-tip[open] .tip-body{animation:tipDown .3s ease both}
 .ls-tip p{font-size:14.5px}
 .ls-tip q{quotes:none;justify-self:start;font-weight:700;font-size:15px;background:var(--surface);border:1px solid var(--coral-line);border-radius:8px;padding:8px 14px}
-@media (min-width:700px){.ls-tip.row{grid-template-columns:auto minmax(0,1fr);align-items:center;gap:16px}.ls-tip.row q{justify-self:stretch;text-align:center}}
+@media (max-width:520px){.tip-body{padding-left:16px}}
+@keyframes giftLid{from{transform:translate(4px,6px) rotate(24deg)}to{transform:none}}
+@keyframes giftSpark{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+@keyframes giftWiggle{0%,95%,100%{transform:none}96%{transform:rotate(-10deg)}97.5%{transform:rotate(9deg)}98.8%{transform:rotate(-5deg)}}
+@keyframes tipDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 
 /* 왼쪽 vs 오른쪽 */
 .ls-vs{display:grid;gap:10px;align-items:stretch}
