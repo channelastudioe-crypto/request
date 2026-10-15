@@ -1010,6 +1010,85 @@ html.lb-open,html.lb-open body{overflow:hidden}
 
 /* ---------- about ---------- */
 .about-grid{display:grid;gap:8px;margin-top:8px}
+/* 소개 페이지 v2: 사전 정의 + WHY 이미지 + WHAT 비교 */
+.page-head h1 em{font-style:normal;color:var(--blue)}
+.ab-sec h2 em{font-style:normal;color:var(--blue)}
+.ab-dict{margin:28px 0 0;display:grid;gap:18px;max-width:820px;padding:22px 24px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px}
+.ab-dict dt{font-weight:900;font-size:17px}
+.ab-dict dt span{font-weight:400;color:var(--faint);font-size:15px;margin-left:4px}
+.ab-dict dd{margin:2px 0 0;color:var(--muted);font-size:16px}
+.ab-dict dd b{color:var(--ink)}
+.lv-scroll{margin-top:32px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+.lv{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:8px;min-width:790px}
+.lv li{display:grid;justify-items:center;text-align:center;align-content:start}
+.lv-bub{position:relative;margin:0 0 12px;width:min(100%,160px);background:var(--surface);border:1.5px solid var(--line-strong);border-radius:18px;padding:8px 10px;font-size:13.5px;line-height:1.45;color:var(--ink);height:78px;display:grid;place-items:center}
+.lv-bub::after{content:"";position:absolute;left:58%;bottom:-8px;width:12px;height:12px;background:var(--surface);border-right:1.5px solid var(--line-strong);border-bottom:1.5px solid var(--line-strong);transform:rotate(45deg) skew(8deg,8deg)}
+.lv img{display:block;height:150px;width:auto;max-width:100%;object-fit:contain;object-position:center bottom}
+.lv-role{margin-top:10px;font-size:14px;font-weight:700;background:var(--blue-wash);color:var(--ink);border-radius:999px;padding:4px 14px}
+.lv-desc{margin-top:8px;white-space:nowrap;font-size:13.5px;line-height:1.55;color:var(--muted)}
+.lv-scale{display:flex;align-items:center;gap:10px;margin-top:18px;min-width:790px;font-size:13.5px;font-weight:700;color:var(--blue);white-space:nowrap}
+.lv-scale i{flex:1;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--blue-line),var(--blue));position:relative}
+.lv-scale i::after{content:"";position:absolute;right:-2px;top:-5px;border-left:9px solid var(--blue);border-top:6.5px solid transparent;border-bottom:6.5px solid transparent}
+.ab-key{margin-top:28px;font-size:clamp(17px,2.6vw,20px);font-weight:700}
+.ab-key b{color:var(--blue)}
+.ab-goal{margin-top:28px;display:grid;gap:20px;align-items:center}
+@media (min-width:760px){.ab-goal{grid-template-columns:minmax(0,1fr) 300px;gap:40px}}
+.ab-goal-k{display:inline-block;font-size:12.5px;font-weight:700;color:var(--blue)}
+.ab-goal h3{font-size:clamp(21px,3.4vw,26px);font-weight:900;margin-top:4px}
+.ab-goal h3 em{font-style:normal;color:var(--blue)}
+.ab-goal p{color:var(--muted);font-size:16px;line-height:1.85;margin:0}
+.ab-rise{display:block;width:100%;max-width:320px;height:auto;overflow:visible}
+.ab-rise .r-line{fill:none;stroke:var(--blue-line);stroke-width:5;stroke-linecap:round}
+.ab-rise .r-head{fill:none;stroke:var(--blue-line);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.ab-rise .r-stems path{stroke:var(--blue-line);stroke-width:2;stroke-dasharray:3 5}
+.ab-rise circle{fill:var(--blue);opacity:var(--o)}
+.ab-vs{margin-top:28px;display:grid;gap:12px;align-items:stretch}
+@media (min-width:860px){.ab-vs{grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr)}}
+.ab-col{background:var(--surface-2);border:1px solid var(--line);border-radius:16px;padding:22px 22px 24px}
+.ab-col.on{background:var(--blue-wash);border-color:var(--blue-line)}
+.ab-col h3{font-size:19px;font-weight:900;color:var(--muted)}
+.ab-col.on h3{color:var(--blue)}
+.ab-col > p{font-size:14.5px;color:var(--muted);margin-top:6px}
+.ab-flow{list-style:none;padding:0;margin:18px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.ab-flow li{display:grid;justify-items:center;gap:8px;text-align:center;font-size:13.5px;font-weight:700;line-height:1.35;color:var(--muted);position:relative}
+.ab-col.on .ab-flow li{color:var(--ink)}
+.ab-flow svg{width:52px;height:52px;padding:13px;border-radius:50%;background:var(--surface);fill:none;stroke:var(--faint);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ab-col.on .ab-flow svg{stroke:var(--blue)}
+.ab-flow li + li::before{content:"";position:absolute;left:-14%;top:26px;width:28%;border-top:2px dashed var(--line-strong)}
+.ab-col.on .ab-flow li + li::before{border-color:var(--blue-line)}
+.ab-vs-arrow{display:grid;place-items:center;font-size:26px;color:var(--blue);transform:rotate(90deg)}
+@media (min-width:860px){.ab-vs-arrow{transform:none}}
+.ab-line{margin-top:28px;text-align:center;font-size:clamp(17px,2.6vw,20px);line-height:1.6}
+.ab-line b{color:var(--blue)}
+/* 소개 페이지: WHY / WHAT / HOW */
+.ab-sec{margin-top:96px;max-width:820px}
+.page-head + .ab-sec{margin-top:64px}
+.ab-tag{display:inline-block;font-size:12.5px;font-weight:900;letter-spacing:.14em;color:var(--blue);background:var(--blue-wash);border-radius:999px;padding:3px 12px}
+.ab-sec h2{font-size:clamp(24px,4.6vw,32px);font-weight:900;letter-spacing:-.02em;line-height:1.3;margin-top:16px}
+.ab-lead{font-size:clamp(16.5px,2.6vw,18.5px);margin-top:22px;line-height:1.8}
+.ab-lead b{color:var(--blue)}
+.ab-p{color:var(--muted);font-size:16px;margin-top:24px;line-height:1.85}
+.ab-sec .quote{margin-top:28px}
+.ab-name{display:flex;flex-wrap:wrap;align-items:stretch;gap:12px;margin-top:28px}
+.ab-name span{flex:1 1 180px;display:grid;gap:4px;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r);padding:14px 16px;font-size:14.5px;color:var(--muted)}
+.ab-name span b{font-size:19px;font-weight:900;color:var(--ink);letter-spacing:.01em}
+.ab-name span.on{background:var(--blue-wash);border-color:var(--blue)}
+.ab-name span.on b{color:var(--blue)}
+.ab-name i{font-style:normal;display:grid;place-items:center;font-size:22px;font-weight:700;color:var(--line-strong)}
+@media (max-width:640px){.ab-name i{width:100%;height:14px;font-size:18px}}
+.ab-sub{margin-top:36px;font-size:13.5px;font-weight:700;color:var(--muted)}
+.ab-ex{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+.ab-ex li{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-size:15.5px;font-weight:500}
+.ab-ex li::before{content:"?";flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--blue-wash);color:var(--blue);font-weight:900;font-size:13px}
+.ab-ex li:has(.ab-done)::before{content:none}
+.ab-done{flex:none;font-size:12px;font-weight:700;color:var(--on-blue);background:var(--blue);border-radius:999px;padding:2px 9px}
+.ab-steps{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px;counter-reset:abs}
+.ab-steps li{counter-increment:abs;display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:16px;row-gap:4px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.ab-steps li::before{content:counter(abs);grid-row:1 / span 2;width:40px;height:40px;border-radius:50%;background:var(--blue);color:var(--on-blue);display:grid;place-items:center;font-weight:900;font-size:17px}
+.ab-steps b{font-size:17px;font-weight:700;align-self:center}
+.ab-steps span{color:var(--muted);font-size:15.5px}
+.ab-how3{margin-top:14px}
+.ab-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;padding-bottom:24px}
 .why{margin-top:28px;padding:24px 20px;background:var(--surface);border:1px solid var(--line);border-radius:14px;display:grid;gap:14px}
 .why h2{font-size:clamp(26px,5.6vw,36px);font-weight:900;letter-spacing:-.025em;line-height:1.3}
 .why h2 em{display:block}
@@ -1256,60 +1335,92 @@ body.in-ep .site-foot{display:none}
     <div class="wrap">
       <header class="page-head">
         <span class="eyebrow">ABOUT</span>
-        <h1>RE:Quest를 시작하는 이유</h1>
+        <h1><em>AI 리터러시</em> 정기 콘텐츠, RE:Quest</h1>
       </header>
-      <div class="why">
-        <h2><em>AI,</em>잘 쓰는 몇 명이면 충분할까요?</h2>
-        <p class="quote" style="margin-top:0">일부가 아닌 <em>모두의 성장</em>을,<br>설명이 아니라 <em>경험</em>을 제공합니다.</p>
-        <p>AI에 대한 이해도도, 업무에 쓰는 수준도 사람마다 다릅니다. 그 차이를 함께 좁혀보자는 데서 RE:Quest가 시작됐습니다. 본부의 AI 리터러시 기준을 함께 높이는 것이 목표예요.</p>
-      </div>
 
-      <section class="block">
-        <div class="sec-head"><div><span class="eyebrow">HOW</span><h2>한 편이 만들어지는 순서</h2></div></div>
-        <div class="how">
-          <div class="how-box"><b>REQUEST</b><span class="k">실제 업무의 질문</span><p>리퀘스트 보내기나 카톡방으로 질문을 받아요.</p></div>
-          <span class="how-arrow" aria-hidden="true">→</span>
-          <div class="how-box on"><b>QUEST</b><span class="k">우리가 먼저 직접 해봄</span><p>질문을 골라 직접 해보고, 막히는 지점과 푸는 방법을 기록해요.</p></div>
-          <span class="how-arrow" aria-hidden="true">→</span>
-          <div class="how-box"><b>RE:QUEST</b><span class="k">쓸 수 있는 경험으로 공유</span><p>단계별 방법과 실습 과제를 묶어 에피소드로 공개해요.</p></div>
+      <section class="ab-sec ab-intro" aria-labelledby="ab-q">
+        <h2 id="ab-q">AI, 잘 쓰는 몇 명이면 충분할까요?</h2>
+        <div class="ab-goal">
+          <div>
+            <p>AI에 대한 이해도도, 업무에 쓰는 수준도 사람마다 다릅니다. 그 차이를 함께 좁혀보자는 데서 RE:Quest가 시작됐습니다. 본부의 AI 리터러시 기준을 함께 높이는 것이 목표예요.</p>
+          </div>
+          <svg class="ab-rise" viewBox="0 0 320 150" aria-hidden="true">
+            <path class="r-line" d="M8 118 C 120 116, 220 104, 300 84"/>
+            <path class="r-head" d="M290 78 L304 83 L293 93"/>
+            <g class="r-stems"><path d="M40 146 V118"/><path d="M98 146 V66"/><path d="M158 146 V88"/><path d="M216 146 V68"/><path d="M276 146 V44"/></g>
+            <circle cx="40" cy="104" r="9" style="--o:.35"/><circle cx="98" cy="52" r="9" style="--o:.5"/><circle cx="158" cy="74" r="9" style="--o:.65"/><circle cx="216" cy="54" r="9" style="--o:.8"/><circle cx="276" cy="28" r="10" style="--o:1"/>
+          </svg>
         </div>
       </section>
 
-      <section class="block">
-        <div class="sec-head"><h2>에피소드 하나에 담기는 것</h2></div>
-        <div class="info2">
-          <div><b>알고 시작하기</b><span>왜 막히는지, 기억할 것 세 줄</span></div>
-          <div><b>직접 해보기</b><span>실습 과제를 단계별로. 짧은 영상, 복붙용 프롬프트, 확인 포인트</span></div>
-          <div><b>정리</b><span>완성 예시와 내 업무에 적용하는 실전 퀘스트</span></div>
-          <div><b>발표 슬라이드</b><span>공유 세션에서 쓴 슬라이드 원본</span></div>
-        </div>
-      </section>
-
-      <section class="block">
-        <div class="sec-head"><h2>AI 쓸 때 꼭 지킬 것</h2></div>
-        <ol class="rules">
-          <li>회사가 허용한 AI 도구와 계정으로 실습해요.</li>
-          <li>출연자·시청자 개인정보, 미공개 기획안과 계약 조건은 넣지 않아요. 필요하면 가명이나 가짜 숫자로 바꿔요.</li>
-          <li>AI가 만든 숫자, 날짜, 금액, 고유명사는 원본과 한 번 더 대조해요.</li>
-          <li>최종 결과물은 사람이 확인하고 책임져요.</li>
-        </ol>
-      </section>
-
-      <section class="block">
-        <details class="ops">
-          <summary>운영자용: 새 에피소드 올리는 법</summary>
-          <ol>
-            <li>발표 자료(HTML, PPT, PDF 등)를 Claude에게 첨부하고 “RE:Quest EP.02로 추가해줘”라고 요청하면, 에피소드 페이지와 슬라이드 보기까지 만들어 같은 주소에 올려요.</li>
-            <li>직접 만들 때는 <code>quests/_template.html</code>을 복사해 <code>quests/ep02.html</code>로 저장하고 세 칸(알고 시작하기, 직접 해보기, 정리)을 채워요.</li>
-            <li><code>data/quests.json</code>의 <code>episodes</code> 맨 위에 새 에피소드 정보를 추가해요. 가장 최근 것이 홈 맨 위에 올라가요.</li>
-            <li>에피소드로 다룬 질문은 <code>requests</code>에서 빼고, 새 NEXT 후보를 넣어요.</li>
-            <li>카톡 리퀘스트방 링크(<code>kakaoRoomUrl</code>)를 넣으면 리퀘스트 보내기 화면에 버튼이 생겨요.</li>
+      <section class="ab-sec" aria-labelledby="ab-why">
+        <span class="ab-tag">WHY</span>
+        <h2 id="ab-why">AI 활용 능력은, 지금 <em>너무 제각각</em>입니다</h2>
+        <div class="lv-scroll">
+          <ol class="lv" aria-label="직군별 AI 활용 수준">
+            <li style="--i:0"><p class="lv-bub">AI요?<br>가끔 번역할 때<br>써요.</p><img src="assets/about/p_pd.png" alt="" loading="lazy"><b class="lv-role">PD</b><span class="lv-desc">아직은 낯설지만<br>조금씩 써보는 중</span></li>
+            <li style="--i:1"><p class="lv-bub">ChatGPT는<br>거의 매일 써요.</p><img src="assets/about/p_cd.png" alt="" loading="lazy"><b class="lv-role">CD</b><span class="lv-desc">아이디어, 초안 정리 등<br>일상적으로 활용</span></li>
+            <li style="--i:2"><p class="lv-bub">Claude가<br>글은 더 낫던데?</p><img src="assets/about/p_dr.png" alt="" loading="lazy"><b class="lv-role">드라마·신규기획</b><span class="lv-desc">여러 툴을 비교하며<br>활용 방법을 탐색 중</span></li>
+            <li style="--i:3"><p class="lv-bub">에이전트로<br>반복 업무를<br>돌리고 있어요.</p><img src="assets/about/p_pm.png" alt="" loading="lazy"><b class="lv-role">제작관리</b><span class="lv-desc">업무 자동화까지<br>적극적으로 활용</span></li>
+            <li style="--i:4"><p class="lv-bub">AI로<br>영상 분석까지<br>해봤어요.</p><img src="assets/about/p_tc.png" alt="" loading="lazy"><b class="lv-role">기술·후반 등</b><span class="lv-desc">다양한 AI를 실험하며<br>업무에 깊이 적용</span></li>
           </ol>
-        </details>
+          <div class="lv-scale" aria-hidden="true"><span>AI 입문 단계</span><i></i><span>AI 적극 활용</span></div>
+        </div>
+        <p class="ab-key">AI 활용 역량에는 아직 <b>‘조직 공통의 기준선’</b>이 없습니다.</p>
+      </section>
+
+      <section class="ab-sec" aria-labelledby="ab-what">
+        <span class="ab-tag">WHAT</span>
+        <h2 id="ab-what">단순 정보보다, <em>직접 써본 경험</em>을</h2>
+        <div class="ab-vs">
+          <div class="ab-col">
+            <h3>흔한 AI 정보 콘텐츠</h3>
+            <p>새로운 소식은 많지만, 그래서 내 일에 어떻게 쓰는지는 여전히 막연해요.</p>
+            <ol class="ab-flow">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8M8 13h5"/></svg>신모델 출시</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>기능 소개</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19V13M12 19V8M18 19V4"/></svg>성능·비교</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5"/></svg>업데이트</li>
+            </ol>
+          </div>
+          <span class="ab-vs-arrow" aria-hidden="true">→</span>
+          <div class="ab-col on">
+            <h3>RE:Quest</h3>
+            <p>직접 써 보고, 우리 업무에 연결할 수 있는 것만 다뤄요.</p>
+            <ol class="ab-flow">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.8.6-.8 1.1v.6M12 16.5v.1"/></svg>궁금증에서 시작</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg>직접 써 봄</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg>실제 업무에 대입</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.5L16 9.5"/></svg>써먹을 것만 남김</li>
+            </ol>
+          </div>
+        </div>
+        <p class="ab-line">AI를 설명하는 콘텐츠가 아니라,<br><b>AI를 ‘내 일’에 연결해 보는 정기 콘텐츠</b>예요.</p>
+        <p class="ab-sub">에피소드 한 편은 이렇게 만들어져요</p>
+        <div class="how ab-how3">
+          <div class="how-box"><b>REQUEST</b><span class="k">실제 업무의 질문</span><p>업무하다 막힌 순간, “이것도 AI로 될까?” 한 줄이 시작이에요.</p></div>
+          <span class="how-arrow" aria-hidden="true">→</span>
+          <div class="how-box on"><b>QUEST</b><span class="k">저희가 먼저 직접 해 보기</span><p>질문을 골라 직접 부딪혀 보고, 막히는 지점과 푸는 방법을 기록해요.</p></div>
+          <span class="how-arrow" aria-hidden="true">→</span>
+          <div class="how-box"><b>RE:QUEST</b><span class="k">쓸 수 있는 경험으로 공유</span><p>단계별 방법, 실습 영상, 복붙용 프롬프트를 묶어 에피소드로 올리고 현장 강의로도 함께 해요.</p></div>
+        </div>
+      </section>
+
+      <section class="ab-sec" aria-labelledby="ab-how">
+        <span class="ab-tag">HOW</span>
+        <h2 id="ab-how">이렇게 시작해 보세요</h2>
+        <ol class="ab-steps">
+          <li><b>에피소드 하나 열기</b><span>대문에서 궁금한 에피소드를 골라요. 한 편에 30분이면 충분해요.</span></li>
+          <li><b>내 화면에서 따라 하기</b><span>짧은 영상과 복붙용 프롬프트를 보며 한 단계씩 그대로 해 봐요.</span></li>
+          <li><b>막히면 질문 보내기</b><span>해 보다 생긴 궁금증은 리퀘스트로 보내 주세요. 다음 에피소드가 될 수 있어요.</span></li>
+        </ol>
+        <div class="ab-cta">
+          <a class="btn btn-primary" href="#request">질문 보내기 →</a>
+          <a class="btn" href="#home">에피소드 보러 가기</a>
+        </div>
       </section>
     </div>
   </section>
-
   <div class="wrap">
     <footer class="site-foot">
       <span><b style="color:var(--blue)">RE:Quest</b> · 본부 AI 리터러시 콘텐츠</span>
