@@ -660,7 +660,7 @@ li.step.done .step-next{background:var(--surface);color:var(--blue);border-color
 #part-learn [class^="ls-"] ul,#part-learn [class^="ls-"] ol{list-style:none;padding:0 !important;margin:0 !important}
 #part-learn ul[class^="ls-"],#part-learn ol[class^="ls-"]{list-style:none;padding:0 !important;margin-inline:0 !important;margin-bottom:0 !important}
 #part-learn [class^="ls-"] li,#part-learn li[class]{margin:0 !important}
-#part-learn .ls-trio,#part-learn .ls-say,#part-learn .ls-vs,#part-learn .ls-two,#part-learn .ls-gains,#part-learn .ls-stairs,#part-learn .ls-neq,#part-learn .ls-cards3,#part-learn .vz{margin-top:24px !important}
+#part-learn .ls-trio,#part-learn .ls-say,#part-learn .ls-vs,#part-learn .ls-two,#part-learn .ls-gains,#part-learn .ls-stairs,#part-learn .ls-neq,#part-learn .ls-cards3,#part-learn .vz,#part-learn .pb{margin-top:24px !important}
 #part-learn .ls-tip,#part-learn .ls-bar,#part-learn .checkpoint{margin-top:14px}
 .ls-q{font-weight:700;font-size:15.5px;line-height:1.6;padding:12px 14px;border-radius:10px;background:var(--surface);border:1px solid var(--blue-line)}
 .ls-q.coral{border-color:var(--coral-line);background:var(--coral-wash)}
@@ -678,6 +678,59 @@ li.step.done .step-next{background:var(--surface);color:var(--blue);border-color
 .ls-trio dd{margin:8px 0 0;font-size:15px;color:var(--ink);line-height:1.5}
 
 /* 라벨 → 문장 */
+/* 5쪽 · 한 문장씩 덧붙이면 짐작이 줄어요 */
+.pb{display:grid;gap:14px}
+@media (min-width:760px){.pb{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);align-items:stretch}.pb-ctl{grid-column:1 / -1}}
+.pb-main{display:grid;gap:10px;align-content:start;min-width:0}
+.pb-lab{margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pb-lab2{margin-top:6px}
+.pb-box{background:var(--surface);border:1px solid var(--line-strong);border-radius:14px;padding:14px 16px 16px;display:grid;gap:10px;box-shadow:0 6px 16px -12px var(--shadow)}
+.pb-file{justify-self:start;display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:4px 10px}
+.pb-file svg{width:14px;height:14px}
+.pb-text{margin:0;display:grid;gap:6px;font-weight:700;font-size:15.5px;line-height:1.55}
+.pb-add{display:none;border-radius:8px;padding:6px 10px;margin:0 -10px;color:var(--blue)}
+.pb.on-goal .pb-add[data-k="goal"],.pb.on-who .pb-add[data-k="who"],.pb.on-what .pb-add[data-k="what"]{display:block;animation:pbIn .9s ease both}
+@keyframes pbIn{0%{opacity:0;transform:translateY(-4px);background:var(--blue-wash)}30%{opacity:1;transform:none;background:var(--blue-wash)}100%{background:transparent}}
+.pb-chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pb-chip{font:inherit;display:grid;gap:1px;justify-items:center;text-align:center;padding:10px 6px;border-radius:12px;border:1.5px dashed var(--blue-line);background:var(--surface);color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s,color .2s,transform .15s}
+.pb-chip b{font-size:16px;font-weight:900;line-height:1.3}
+.pb-chip b::before{content:"+ ";color:var(--blue)}
+.pb-chip small{font-size:12.5px;color:var(--muted);font-weight:500;line-height:1.35}
+.pb-chip:hover{border-color:var(--blue);background:var(--blue-wash)}
+.pb-chip:active{transform:scale(.97)}
+.pb-chip:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.pb-chip[aria-pressed="true"]{border-style:solid;border-color:var(--blue);background:var(--blue);color:var(--on-blue)}
+.pb-chip[aria-pressed="true"] b::before{content:"✓ ";color:inherit}
+.pb-chip[aria-pressed="true"] small{color:inherit;opacity:.85}
+.pb:not([data-n="0"]) .pb-main .vz-tap{display:none}
+.pb-side{position:relative;overflow:hidden;border-radius:14px;padding:16px 18px 18px;display:grid;gap:12px;align-content:start;color:#fff;background:linear-gradient(180deg,#3B76D8 0%,#22479A 60%,#15295A 100%)}
+.pb-side .ls-k{color:rgba(255,255,255,.85)}
+.pb-cnt{margin-left:auto;font-size:13px;font-weight:700;color:rgba(255,255,255,.85)}
+.pb-num{display:inline-block;font-size:30px;font-weight:900;line-height:1;margin-right:2px;color:#fff;font-variant-numeric:tabular-nums}
+.pb-num.bump{animation:pbBump .4s ease}
+@keyframes pbBump{40%{transform:scale(1.35)}}
+.pb .pb-guess{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.pb-guess li::before,.pb-guess li::marker{content:none}
+.pb-guess li{position:relative;height:42px;border-radius:999px;border:2px dashed rgba(255,255,255,.75);background:rgba(255,255,255,.08);font-weight:800;font-size:15px;transition:background .35s,border-color .35s}
+.pb-guess li > span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:opacity .3s,transform .3s}
+.pb-guess .q{animation:pbFloat 3s ease-in-out infinite}
+.pb-guess li:nth-child(2) .q{animation-delay:.6s}.pb-guess li:nth-child(3) .q{animation-delay:1.2s}
+@keyframes pbFloat{50%{transform:translateY(-2px)}}
+.pb-guess .a{opacity:0;transform:translateY(6px);color:#1C2E5C;font-size:14px}
+.pb-guess .a::before{content:"✓";color:#2A63CC;margin-right:6px;font-weight:900}
+.pb-guess .a em{font-style:normal;color:#2A63CC;font-size:12.5px;margin-right:8px}
+.pb-guess .a i{font-style:normal;overflow:hidden;text-overflow:ellipsis}
+.pb.on-goal .pb-guess li[data-k="goal"],.pb.on-who .pb-guess li[data-k="who"],.pb.on-what .pb-guess li[data-k="what"]{background:#fff;border-style:solid;border-color:#fff}
+.pb.on-goal li[data-k="goal"] .q,.pb.on-who li[data-k="who"] .q,.pb.on-what li[data-k="what"] .q{opacity:0;transform:translateY(-6px);animation:none}
+.pb.on-goal li[data-k="goal"] .a,.pb.on-who li[data-k="who"] .a,.pb.on-what li[data-k="what"] .a{opacity:1;transform:none}
+.pb-cap{margin:2px 0 0;font-size:14px;line-height:1.55;color:rgba(255,255,255,.88)}
+.pb-cap b{color:#fff}
+.pb-cap > span{display:none}
+.pb[data-n="0"] .pb-cap .c0,.pb[data-n="1"] .pb-cap .c1,.pb[data-n="2"] .pb-cap .c1,.pb[data-n="3"] .pb-cap .c3{display:inline}
+.pb-ctl{display:flex;justify-content:center;margin-top:-2px}
+.pb-reset,.pb[data-n="3"] .pb-all{display:none}
+@media (max-width:759.98px){.pb-main{display:contents}.pb-main > .pb-lab:first-child{order:1}.pb-box{order:2}.pb-side{order:3}.pb-lab2{order:4}.pb-chips{order:5}.pb-ctl{order:6}.pb-side{padding:14px 14px 16px;gap:10px}.pb .pb-guess{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.pb-guess li{height:38px;font-size:14px}.pb-guess .a i{display:none}.pb-guess .a em{margin:0;font-size:14px}.pb-num{font-size:24px}}
+.pb[data-n="3"] .pb-reset{display:inline-block}
 .ls-say{display:grid;gap:10px;margin:0}
 .ls-say div{display:grid;gap:6px;align-items:center}
 @media (min-width:600px){.ls-say div{grid-template-columns:120px 22px minmax(0,1fr);gap:10px}.ls-say div::after{content:"→";grid-column:2;grid-row:1;color:var(--blue);font-weight:900;font-size:20px;text-align:center}}
@@ -796,6 +849,19 @@ li.step.done .step-next{background:var(--surface);color:var(--blue);border-color
 .ls-arrow{display:grid;place-items:center;font-size:24px;font-weight:900;color:var(--line-strong);transform:rotate(90deg)}
 .ls-arrow.coral{color:var(--coral)}
 @media (min-width:700px){.ls-arrow{transform:none}}
+/* 7쪽 · 화살표를 누르면 오른쪽이 열려요 */
+@media (min-width:700px){.ls-vs.rv{grid-template-columns:minmax(0,1fr) 56px minmax(0,1.25fr)}}
+.rv-go{font:inherit;justify-self:center;align-self:center;width:48px;height:48px;border-radius:50%;border:0;padding:0;background:var(--blue);color:var(--on-blue);font-size:22px;cursor:pointer;box-shadow:0 0 0 0 var(--blue-line);animation:rvPulse 1.8s ease-out infinite;transition:background .3s,color .3s,transform .2s}
+.rv-go:hover{transform:rotate(90deg) scale(1.06)}
+@media (min-width:700px){.rv-go:hover{transform:scale(1.08)}}
+.rv-go:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+@keyframes rvPulse{0%{box-shadow:0 0 0 0 var(--blue-line)}70%,100%{box-shadow:0 0 0 10px transparent}}
+.rv.open .rv-go{animation:none;background:var(--blue-wash);color:var(--blue);cursor:default}
+.rv-box{position:relative}
+.rv-box > :not(.rv-lock){transition:filter .5s,opacity .5s}
+.rv:not(.open) .rv-box > :not(.rv-lock){filter:blur(6px);opacity:.75;user-select:none}
+.rv-lock{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;font-size:13px;font-weight:700;color:var(--blue);background:var(--surface);border:1px solid var(--blue-line);border-radius:999px;padding:5px 14px;white-space:nowrap;transition:opacity .3s}
+.rv.open .rv-lock{opacity:0;pointer-events:none}
 .ls-chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
 .ls-chips li{background:var(--surface-2);border-radius:8px;padding:7px 8px;text-align:center;font-size:14px;color:var(--muted)}
 .ls-sum{display:grid;gap:6px;align-items:center}
@@ -2686,6 +2752,32 @@ fetch('data/quests.json', { cache:'no-cache' })
     }
   });
 })();
+/* 5쪽 · 한 문장씩 덧붙이면 짐작이 줄어요 */
+(function(){
+  var KEYS = ['goal', 'who', 'what'];
+  function sync(v){
+    var n = 0;
+    KEYS.forEach(function(k){ var on = v.classList.contains('on-'+k); if (on) n++; var c = v.querySelector('.pb-chip[data-pb-k="'+k+'"]'); if (c) c.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+    var prev = v.getAttribute('data-n'); v.setAttribute('data-n', n);
+    var num = v.querySelector('.pb-num');
+    if (num) { num.textContent = 3 - n; if (String(n) !== prev) { num.classList.remove('bump'); void num.offsetWidth; num.classList.add('bump'); } }
+  }
+  document.addEventListener('click', function(ev){
+    var b = ev.target.closest('[data-pb-k]'); if (!b) return;
+    var v = b.closest('[data-pb]'); if (!v) return;
+    var k = b.getAttribute('data-pb-k');
+    if (k === 'all') KEYS.forEach(function(x){ v.classList.add('on-'+x); });
+    else if (k === 'reset') { KEYS.forEach(function(x){ v.classList.remove('on-'+x); }); var f = v.querySelector('.pb-chip'); if (f) f.focus(); }
+    else v.classList.toggle('on-'+k);
+    sync(v);
+  });
+})();
+/* 7쪽 · 화살표를 누르면 오른쪽이 열려요 */
+document.addEventListener('click', function(ev){
+  var b = ev.target.closest('[data-rv-go]'); if (!b) return;
+  var v = b.closest('[data-rv]'); if (!v) return;
+  v.classList.add('open'); b.setAttribute('aria-expanded', 'true');
+});
 </script>
 
 
