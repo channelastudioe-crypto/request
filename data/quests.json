@@ -42,7 +42,8 @@
       "minutes": 30,
       "practice": "제주도 4박 5일 여행 계획 PPT 5장",
       "needs": "생성형 AI 채팅 도구, PPT로 만들 자료",
-      "thumb": "assets/ep01/thumb.svg",
+      "thumb": "assets/ep01/thumb-before.jpg",
+      "thumbHover": "assets/ep01/thumb-after.jpg",
       "cover": "assets/ep01/cover.svg",
       "coverAlt": "한 번에 만든 빽빽한 슬라이드가 다섯 단계를 거쳐 정돈된 슬라이드로 바뀌는 예시 그림",
       "slides": {
