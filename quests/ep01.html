@@ -159,17 +159,28 @@
   <!-- STEP 2 · 디자인 규칙 정하기 (PPT 12~14) -->
   <h3 class="sub" id="learn-s2" data-step="STEP 2 · 디자인 규칙 정하기">“깔끔하게”는 AI도 모릅니다</h3>
   <p>내용이 정리됐다면 이제 그 내용을 담을 그릇을 만들 차례입니다. 느낌 대신 AI가 이해할 수 있는 규칙을 줘야 원하는 디자인에 가까워집니다.</p>
-  <div class="ls-vs">
-    <div class="ls-box">
-      <span class="ls-k">추상적인 요청</span>
-      <p class="ls-q">“자료를 보고 PPT를 <mark>깔끔하고 눈에 띄게</mark> 만들어줘”</p>
-      <small>사람마다 떠올리는 그림이 다르다</small>
+  <div class="vz" data-vz data-s="0">
+   <div class="vz-req">
+    <div class="vz-row vz-bad">
+      <p class="vz-lab"><span class="ls-k">추상적인 요청</span><span class="vz-tap">눌러 보세요</span></p>
+      <p class="ls-q">“자료를 보고 PPT를 <button type="button" class="vz-mark" data-vz-act="show">깔끔하고 눈에 띄게</button> 만들어줘”</p>
     </div>
-    <span class="ls-arrow" aria-hidden="true">→</span>
-    <div class="ls-box good">
-      <span class="ls-k">구체적인 요청</span>
-      <p class="ls-q">“화면 비율은 <em>16:9</em>로 만들어줘.<br>배경은 <em>흰색</em>, 강조색은 <em>파란색 한 가지</em>만 써줘.<br>폰트는 <em>고딕체</em>, 제목 <em>40pt</em> · 본문 <em>24pt</em>로 맞춰줘.<br>제목은 <em>항상 왼쪽 위</em>, 본문은 한 장에 <em>최대 3영역</em>까지만”</p>
-      <small>눈으로 확인할 수 있다</small>
+    <div class="vz-row vz-good">
+      <p class="vz-lab"><span class="ls-k">구체적인 요청</span></p>
+      <span class="vz-lock">다음 단계에서 열려요</span>
+      <p class="ls-q">“화면 비율은 <em data-r="1">16:9</em>로 만들어줘.<br>배경은 <em data-r="2">흰색</em>, 강조색은 <em data-r="3">파란색 한 가지</em>만 써줘.<br>폰트는 <em data-r="4">고딕체</em>, <em data-r="5">제목 40pt · 본문 24pt</em>로 맞춰줘.<br>제목은 <em data-r="6">항상 왼쪽 위</em>, 본문은 한 장에 <em data-r="7">최대 3영역</em>까지만”</p>
+    </div>
+   </div>
+    <div class="vz-stage" aria-hidden="true">
+    <figure class="vz-s s-a"><div class="vz-w"><div class="ms"><b>왜 지금일까?</b><span class="mb"><i></i><i></i><i></i><i></i><i></i><i></i></span></div></div><figcaption>AI의 짐작 A</figcaption></figure>
+    <figure class="vz-s s-b"><div class="vz-w"><div class="ms"><b>왜 지금일까?</b><span class="mb"><i></i><i></i><i></i><i></i><i></i><i></i></span></div></div><figcaption>AI의 짐작 B</figcaption></figure>
+    <figure class="vz-s s-c"><div class="vz-w"><div class="ms"><b>왜 지금일까?</b><span class="mb"><i></i><i></i><i></i><i></i><i></i><i></i></span></div></div><figcaption>AI의 짐작 C</figcaption></figure>
+    </div>
+    <p class="vz-cap" aria-live="polite"><span class="c0">‘깔끔하고 눈에 띄게’를 누르면, AI가 할 수 있는 짐작이 보여요.</span><span class="c1">모호하게 말하면, <b>AI가 짐작할 수 있는 그림이 이렇게 많아요.</b></span><span class="c2"></span><span class="c3">구체적으로 말할수록 <b>AI의 짐작이 줄어, 결과가 하나로 좁혀져요.</b></span></p>
+    <div class="vz-ctl">
+      <button type="button" class="btn btn-primary vz-fix" data-vz-act="fix">구체적으로 바꿔 보기 →</button>
+      <button type="button" class="btn btn-sm vz-again" data-vz-act="reset">처음부터 다시</button>
+      <button type="button" class="vz-skip" data-vz-act="end">결과 바로 보기</button>
     </div>
   </div>
 

@@ -660,7 +660,7 @@ li.step.done .step-next{background:var(--surface);color:var(--blue);border-color
 #part-learn [class^="ls-"] ul,#part-learn [class^="ls-"] ol{list-style:none;padding:0 !important;margin:0 !important}
 #part-learn ul[class^="ls-"],#part-learn ol[class^="ls-"]{list-style:none;padding:0 !important;margin-inline:0 !important;margin-bottom:0 !important}
 #part-learn [class^="ls-"] li,#part-learn li[class]{margin:0 !important}
-#part-learn .ls-trio,#part-learn .ls-say,#part-learn .ls-vs,#part-learn .ls-two,#part-learn .ls-gains,#part-learn .ls-stairs,#part-learn .ls-neq,#part-learn .ls-cards3{margin-top:24px !important}
+#part-learn .ls-trio,#part-learn .ls-say,#part-learn .ls-vs,#part-learn .ls-two,#part-learn .ls-gains,#part-learn .ls-stairs,#part-learn .ls-neq,#part-learn .ls-cards3,#part-learn .vz{margin-top:24px !important}
 #part-learn .ls-tip,#part-learn .ls-bar,#part-learn .checkpoint{margin-top:14px}
 .ls-q{font-weight:700;font-size:15.5px;line-height:1.6;padding:12px 14px;border-radius:10px;background:var(--surface);border:1px solid var(--blue-line)}
 .ls-q.coral{border-color:var(--coral-line);background:var(--coral-wash)}
@@ -720,6 +720,79 @@ li.step.done .step-next{background:var(--surface);color:var(--blue);border-color
 .ls-box > small{font-size:13.5px;color:var(--muted);font-weight:500}
 .ls-box.good > small{color:var(--ink)}
 .ls-box em{font-style:normal;color:var(--blue)}
+/* 6쪽 · 추상 vs 구체 요청 체험 */
+.vz{display:grid;gap:16px}
+.vz-req{display:grid;gap:10px}
+@media (max-width:699.98px){.vz-req{display:contents}.vz-bad{order:1}.vz-stage{order:2}.vz-cap{order:3}.vz-good{order:4}.vz-ctl{order:5}.vz[data-s="0"] .vz-good,.vz[data-s="1"] .vz-good{display:none}}
+@media (min-width:700px){.vz-req{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}}
+.vz-row{position:relative;background:var(--surface);border:1px solid var(--line-strong);border-radius:12px;padding:16px 18px;display:grid;gap:10px;align-content:start;min-width:0;transition:opacity .4s,background .4s,border-color .4s}
+.vz-row.vz-good{background:var(--blue-wash);border-color:var(--blue)}
+.vz-lab{margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.vz-tap{font-size:12px;font-weight:700;color:var(--coral);background:var(--coral-wash);border:1px solid var(--coral-line);border-radius:999px;padding:1px 9px;animation:vzTap 1.6s ease-in-out infinite}
+@keyframes vzTap{0%,100%{transform:translateY(0)}50%{transform:translateY(2px)}}
+.vz-mark{font:inherit;color:var(--coral);background:var(--coral-wash);border:0;border-radius:6px;padding:0 5px;margin:0 1px;cursor:pointer;text-decoration:underline dashed;text-underline-offset:4px;box-shadow:0 0 0 0 var(--coral-line);animation:vzPulse 1.8s ease-out infinite}
+.vz-mark:hover{background:var(--coral-line)}
+.vz-mark:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+@keyframes vzPulse{0%{box-shadow:0 0 0 0 var(--coral-line)}70%,100%{box-shadow:0 0 0 7px transparent}}
+.vz:not([data-s="0"]) .vz-mark{animation:none;text-decoration:none;cursor:default}
+.vz:not([data-s="0"]) .vz-tap{display:none}
+.vz[data-s="2"] .vz-bad,.vz[data-s="3"] .vz-bad{opacity:.55}
+.vz-good .ls-q{transition:filter .5s}
+.vz[data-s="0"] .vz-good .ls-q,.vz[data-s="1"] .vz-good .ls-q{filter:blur(5px);user-select:none}
+.vz-lock{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);z-index:1;font-size:13px;font-weight:700;color:var(--blue);background:var(--surface);border:1px solid var(--blue-line);border-radius:999px;padding:4px 12px;white-space:nowrap;transition:opacity .3s}
+.vz[data-s="2"] .vz-lock,.vz[data-s="3"] .vz-lock{opacity:0;pointer-events:none}
+.vz-good em{font-style:normal;color:var(--blue);border-radius:4px;padding:0 2px;transition:background .3s,color .3s}
+.vz-good em.on{background:var(--blue);color:var(--on-blue)}
+.vz[data-s="3"] .vz-good em.on{background:none;color:var(--blue)}
+
+.vz-stage{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,2.4vw,18px);align-items:end;padding:22px clamp(10px,3vw,24px) 14px;background:var(--surface-2);border-radius:12px}
+.vz-s{margin:0;display:grid;gap:8px;min-width:0}
+.vz-s figcaption{font-size:12.5px;font-weight:700;color:var(--muted);text-align:center;line-height:1.3}
+.vz-w{container-type:inline-size;position:relative}
+.ms{--h:.5625;--sbg:#fff;--tc:#1C1F26;--ff:var(--font);--fs:normal;--ts:8cqw;--tw:800;--tx:6%;--ty:9%;--dx:0%;--dy:0%;--bl:6%;--br:6%;--bt:36%;--bb:11%;--bc:3;--rad:1.4cqw;--top:transparent;
+  --c1:#2A63CC;--c2:#2A63CC;--c3:#2A63CC;--c4:#2A63CC;--c5:#2A63CC;--c6:#2A63CC;
+  position:relative;height:calc(100cqw * var(--h));border-radius:4px;overflow:hidden;background:var(--sbg);box-shadow:0 0 0 1px rgba(0,0,0,.12),0 8px 18px -12px rgba(0,0,0,.45);transition:height .55s cubic-bezier(.3,.7,.3,1),background .55s}
+.ms b{position:absolute;left:var(--tx);top:var(--ty);transform:translate(var(--dx),var(--dy));font-family:var(--ff);font-style:var(--fs);font-size:var(--ts);font-weight:var(--tw);color:var(--tc);white-space:nowrap;line-height:1.15;letter-spacing:-.02em;transition:left .55s,top .55s,transform .55s,font-size .55s,color .55s}
+.ms .mb{position:absolute;left:var(--bl);right:var(--br);top:var(--bt);bottom:var(--bb);display:grid;grid-template-columns:repeat(var(--bc),minmax(0,1fr));gap:3cqw;transition:left .55s,right .55s,top .55s,bottom .55s}
+.ms .mb i{display:block;min-height:0;border-radius:var(--rad);background:var(--c1);border-top:1.2cqw solid var(--top);transition:background .55s,border-radius .55s,border-color .55s}
+.ms .mb i:nth-child(2){background:var(--c2)}.ms .mb i:nth-child(3){background:var(--c3)}.ms .mb i:nth-child(4){background:var(--c4)}.ms .mb i:nth-child(5){background:var(--c5)}.ms .mb i:nth-child(6){background:var(--c6)}
+/* A: 어둡고 화려하게 */
+.s-a .ms{--h:.75;--sbg:#16181F;--tc:#FFD43B;--ff:"Noto Serif KR","AppleMyungjo","Batang",serif;--ts:10cqw;--tw:700;--tx:50%;--ty:8%;--dx:-50%;--bl:9%;--br:9%;--bt:32%;--bb:9%;--rad:0;--c1:#FF5FA2;--c2:#3BE0C8;--c3:#FFD43B;--c4:#9B6BFF;--c5:#FF8A3D;--c6:#3BA0FF}
+/* B: 파스텔에 큰 제목 하나 */
+.s-b .ms{--h:1;--sbg:#FBE7D6;--tc:#C2571A;--fs:italic;--ts:14cqw;--tw:300;--tx:50%;--ty:42%;--dx:-50%;--dy:-50%;--bl:22%;--br:22%;--bt:68%;--bb:16%;--bc:1;--rad:99px;--c1:#F4A261}
+.s-b .ms .mb i:nth-child(n+2){display:none}
+/* C: 알록달록, 제목은 오른쪽 아래 */
+.s-c .ms{--sbg:#E3F5EA;--tc:#7A3FD1;--ff:"Gungsuh","궁서","Nanum Pen Script",cursive;--ts:7cqw;--tw:700;--tx:94%;--ty:90%;--dx:-100%;--dy:-100%;--bl:6%;--br:6%;--bt:9%;--bb:36%;--bc:4;--rad:50%;--c1:#E63946;--c2:#2A9D8F;--c3:#8E44AD;--c4:#F4A261}
+.s-c .ms .mb i:nth-child(n+5){display:none}
+/* 규칙이 하나씩 적용됩니다 */
+.vz.r1 .vz-s .ms{--h:.5625}
+.vz.r2 .vz-s .ms{--sbg:#fff;--tc:#1C1F26}
+.vz.r3 .vz-s .ms{--c1:#EAF0FC;--c2:#EAF0FC;--c3:#EAF0FC;--c4:#EAF0FC;--c5:#EAF0FC;--c6:#EAF0FC;--top:#2A63CC}
+.vz.r4 .vz-s .ms{--ff:var(--font);--fs:normal}
+.vz.r5 .vz-s .ms{--ts:8cqw;--tw:800}
+.vz.r6 .vz-s .ms{--tx:6%;--ty:9%;--dx:0%;--dy:0%;--bl:6%;--br:6%;--bt:36%;--bb:11%}
+.vz.r7 .vz-s .ms{--bc:3;--rad:1.4cqw}
+.vz.r7 .vz-s .ms .mb i{display:block}
+.vz.r7 .vz-s .ms .mb i:nth-child(n+4){display:none}
+/* 처음: 빈 자리 */
+.vz[data-s="0"] .vz-s .ms{--h:.5625;background:var(--surface);box-shadow:none;outline:1.5px dashed var(--line-strong);outline-offset:-1.5px}
+.vz[data-s="0"] .vz-s .ms > *{opacity:0;transition:none}
+.vz[data-s="0"] .vz-s .ms::after{content:"?";position:absolute;inset:0;display:grid;place-items:center;font-size:18cqw;font-weight:900;color:var(--line-strong)}
+.vz[data-s="1"] .vz-s .ms{animation:vzIn .45s cubic-bezier(.3,1.4,.5,1) both}
+.vz[data-s="1"] .s-b .ms{animation-delay:.12s}.vz[data-s="1"] .s-c .ms{animation-delay:.24s}
+@keyframes vzIn{from{opacity:0;transform:translateY(8px) scale(.94)}}
+.vz-cap{margin:-4px 0 0;text-align:center;font-size:15px;color:var(--muted);min-height:1.7em}
+.vz-cap b{color:var(--ink)}
+.vz-cap > span{display:none}
+.vz[data-s="0"] .vz-cap .c0,.vz[data-s="1"] .vz-cap .c1,.vz[data-s="2"] .vz-cap .c2,.vz[data-s="3"] .vz-cap .c3{display:inline}
+.vz-cap .c2 b{color:var(--blue)}
+.vz-ctl{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin-top:-4px}
+.vz-ctl .btn{display:none}
+.vz[data-s="1"] .vz-fix,.vz[data-s="3"] .vz-again{display:inline-flex}
+.vz-skip{font:inherit;font-size:13.5px;color:var(--muted);background:none;border:0;padding:6px 2px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.vz-skip:hover{color:var(--ink)}
+.vz[data-s="2"] .vz-skip,.vz[data-s="3"] .vz-skip{display:none}
+.vz[data-s="2"] .vz-ctl{min-height:0}
 .ls-arrow{display:grid;place-items:center;font-size:24px;font-weight:900;color:var(--line-strong);transform:rotate(90deg)}
 .ls-arrow.coral{color:var(--coral)}
 @media (min-width:700px){.ls-arrow{transform:none}}
@@ -2586,6 +2659,30 @@ fetch('data/quests.json', { cache:'no-cache' })
   })
   .catch(function(){
     $('#ep-list').innerHTML = '<div class="empty"><p>에피소드 목록(data/quests.json)을 불러오지 못했어요. 잠시 뒤 새로고침해주세요.</p></div>';
+  });
+})();
+/* 6쪽 · 추상 vs 구체 요청 체험 */
+(function(){
+  var CAP = ['', '비율을 <b>16:9</b>로 맞췄어요', '배경을 <b>흰색</b>으로 맞췄어요', '강조색을 <b>파란색 하나</b>로 모았어요', '글꼴을 <b>고딕체</b>로 맞췄어요', '제목 · 본문 <b>크기</b>를 맞췄어요', '제목을 <b>왼쪽 위</b>에 두었어요', '본문을 <b>3영역</b>으로 정리했어요'];
+  function setR(v, n){
+    for (var i = 1; i <= 7; i++) v.classList.toggle('r'+i, i <= n);
+    v.querySelectorAll('.vz-good em[data-r]').forEach(function(m){ m.classList.toggle('on', +m.getAttribute('data-r') <= n); });
+    var c = v.querySelector('.vz-cap .c2'); if (c) c.innerHTML = n ? '규칙 '+n+' / 7 · '+CAP[n] : '';
+  }
+  function stop(v){ if (v._t) { clearTimeout(v._t); v._t = null; } }
+  document.addEventListener('click', function(ev){
+    var b = ev.target.closest('[data-vz-act]'); if (!b) return;
+    var v = b.closest('[data-vz]'); if (!v) return;
+    var act = b.getAttribute('data-vz-act'), s = v.getAttribute('data-s');
+    if (act === 'show' && s === '0') v.setAttribute('data-s', '1');
+    else if (act === 'reset') { stop(v); setR(v, 0); v.setAttribute('data-s', '0'); var m = v.querySelector('.vz-mark'); if (m) m.focus(); }
+    else if (act === 'end') { stop(v); setR(v, 7); v.setAttribute('data-s', '3'); }
+    else if (act === 'fix' && s === '1') {
+      var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) { setR(v, 7); v.setAttribute('data-s', '3'); return; }
+      v.setAttribute('data-s', '2'); var n = 0;
+      (function next(){ n++; setR(v, n); v._t = setTimeout(n < 7 ? next : function(){ v._t = null; v.setAttribute('data-s', '3'); var a = v.querySelector('.vz-again'); if (a) a.focus({ preventScroll:true }); }, n < 7 ? 750 : 900); })();
+    }
   });
 })();
 </script>
