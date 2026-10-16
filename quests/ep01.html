@@ -285,16 +285,42 @@
   <!-- STEP 4 · 전체 슬라이드로 확장하기 (PPT 19) -->
   <h3 class="sub" id="learn-s4" data-step="STEP 4 · 전체 슬라이드로 확장하기">전체 생성, 규칙은 같게 모양은 다르게</h3>
   <p>한 계단씩 쌓아 온 규칙 위에서, 이제 전체 슬라이드를 펼칩니다.</p>
-  <ol class="ls-stairs">
-    <li><small>STEP 1</small><b>목적 · 대상 · 내용</b></li>
-    <li><small>STEP 2</small><b>디자인 규칙</b></li>
-    <li><small>STEP 3</small><b>기준 2장</b></li>
-    <li class="now"><small>STEP 4 · 지금 여기</small><b>쌓은 규칙 위에서 전체로 펼칩니다</b>
-      <span class="ls-lays" aria-hidden="true"><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i></span>
-      <span class="ls-rule"><em>규칙 유지</em>색 · 폰트 · 제목 위치는 모든 장에서 같게</span>
-      <span class="ls-rule"><em>반복 금지</em>레이아웃은 내용에 맞게 다르게</span>
-    </li>
-  </ol>
+  <div class="xp" data-xp data-s="0">
+    <ol class="xp-stairs">
+      <li class="xp-st x1"><small>STEP 1</small><b>목적 · 대상 · 내용</b>
+        <span class="xp-art a1" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="xp-out">장마다 담을 내용</span></li>
+      <li class="xp-st x2"><small>STEP 2</small><b>디자인 규칙</b>
+        <span class="xp-art a2" aria-hidden="true"><span class="sw"><i></i><i></i><i></i></span><em>Aa</em><span class="fr"><i></i></span></span>
+        <span class="xp-out">지킬 모양 규칙</span></li>
+      <li class="xp-st x3"><small>STEP 3</small><b>기준 2장</b>
+        <span class="xp-art a3" aria-hidden="true"><img src="assets/ep01/jeju-2.jpg" alt=""><img src="assets/ep01/jeju-4.jpg" alt=""></span>
+        <span class="xp-out">확인된 견본</span></li>
+    </ol>
+    <svg class="xp-join" viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0 C50 22 150 18 150 40"/><path d="M150 0 V40"/><path d="M250 0 C250 22 150 18 150 40"/></svg>
+    <div class="xp-send">
+      <p class="xp-lab"><small>STEP 4 · 지금 여기</small><b>두 문장을 더해 전체로 펼칩니다</b></p>
+      <div class="xp-prompt">
+        <p class="xp-ptxt">기준 2장과 같은 규칙으로 나머지 3장도 만들어줘.<br><span class="xp-r keep"><em>규칙 유지</em>색·폰트·제목 위치는 모든 장에서 같게,</span><br><span class="xp-r vary"><em>반복 금지</em>레이아웃은 내용에 적합한 구조를 직접 생각해서 장마다 다르게.</span></p>
+        <button type="button" class="xp-go" data-xp-act="go" aria-label="프롬프트 보내기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></button>
+      </div>
+      <span class="vz-tap xp-tap">보내 보세요</span>
+    </div>
+    <svg class="xp-fan" viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true"><path d="M150 0 C150 20 30 20 30 40"/><path d="M150 0 C150 20 90 20 90 40"/><path d="M150 0 V40"/><path d="M150 0 C150 20 210 20 210 40"/><path d="M150 0 C150 20 270 20 270 40"/></svg>
+    <div class="xp-row">
+      <figure class="xp-sl new"><span class="xp-th"><img src="assets/ep01/jeju-1.jpg" alt="1장: 제주 4박 5일, 서쪽에서 동쪽으로. 경로선 레이아웃" loading="lazy"><i class="xp-oh" aria-hidden="true"></i><i class="xp-ob" aria-hidden="true"></i></span><figcaption><span class="xp-no">1</span><span class="xp-lay">경로선</span></figcaption></figure>
+      <figure class="xp-sl base"><span class="xp-th"><img src="assets/ep01/jeju-2.jpg" alt="2장: 일정 한눈에 보기. 카드 3개 레이아웃" loading="lazy"><i class="xp-oh" aria-hidden="true"></i><i class="xp-ob" aria-hidden="true"></i><span class="xp-badge">기준</span></span><figcaption><span class="xp-no">2</span><span class="xp-lay">카드 3개</span></figcaption></figure>
+      <figure class="xp-sl new"><span class="xp-th"><img src="assets/ep01/jeju-3.jpg" alt="3장: 이건 꼭 하자. 번호 목록 레이아웃" loading="lazy"><i class="xp-oh" aria-hidden="true"></i><i class="xp-ob" aria-hidden="true"></i></span><figcaption><span class="xp-no">3</span><span class="xp-lay">번호 목록</span></figcaption></figure>
+      <figure class="xp-sl base"><span class="xp-th"><img src="assets/ep01/jeju-4.jpg" alt="4장: 예산, 1인 60만 원 안에서. 큰 숫자와 막대그래프" loading="lazy"><i class="xp-oh" aria-hidden="true"></i><i class="xp-ob" aria-hidden="true"></i><span class="xp-badge">기준</span></span><figcaption><span class="xp-no">4</span><span class="xp-lay">숫자 + 막대</span></figcaption></figure>
+      <figure class="xp-sl new"><span class="xp-th"><img src="assets/ep01/jeju-5b.jpg" alt="5장: 숙소, 둘 중 하나만 고르면 돼요. 두 숙소를 나란히 놓은 비교표" loading="lazy"><i class="xp-oh" aria-hidden="true"></i><i class="xp-ob" aria-hidden="true"></i></span><figcaption><span class="xp-no">5</span><span class="xp-lay">2단 비교표</span></figcaption></figure>
+    </div>
+    <p class="xp-cap" aria-live="polite"><span class="c0">STEP 4 프롬프트를 보내 보세요. 앞에서 쌓은 세 가지가 어떻게 쓰이는지 보여요.</span><span class="c1"><b>새로 쓴 건 두 문장뿐,</b> 나머지는 앞에서 쌓은 것이에요.</span></p>
+    <ul class="xp-legend">
+      <li class="k"><i></i><span><b>모든 장이 같은 제목 자리 · 색</b>STEP 2 규칙 + ‘규칙 유지’</span></li>
+      <li class="v"><i></i><span><b>장마다 다른 본문 모양</b>STEP 1 내용 + ‘반복 금지’</span></li>
+    </ul>
+    <div class="xp-ctl"><button type="button" class="vz-skip xp-skip" data-xp-act="end">결과 바로 보기</button><button type="button" class="vz-skip xp-again" data-xp-act="reset">처음부터 다시</button></div>
+  </div>
   <details class="ls-tip">
     <summary><span class="gift" aria-hidden="true"><svg class="gift-c" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="15" width="20" height="13" rx="1.5"/><rect x="4" y="10" width="24" height="5" rx="1.5"/><path d="M16 10 V28"/><path d="M16 10 C 13 5, 8.5 6, 10.5 9.5 C 11.5 10, 14 10, 16 10 C 18 10, 20.5 10, 21.5 9.5 C 23.5 6, 19 5, 16 10"/></g></svg><svg class="gift-o" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="15" width="20" height="13" rx="1.5"/><path d="M16 15 V28"/><g class="gift-lid"><g transform="rotate(-22 5 12)"><rect x="3" y="7" width="24" height="5" rx="1.5"/><path d="M15 7 C 12 2, 7.5 3, 9.5 6.5 M15 7 C 18 2, 22.5 3, 20.5 6.5"/></g></g><g class="gift-spark"><path d="M24 3.5 V6.5 M22.5 5 H25.5 M28.5 9 V11 M27.5 10 H29.5"/></g></g></svg></span><b>TIP · 레이아웃을 전부 설명할 필요는 없습니다</b></summary>
     <div class="tip-body">
