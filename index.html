@@ -870,6 +870,13 @@ li.step.done .step-next{background:var(--surface);color:var(--blue);border-color
 .ls-arrow{display:grid;place-items:center;font-size:24px;font-weight:900;color:var(--line-strong);transform:rotate(90deg)}
 .ls-arrow.coral{color:var(--coral)}
 @media (min-width:700px){.ls-arrow{transform:none}}
+/* 9쪽 · 눌러서 여는 핵심 조건 */
+b.kx{filter:blur(3px);cursor:pointer;user-select:none;transition:filter .5s;border-radius:4px}
+b.kx:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.kx-hint{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);z-index:2;font-size:14px;font-weight:800;color:var(--blue);background:var(--surface);border:1px solid var(--blue-line);border-radius:999px;padding:6px 16px;white-space:nowrap;box-shadow:0 6px 16px -10px var(--shadow);pointer-events:none;transition:opacity .3s}
+.kx-open b.kx{filter:none;user-select:auto}
+.kx-open b.kx{cursor:auto}
+.kx-open .kx-hint{opacity:0}
 /* 7쪽 · 화살표를 누르면 오른쪽이 열려요 */
 @media (min-width:700px){.ls-vs.rv{grid-template-columns:minmax(0,1fr) 56px minmax(0,1.25fr)}}
 .rv-go{font:inherit;justify-self:center;align-self:center;width:48px;height:48px;border-radius:50%;border:0;padding:0;background:var(--blue);color:var(--on-blue);font-size:22px;cursor:pointer;box-shadow:0 0 0 0 var(--blue-line);animation:rvPulse 1.8s ease-out infinite;transition:background .3s,color .3s,transform .2s}
@@ -2808,6 +2815,10 @@ document.addEventListener('click', function(ev){
   var v = b.closest('[data-rv]'); if (!v) return;
   v.classList.add('open'); b.setAttribute('aria-expanded', 'true');
 });
+/* 9쪽 · 눌러서 여는 핵심 조건 */
+function kxOpen(el){ var sc = el.closest('.pg') || el.parentElement; sc.classList.add('kx-open'); Array.prototype.forEach.call(sc.querySelectorAll('b.kx'), function(b){ b.removeAttribute('role'); b.removeAttribute('tabindex'); b.removeAttribute('aria-label'); }); }
+document.addEventListener('click', function(ev){ var b = ev.target.closest('[data-kx]'); if (b) kxOpen(b); });
+document.addEventListener('keydown', function(ev){ if (ev.key !== 'Enter' && ev.key !== ' ') return; var b = ev.target.closest && ev.target.closest('b[data-kx][role]'); if (b) { ev.preventDefault(); kxOpen(b); } });
 </script>
 
 
