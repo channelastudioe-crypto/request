@@ -612,6 +612,14 @@ li.step.done .step-next{background:var(--surface);color:var(--blue);border-color
 .berg .bg-pop{animation:bg-pop .55s cubic-bezier(.34,1.56,.64,1) var(--d) both}
 .berg .bg-float{animation:bg-float 3.4s ease-in-out calc(var(--f) + 3s) infinite}
 .berg .bg-warn{animation:bg-warn .6s cubic-bezier(.34,1.56,.64,1) 2.85s both}
+.berg .bg-shark{transform-box:view-box;transform-origin:0 0;opacity:.92;animation:bg-shark 30s linear 1.5s infinite both}
+.berg .bg-shark-flip{animation:bg-shark-flip 30s linear 1.5s infinite both}
+.berg .bg-shark-tail{transform-origin:right center;animation:bg-shark-tail .7s ease-in-out infinite alternate}
+.berg .bg-shark-say{transform-origin:62px 0;transform-box:view-box;animation:bg-shark-say 30s ease-in-out 1.5s infinite both}
+@keyframes bg-shark-say{0%,4%,22%,51%,66%,100%{opacity:0;transform:translateY(6px) scale(.85)}6%,20%,53%,64%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes bg-shark{0%{transform:translate(-220px,470px)}22%{transform:translate(560px,500px)}46%{transform:translate(1650px,455px)}50%{transform:translate(1650px,455px)}74%{transform:translate(900px,515px)}96%,100%{transform:translate(-220px,470px)}}
+@keyframes bg-shark-flip{0%,47%{transform:scaleX(1)}49%,97%{transform:scaleX(-1)}99%,100%{transform:scaleX(1)}}
+@keyframes bg-shark-tail{from{transform:rotate(-12deg)}to{transform:rotate(12deg)}}
 @keyframes rmWave{0%,100%{transform:skewY(0) scaleX(1)}25%{transform:skewY(-6deg) scaleX(.94)}50%{transform:skewY(2deg) scaleX(1.04)}75%{transform:skewY(6deg) scaleX(.96)}}
 @keyframes rmFlap{0%,100%{d:path('M1 -37 C 10 -42, 16 -32, 26 -36 L 26 -18 C 16 -14, 10 -24, 1 -19 Z')}33%{d:path('M1 -37 C 9 -31, 17 -43, 26 -37 L 26 -19 C 17 -25, 9 -13, 1 -19 Z')}66%{d:path('M1 -37 C 10 -40, 18 -34, 27 -33 L 27 -15 C 18 -16, 10 -22, 1 -19 Z')}}
 @keyframes rmHop{from{transform:translateY(0)}to{transform:translateY(-2px)}}
