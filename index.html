@@ -516,6 +516,9 @@ table.recap td:last-child{color:var(--blue);font-weight:500;background:var(--blu
 .mini4 li{margin:0 !important;display:grid;gap:6px;font-size:14.5px !important;min-width:0}
 .mini4 img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#fff;max-width:100%}
 .mini4 b{font-weight:700}
+.mini4 img[role="button"]{cursor:zoom-in;transition:transform .2s,box-shadow .2s}
+.mini4 img[role="button"]:hover{transform:translateY(-2px);box-shadow:0 10px 22px -14px var(--shadow)}
+.mini4 img[role="button"]:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .say{margin-top:18px !important;font-size:17px !important;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
 .say b{color:var(--blue)}
 .take{margin-top:26px;padding:18px;border-radius:14px;background:var(--blue-wash);border:1px solid var(--blue-line)}
@@ -2318,6 +2321,15 @@ function openLightbox(list, idx, onChange){
   $('.lb-x', LB).focus();
 }
 function closeLightbox(){ if (!LB) return; LB.hidden = true; document.documentElement.classList.remove('lb-open'); if (LB._ret && LB._ret.focus) try { LB._ret.focus({ preventScroll:true }); } catch(e){} }
+/* 1쪽 증상 이미지 · 누르면 크게 보기 */
+function mini4Open(img){
+  var ul = img.closest('.mini4'); if (!ul) return;
+  var imgs = Array.prototype.slice.call(ul.querySelectorAll('img'));
+  var list = imgs.map(function(im){ var b = im.parentNode.querySelector('b'); return { src: im.currentSrc || im.src, cap: b ? b.textContent.trim() : (im.alt || '') }; });
+  openLightbox(list, imgs.indexOf(img));
+}
+document.addEventListener('click', function(ev){ var im = ev.target.closest('.mini4 img[role="button"]'); if (im) mini4Open(im); });
+document.addEventListener('keydown', function(ev){ if (ev.key !== 'Enter' && ev.key !== ' ') return; var im = ev.target.closest && ev.target.closest('.mini4 img[role="button"]'); if (im) { ev.preventDefault(); mini4Open(im); } });
 var clipObs = null;
 function setupClips(root){
   var vids = $$('figure.clip video', root);
