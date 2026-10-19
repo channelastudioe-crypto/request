@@ -169,6 +169,7 @@ main{padding-bottom:96px}
 @media (min-width:720px){.next-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .next-card{background:var(--blue-wash);border:1px solid var(--blue-line);border-radius:var(--r);padding:16px 18px;display:grid;gap:4px;align-content:start;min-width:0}
 .next-card .cat{font-size:12.5px;font-weight:700;color:var(--blue)}
+#report .next-card{background:var(--surface-2);border-color:var(--line)}
 .next-card p{font-weight:700;font-size:16.5px;line-height:1.5}
 .next-foot{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;font-size:15px;color:var(--muted)}
 
@@ -441,9 +442,10 @@ table.recap td:last-child{color:var(--blue);font-weight:500;background:var(--blu
 .tpl-step > b{font-size:15px}
 .tpl-step > b span{color:var(--blue);margin-right:6px}
 .builder-fields{display:grid;gap:10px}
+.builder-fields + .prompt{margin-top:18px}
 @media (min-width:640px){.builder-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .bf{display:grid;gap:4px;font-size:13px;color:var(--muted);font-weight:500;min-width:0}
-.bf.wide{grid-column:1/-1}
+.bf.wide,.bf:only-child{grid-column:1/-1}
 .bf input,.bf textarea{min-height:44px;padding:9px 12px;border:1px solid var(--line-strong);border-radius:8px;background:var(--surface);font-size:15px;color:var(--ink);width:100%}
 .bf textarea{min-height:74px;resize:vertical;line-height:1.6}
 .bf input:focus,.bf textarea:focus{border-color:var(--blue);outline:none;box-shadow:0 0 0 3px var(--blue-wash)}
@@ -1073,6 +1075,14 @@ b.kx:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 @media (min-width:700px){.ls-cards3{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .ls-cards3 > li{border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);padding:18px 16px;display:grid;gap:6px;align-content:start;min-width:0}
 .ls-cards3 > li.hl{border:2px solid var(--blue);padding:17px 15px}
+/* 13쪽 · 세 번째 카드는 눌러야 보여요 */
+.ls-cards3 > li.rvc{position:relative;cursor:pointer}
+.ls-cards3 > li.rvc > :not(.rvc-hint){transition:filter .5s}
+.ls-cards3 > li.rvc:not(.open) > :not(.rvc-hint){filter:blur(5px);user-select:none}
+.rvc-hint{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;font-size:14px;font-weight:800;color:var(--blue);background:var(--surface);border:1px solid var(--blue-line);border-radius:999px;padding:6px 16px;white-space:nowrap;pointer-events:none;transition:opacity .3s}
+.ls-cards3 > li.rvc.open{cursor:auto}
+.ls-cards3 > li.rvc.open .rvc-hint{opacity:0}
+.ls-cards3 > li.rvc:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .ls-cards3 b{font-size:18px;font-weight:900;margin-top:4px}
 .ls-cards3 p{font-size:14.5px;color:var(--muted)}
 .ls-pill{margin-top:6px;background:var(--blue-wash);border-radius:8px;padding:8px 10px;text-align:center;font-weight:700;font-size:14px;line-height:1.5}
@@ -2540,7 +2550,6 @@ function renderReport(e, celebrate){
           '<p class="done-d num">'+dotFull(P.cleared)+(doneCount(e.id) ? ' · 따라 한 단계 '+doneCount(e.id)+' / '+(P.total || 5) : '')+'</p>'+
           '<button type="button" class="linkish" data-act="unclear">완료 취소</button></div></div>'
       : '<div class="done-box"><p>실습까지 해봤다면 완료 버튼을 눌러 주세요. 완료 배지가 생겨요.</p><button type="button" class="btn btn-primary" data-act="clear">'+epNo(e)+' 완료하기</button></div>')+
-    '<div id="fb-slot"></div>'+
     (nexts.length ? '<div><p class="sublabel">NEXT RE:Quest · 다음에 풀어 볼 질문들</p><div class="next-grid">'+nextCardsHTML()+'</div></div>' : '')+
     '<div class="ask-more"><p>해보다가 막힌 점, 더 궁금해진 점이 다음 리퀘스트가 됩니다.</p><button type="button" class="btn btn-sm" data-act="ask">리퀘스트 보내기</button></div>';
   box.onclick = function(ev){
@@ -2553,7 +2562,6 @@ function renderReport(e, celebrate){
     if (act === 'unclear') { P.cleared = null; save(); renderReport(e); updateProgress(e); toast('완료 표시를 취소했어요'); }
     if (act === 'ask') { prefill = '['+epNo(e)+' 보고 생긴 질문] '; location.hash = 'request'; }
   };
-  fbMount(e);
 }
 /* ---------- 에피소드 피드백 (구글 폼으로 저장, 웹에 게시한 구글 시트에서 불러오기) ---------- */
 var FB = { ep:null, rows:null, at:0, err:false, shown:5, busy:false };
@@ -2937,6 +2945,10 @@ document.addEventListener('click', function(ev){
   } else if (act === 'end') v.setAttribute('data-s', '2');
   else if (act === 'reset') { v.setAttribute('data-s', '0'); var g = v.querySelector('.xp-go'); if (g) g.focus({ preventScroll:true }); }
 });
+/* 13쪽 · 눌러서 여는 카드 */
+function rvcOpen(li){ li.classList.add('open'); li.removeAttribute('role'); li.removeAttribute('tabindex'); li.removeAttribute('aria-label'); }
+document.addEventListener('click', function(ev){ var li = ev.target.closest('[data-rvc]'); if (li) rvcOpen(li); });
+document.addEventListener('keydown', function(ev){ if (ev.key !== 'Enter' && ev.key !== ' ') return; var li = ev.target.closest && ev.target.closest('[data-rvc][role]'); if (li) { ev.preventDefault(); rvcOpen(li); } });
 </script>
 
 

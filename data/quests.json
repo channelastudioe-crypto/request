@@ -82,11 +82,6 @@
   ],
   "requests": [
     {
-      "text": "촬영 전에 콘티를 AI로 미리 시뮬레이션해볼 수 있을까?",
-      "category": "생성형 이미지·영상",
-      "status": "next"
-    },
-    {
       "text": "프로그램 포스터·키비주얼 시안을 AI로 만들어볼 수 있을까?",
       "category": "생성형 이미지·영상",
       "status": "next"
