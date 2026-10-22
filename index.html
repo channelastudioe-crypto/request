@@ -1236,19 +1236,19 @@ details.clipbox[open] > summary::before{transform:rotate(90deg)}
 details.clipbox > figure.clip{margin:0 12px 12px}
 /* ---------- 코스 2 · 단계 표지 + 보내기 → 결과 → 표시 장면 ---------- */
 #part-demo h3.sub.stc-h{margin-top:12px;font-size:clamp(28px,5.6vw,40px);letter-spacing:-.025em}
-.stc{margin-top:22px;position:relative;overflow:hidden;border-radius:20px;padding:30px 24px 30px 34px;background:radial-gradient(120% 140% at 85% 30%,#3D8BFF 0%,#1D6FFF 38%,#0D2E8E 100%);color:#fff;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);grid-template-rows:auto auto 1fr;column-gap:16px;row-gap:14px;min-height:320px;align-items:start}
-.stc::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 78% 55%,rgba(127,214,255,.22),transparent 70%);pointer-events:none}
-.stc-n{grid-column:1;font-size:clamp(56px,8vw,84px);font-weight:900;line-height:.9;letter-spacing:-.04em;color:rgba(255,255,255,.28)}
+.stc{margin-top:22px;position:relative;padding:8px 0 0;background:none;color:var(--ink);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);grid-template-rows:auto auto;align-content:center;column-gap:16px;row-gap:14px;min-height:320px;align-items:start}
+.stc-n{grid-column:1;font-size:clamp(56px,8vw,84px);font-weight:900;line-height:.9;letter-spacing:-.04em;color:var(--blue-line)}
 .stc > *{position:relative;z-index:1}
-.stc > .stc-goal{grid-column:1;align-self:start}
-.stc > .stc-list{grid-column:1;align-self:end}
-.stc-img{grid-column:2;grid-row:1 / span 3;align-self:center;justify-self:center;position:relative;z-index:1;width:auto;max-width:100%;max-height:270px;height:auto;filter:drop-shadow(0 22px 30px rgba(3,14,60,.45));animation:stcFloat 4.5s ease-in-out infinite alternate}
+#part-demo h3.sub.stc-h .stc-k{color:var(--blue-line)}
+.stc > .stc-goal{grid-column:1;align-self:end}
+.stc > .stc-list{grid-column:1;align-self:start}
+.stc-img{grid-column:2;grid-row:1 / span 2;align-self:center;justify-self:center;position:relative;z-index:1;width:auto;max-width:100%;max-height:270px;height:auto;filter:drop-shadow(0 22px 26px rgba(13,46,142,.18));animation:stcFloat 4.5s ease-in-out infinite alternate}
 @keyframes stcFloat{from{transform:translateY(4px)}to{transform:translateY(-6px)}}
-.stc-goal{margin:0 !important;font-size:clamp(18px,2.6vw,22px) !important;font-weight:700;line-height:1.55 !important;max-width:30em;color:#fff}
+.stc-goal{margin:0 !important;font-size:clamp(18px,2.6vw,22px) !important;font-weight:700;line-height:1.55 !important;max-width:30em;color:var(--ink)}
 .stc-list{list-style:none;margin:0 !important;padding:0 !important;display:flex;flex-wrap:wrap;gap:8px}
-.stc-list li{margin:0 !important;display:flex;align-items:center;gap:8px;font-size:14px !important;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 14px;color:#fff}
+.stc-list li{margin:0 !important;display:flex;align-items:center;gap:8px;font-size:14px !important;background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:6px 14px;color:var(--ink)}
 .stc-list li::before{content:none !important}
-.stc-list b{font-size:12px;font-weight:800;color:#0D2E8E;background:#fff;border-radius:999px;padding:1px 8px}
+.stc-list b{font-size:12px;font-weight:800;color:#fff;background:var(--blue);border-radius:999px;padding:1px 8px}
 .sc{display:grid;gap:0;margin-top:6px}
 .sc [hidden]{display:none !important}
 .sc-chat{position:relative}
@@ -1295,7 +1295,7 @@ details.clipbox > figure.clip{margin:0 12px 12px}
   .sc-frame .sc-two{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
   .sc-frame .sc-grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important}
   .sc-frame .ph-in span,.sc-frame .ph-in code{display:none}
-  .stc{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;min-height:0;padding:22px 20px 24px}
+  .stc{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;min-height:0;padding:4px 0 0}
   .stc-img{grid-column:1;grid-row:1;max-height:170px}
   .stc-n{font-size:48px}
 }
