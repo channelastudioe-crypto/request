@@ -1198,6 +1198,19 @@ b.kx:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
   .ph-grid8{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ph-grid8.ph-final{grid-template-columns:minmax(0,1fr)}
 }
+.plan-shot{margin:0;display:grid;gap:6px;min-width:0}
+.plan-shot a{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line-strong);box-shadow:0 10px 24px -16px var(--shadow);transition:transform .2s,box-shadow .2s}
+.plan-shot a:hover{transform:translateY(-2px);box-shadow:0 16px 30px -16px var(--shadow)}
+.plan-shot img{display:block;width:100%;height:auto;background:#fff}
+.plan-shot figcaption{font-size:13px;color:var(--muted);text-align:center}
+.dl-card{display:flex;align-items:center;gap:14px;margin-top:18px;padding:14px 16px;border:1px solid var(--blue-line);border-radius:12px;background:var(--blue-wash)}
+.dl-ic{flex:none;width:40px;height:40px;border-radius:10px;background:var(--surface);display:grid;place-items:center;color:var(--blue)}
+.dl-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dl-t{flex:1;min-width:0;display:grid;gap:2px}
+.dl-t b{font-size:16px}
+.dl-t span{font-size:13px;color:var(--muted);line-height:1.5}
+.dl-card .btn{flex:none}
+@media (max-width:519.98px){.dl-card{flex-wrap:wrap}.dl-card .btn{width:100%}}
 /* 오늘의 흐름 */
 .dm-map{list-style:none;margin:20px 0 0 !important;padding:0 !important;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
 .dm-map li{margin:0 !important;display:grid;gap:2px;padding:10px 12px;background:var(--surface);border:1px solid var(--line-strong);border-radius:10px;min-width:0}
