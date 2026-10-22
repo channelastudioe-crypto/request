@@ -1140,6 +1140,157 @@ b.kx:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .sd-step{font-size:12.5px;font-weight:700;color:var(--blue);white-space:nowrap}
 .stepdeck .dm-bar{grid-template-columns:auto minmax(0,1fr) auto}
 .dm-frame{cursor:zoom-in}
+/* ---------- 코스 2 · 기획안으로 따라 보기 (강의 시연) ---------- */
+#part-demo h3.sub,#part-finish h3.sub,#part-homework h3.sub{font-size:clamp(22px,4.8vw,27px);font-weight:900;letter-spacing:-.02em;line-height:1.35}
+#part-demo h3.sub[data-step]::before{content:attr(data-step);display:block;font-size:13px;font-weight:700;color:var(--blue);letter-spacing:.02em;margin-bottom:6px}
+#part-demo .pg > p:not([class]),#part-finish .pg > p:not([class]),#part-homework .pg > p:not([class]){font-size:16.5px;line-height:1.85;max-width:38em}
+/* 보낸 프롬프트 말풍선 */
+.chat{display:grid;gap:6px;margin-top:20px}
+.chat-who{justify-self:end;font-size:12.5px;font-weight:800;color:var(--blue);letter-spacing:.02em}
+.chat-b{justify-self:end;width:min(100%,680px);background:var(--blue-wash);border:1px solid var(--blue-line);border-radius:16px 16px 4px 16px;padding:14px 16px 16px;display:grid;gap:10px}
+.chat-att{justify-self:start;display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:3px 10px}
+.chat-att svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.chat-att .hl{font-style:normal}
+.chat-t{margin:0 !important;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-size:14.5px !important;line-height:1.75 !important;color:var(--ink)}
+.chat-t .hl,.chat-att .hl{font-style:normal;background:rgba(42,99,204,.13);border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.chat-t .hl::before,.chat-att .hl::before{content:attr(data-n);display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;font-weight:800;line-height:1;margin:0 4px 0 1px;vertical-align:1px}
+/* 프롬프트 포인트 */
+.pts{list-style:none;margin:14px 0 0 !important;padding:0 !important;display:grid;gap:8px;counter-reset:pt}
+@media (min-width:700px){.pts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pts li{counter-increment:pt;position:relative;margin:0 !important;padding:10px 12px 10px 42px;background:var(--surface);border:1px solid var(--line);border-radius:10px;font-size:14px !important;color:var(--muted);line-height:1.55;min-width:0}
+.pts li::before{content:counter(pt);position:absolute;left:12px;top:11px;width:20px;height:20px;border-radius:50%;background:var(--blue);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center}
+.pts b{display:block;color:var(--ink);font-size:15px;margin-bottom:1px}
+.dm-res{margin:22px 0 0 !important;font-size:13px !important;font-weight:800;color:var(--muted);letter-spacing:.02em}
+.dm-res::before{content:"↓ ";color:var(--blue)}
+.dm-note{margin:16px 0 0 !important;padding:10px 14px;border-left:3px solid var(--blue);background:var(--surface);border-radius:0 8px 8px 0;font-size:14.5px !important;color:var(--ink);line-height:1.65}
+/* 이미지 자리 (이미지가 준비되면 교체) */
+.ph{margin:0;display:grid;gap:6px;min-width:0}
+.ph-in{aspect-ratio:var(--ar,16/9);display:grid;place-content:center;justify-items:center;gap:4px;text-align:center;padding:10px;border:2px dashed var(--line-strong);border-radius:10px;background:repeating-linear-gradient(135deg,var(--surface-2) 0 10px,var(--surface) 10px 20px);color:var(--muted);min-width:0;overflow:hidden}
+.ph-in b{font-size:15px;color:var(--ink);line-height:1.3}
+.ph-in span{font-size:12.5px;line-height:1.4}
+.ph-in code{font-size:11.5px;color:var(--blue);background:var(--surface);border-radius:4px;padding:1px 6px;word-break:break-all;max-width:100%}
+.ph.on .ph-in{border-color:var(--blue-line)}
+.ph figcaption{font-size:13px;color:var(--muted);text-align:center;line-height:1.4}
+.pg > .ph{margin-top:10px}
+.ph-row{display:grid;gap:12px;margin-top:16px;align-items:start}
+.ph-row.ph-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ph-row.ph-2:has(> .ph-arrow){grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);align-items:center}
+.ph-row.ph-intro{grid-template-columns:minmax(0,.42fr) 22px minmax(0,1fr);align-items:center}
+.ph-row.ph-21{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)}
+.ph-arrow{font-size:22px;font-weight:900;color:var(--blue);text-align:center}
+.ph-grid8{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:16px}
+.ph-grid8 .ph-in{padding:6px;gap:2px}
+.ph-grid8 .ph-in b{font-size:22px;font-weight:900}
+.ph-grid8 .ph-in span{font-size:11px}
+.ph-grid8 .ph-in code{font-size:10.5px}
+.ph-grid8.ph-final{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ph-path{margin:8px 0 0 !important;font-size:12.5px !important;color:var(--muted);text-align:center}
+.ph-path code{color:var(--blue)}
+.ph-ba{display:grid;gap:0;margin-top:6px}
+.ph-ba > .ph{margin-top:12px}
+.ph-ba-lab{justify-self:start;margin-top:16px;font-size:12px;font-weight:800;color:var(--muted);background:var(--surface-2);border-radius:999px;padding:2px 10px}
+.ph-ba-lab.on{color:#fff;background:var(--blue)}
+.ph-ba-lab + .ph-row{margin-top:8px}
+@media (max-width:599.98px){
+  .ph-row.ph-2,.ph-row.ph-2:has(> .ph-arrow),.ph-row.ph-intro,.ph-row.ph-21{grid-template-columns:minmax(0,1fr)}
+  .ph-row.ph-intro .ph:first-child{width:62%;justify-self:center}
+  .ph-arrow{transform:rotate(90deg)}
+  .ph-grid8{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ph-grid8.ph-final{grid-template-columns:minmax(0,1fr)}
+}
+/* 오늘의 흐름 */
+.dm-map{list-style:none;margin:20px 0 0 !important;padding:0 !important;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.dm-map li{margin:0 !important;display:grid;gap:2px;padding:10px 12px;background:var(--surface);border:1px solid var(--line-strong);border-radius:10px;min-width:0}
+.dm-map li::before{content:none !important}
+.dm-map small{font-size:11.5px;font-weight:800;color:var(--blue);letter-spacing:.04em}
+.dm-map b{font-size:15px;line-height:1.35}
+.dm-map span{font-size:12.5px;color:var(--muted)}
+@media (max-width:699.98px){.dm-map{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dm-table{width:100%;border-collapse:collapse;font-size:14.5px}
+.dm-table th,.dm-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.dm-table th{font-size:12.5px;color:var(--muted);font-weight:800;background:var(--surface-2)}
+.dm-table td:first-child{width:28px;font-weight:900;color:var(--blue)}
+.dm-table td:nth-child(2){white-space:nowrap;font-weight:700}
+.pg > .tablewrap{margin-top:16px}
+/* 정리 · 사람이 한 일 / AI가 한 일 */
+.dm-who{display:grid;gap:12px;margin-top:18px}
+@media (min-width:700px){.dm-who{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dm-who > div{border:1px solid var(--line-strong);border-radius:14px;background:var(--surface);padding:18px;display:grid;gap:10px;align-content:start}
+.dm-who > div.me{border:1.5px solid var(--blue);background:var(--blue-wash)}
+.dm-who h4{margin:0;font-size:18px;font-weight:900}
+.dm-who .me h4{color:var(--blue)}
+.dm-who ul{list-style:none;margin:0 !important;padding:0 !important;display:grid;gap:8px}
+.dm-who li{margin:0 !important;padding-left:18px;position:relative;font-size:15px !important;line-height:1.6}
+.dm-who li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--line-strong)}
+.dm-who .me li::before{background:var(--blue)}
+/* 숙제 */
+.hw-meta{list-style:none;margin:4px 0 0 !important;padding:0 !important;display:grid;gap:6px}
+.hw-meta li{margin:0 !important;display:flex;gap:10px;font-size:15px !important;line-height:1.55}
+.hw-meta li::before{content:none !important}
+.hw-meta b{flex:none;min-width:64px;color:var(--blue);font-weight:800}
+details.clipbox{margin-top:14px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details.clipbox > summary{cursor:pointer;list-style:none;padding:10px 14px;font-size:14px;font-weight:700;color:var(--muted);display:flex;align-items:center;gap:8px}
+details.clipbox > summary::-webkit-details-marker{display:none}
+details.clipbox > summary::before{content:"▶";font-size:10px;color:var(--blue);transition:transform .2s}
+details.clipbox[open] > summary::before{transform:rotate(90deg)}
+details.clipbox > figure.clip{margin:0 12px 12px}
+/* ---------- 코스 2 · 단계 표지 + 보내기 → 결과 → 표시 장면 ---------- */
+#part-demo h3.sub.stc-h{margin-top:12px;font-size:clamp(28px,5.6vw,40px);letter-spacing:-.025em}
+.stc{margin-top:22px;position:relative;overflow:hidden;border-radius:18px;padding:30px 28px 28px;background:linear-gradient(135deg,#1D6FFF 0%,#0D2E8E 100%);color:#fff;display:grid;gap:16px;min-height:280px;align-content:end}
+.stc-n{position:absolute;right:18px;top:-18px;font-size:clamp(120px,22vw,200px);font-weight:900;line-height:1;color:rgba(255,255,255,.12);letter-spacing:-.04em;pointer-events:none}
+.stc-goal{margin:0 !important;font-size:clamp(18px,2.6vw,22px) !important;font-weight:700;line-height:1.55 !important;max-width:30em;color:#fff}
+.stc-list{list-style:none;margin:0 !important;padding:0 !important;display:flex;flex-wrap:wrap;gap:8px}
+.stc-list li{margin:0 !important;display:flex;align-items:center;gap:8px;font-size:14px !important;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 14px;color:#fff}
+.stc-list li::before{content:none !important}
+.stc-list b{font-size:12px;font-weight:800;color:#0D2E8E;background:#fff;border-radius:999px;padding:1px 8px}
+.sc{display:grid;gap:0;margin-top:6px}
+.sc [hidden]{display:none !important}
+.sc-chat{position:relative}
+.chat-top{justify-self:end;display:flex;align-items:center;gap:10px}
+.sc-copy{font:inherit;display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:700;color:var(--blue);background:var(--surface);border:1px solid var(--blue-line);border-radius:999px;padding:3px 11px 3px 9px;cursor:pointer;transition:background .2s,border-color .2s}
+.sc-copy svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sc-copy:hover{background:var(--blue-wash);border-color:var(--blue)}
+.sc-copy:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.sc-copy.ok{color:#fff;background:var(--blue);border-color:var(--blue)}
+.sc-chat .chat-b{padding-right:56px;transition:max-height .45s ease}
+.sc-send{position:absolute;right:10px;bottom:10px;width:38px;height:38px;border-radius:50%;border:0;padding:0;display:grid;place-items:center;background:var(--blue);color:var(--on-blue);cursor:pointer;box-shadow:0 0 0 0 var(--blue-line);animation:rvPulse 1.8s ease-out infinite;transition:background .3s,transform .15s}
+.sc-send svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.sc-send:hover{transform:translateY(-2px)}
+.sc-send:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.sc:not([data-s="0"]) .sc-send{animation:none;background:var(--blue-line);cursor:default;transform:none}
+.sc:not([data-s="0"]) .sc-chat .chat-b{max-height:8.2em;overflow:hidden;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent);cursor:pointer}
+.sc:not([data-s="0"]) .sc-chat.open .chat-b{max-height:none;-webkit-mask-image:none;mask-image:none}
+.sc-pre{margin-top:2px}
+.sc-pre > .pts,.sc-pre > .dm-note{margin-top:14px !important}
+.sc-typing{display:none;justify-self:start;margin-top:18px;gap:5px;padding:12px 16px;border-radius:16px 16px 16px 4px;background:var(--surface);border:1px solid var(--line)}
+.sc-typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:scDot 1s ease-in-out infinite}
+.sc-typing i:nth-child(2){animation-delay:.15s}.sc-typing i:nth-child(3){animation-delay:.3s}
+@keyframes scDot{0%,60%,100%{opacity:.25;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+.sc.typing .sc-typing{display:inline-flex}
+.sc.typing .sc-frame,.sc.typing .sc-cap,.sc.typing .sc-ctl{visibility:hidden}
+.sc-frame{position:relative;margin-top:18px;animation:scIn .45s ease both}
+.sc-frame > .ph-row,.sc-frame > .ph-grid8{margin-top:0}
+@keyframes scIn{from{opacity:0;transform:translateY(10px)}}
+.mk{position:absolute;z-index:2;border:3px solid var(--mk);border-radius:50%;box-shadow:0 0 0 3px rgba(255,255,255,.55);pointer-events:none;animation:mkIn .4s cubic-bezier(.3,1.5,.5,1) var(--d,0s) both}
+.mk-bad{--mk:#E5484D}
+.mk-fix{--mk:#2A63CC}
+.mk em{position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-style:normal;font-size:13px;font-weight:800;color:#fff;background:var(--mk);border-radius:999px;padding:3px 10px 3px 4px;box-shadow:0 6px 14px -8px rgba(0,0,0,.5)}
+.mk em b{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#fff;color:var(--mk);font-size:11px}
+@keyframes mkIn{from{opacity:0;transform:scale(.6)}}
+.mk-r em{left:auto;right:-6px;transform:none}
+.mk-l em{left:-6px;transform:none}
+.sc-cap{margin:14px 0 0 !important;text-align:center;font-size:15px !important;color:var(--muted);min-height:1.6em}
+.sc-cap b{color:var(--ink)}
+.sc-ctl{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:8px;min-height:36px}
+.sc-next::after{content:" →"}
+@media (max-width:599.98px){
+  .mk em{font-size:11px;padding:2px 8px 2px 3px}
+  .mk em b{width:15px;height:15px;font-size:10px}
+  .sc-frame .sc-two{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .sc-frame .sc-grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important}
+  .sc-frame .ph-in span,.sc-frame .ph-in code{display:none}
+  .stc{min-height:220px;padding:24px 20px}
+}
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:100;background:rgba(10,12,16,.97);display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
 .lb-top,.lb-bot{display:flex;align-items:center;gap:12px;padding:12px 16px;color:#fff}
@@ -1243,7 +1394,7 @@ html.lb-open,html.lb-open body{overflow:hidden}
   .rm-goal:hover .rm-lbl.goal{animation:rmHop .55s ease-in-out infinite alternate}
   .rm-lbl{font:900 10.5px var(--font);letter-spacing:.12em;fill:var(--muted)}
   .rm-lbl.goal{fill:var(--coral)}
-  .rm{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+  .rm{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:12px}
   .rm-st{grid-template-columns:minmax(0,1fr);grid-template-rows:130px auto;gap:6px}
   .rm-st::before{display:none}
   .rm-stop{height:130px}
@@ -1641,7 +1792,7 @@ body.in-ep .site-foot{display:none}
       <header class="page-head">
         <span class="eyebrow">MY RE:Quest</span>
         <h1>내 기록</h1>
-        <p>따라하기 단계를 체크하고 에피소드를 완료하면 여기에 쌓여요.</p>
+        <p>숙제 단계를 체크하고 에피소드를 완료하면 여기에 쌓여요.</p>
       </header>
       <div id="log-body"></div>
     </div>
@@ -1775,9 +1926,11 @@ function ordinal(n){ return (n >= 1 && n <= 10 ? ORD[n-1] + ' 번째' : n + '번
 var STATUS = { received:'접수', next:'다음 후보', doing:'제작 중', done:'공개' };
 var STATUS_ORDER = ['doing','next','received','done'];
 var PARTS = {
-  learn:   ['알고 시작하기', '실습 전에 5분'],
+  learn:   ['알고 시작하기', '다섯 단계 개념'],
+  demo:    ['기획안으로 따라 보기', '실제 프롬프트와 결과'],
   try:     ['직접 해보기', '따라 하며 완성하기'],
-  finish:  ['정리', '완성 예시와 실전 퀘스트'],
+  finish:  ['정리', '완성본과 핵심 정리'],
+  homework:['숙제', '제주 여행 PPT 혼자 만들기'],
   request: ['REQUEST', '현업의 질문'],
   quest:   ['QUEST', '저희가 먼저 해봤습니다'],
   steps:   ['따라하기', '단계별 방법'],
@@ -1785,7 +1938,7 @@ var PARTS = {
   practice:['실습', '이제 직접 해 볼 차례'],
   complete:['RE:QUEST', '완료하고 공유하기']
 };
-var ORDER = ['learn','request','quest','try','steps','review','finish','practice','complete'];
+var ORDER = ['learn','demo','request','quest','try','steps','review','finish','homework','practice','complete'];
 
 /* ---------- this-device storage ---------- */
 var KEY = 'requestboard:v2';
@@ -2045,6 +2198,7 @@ function buildBody(e, html, startPage){
   });
   if ($('#ep-dots')) $('#ep-dots').innerHTML = steps.map(function(_, i){ return '<li><button type="button" data-go="step-'+(i+1)+'" aria-label="STEP '+(i+1)+'로 이동">'+(i+1)+'</button></li>'; }).join('');
   $$('.builder', body).forEach(function(b, bi){ buildBuilder(b, e.id, bi); });
+  $$('[data-sc]', body).forEach(scRender);
   $$('.stepdeck', body).forEach(function(d){ setupStepDeck(d, e); });
   $$('.deckmini', body).forEach(function(d){ setupMiniDeck(d, e); });
   setupClips(body);
@@ -2246,9 +2400,42 @@ function markStep(i){
   var cb = document.getElementById('chk-'+e.id+'-'+(i+1));
   if (cb && !cb.checked) { cb.checked = true; P.steps[i] = true; save(); cb.closest('li.step').classList.add('done'); updateProgress(e); if (doneCount(e.id) === P.total && !P.cleared) toast('모든 단계를 마쳤어요. 정리로 넘어가 볼까요?'); }
 }
+/* 코스 2 장면: 보내기 → 결과 → 표시 (다음 버튼 · → 키 · 프레젠터 리모컨으로도 한 칸씩) */
+function scRender(sc){
+  var s = sc.getAttribute('data-s'), mx = +(sc.getAttribute('data-max') || 2);
+  $$('[data-show]', sc).forEach(function(el){ el.hidden = (' '+el.getAttribute('data-show')+' ').indexOf(' '+s+' ') < 0; });
+  var nexts = (sc.getAttribute('data-next') || '').split('|'), n = +s;
+  var nb = $('.sc-next', sc); if (nb) { nb.hidden = n < 1 || n >= mx; nb.textContent = nexts[n - 1] || '다음'; }
+  var rb = $('.sc-reset', sc); if (rb) rb.hidden = n < mx;
+}
+function scStep(sc){
+  var s = +sc.getAttribute('data-s'), mx = +(sc.getAttribute('data-max') || 2);
+  if (s >= mx || sc.classList.contains('typing')) return;
+  sc.setAttribute('data-s', s + 1); scRender(sc);
+  if (s === 0 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    sc.classList.add('typing'); clearTimeout(sc._t);
+    sc._t = setTimeout(function(){ sc.classList.remove('typing'); }, 750);
+  }
+}
+function scBusy(el){ var sc = el && $('[data-sc]', el); return sc && +sc.getAttribute('data-s') < +(sc.getAttribute('data-max') || 2) ? sc : null; }
+document.addEventListener('click', function(ev){
+  var b = ev.target.closest('[data-sc-act]'), sc;
+  if (!b) {
+    var bub = ev.target.closest('.sc .sc-chat .chat-b');
+    if (bub && bub.closest('.sc').getAttribute('data-s') !== '0') bub.parentNode.classList.toggle('open');
+    return;
+  }
+  sc = b.closest('[data-sc]'); if (!sc) return;
+  var act = b.getAttribute('data-sc-act');
+  if (act === 'copy') { var t = $('.chat-t', b.closest('.sc-chat')); if (t) copyText(t.textContent.replace(/\s+$/,''), t, $('span', b)); return; }
+  if (act === 'send' && sc.getAttribute('data-s') === '0') scStep(sc);
+  else if (act === 'next') scStep(sc);
+  else if (act === 'reset') { clearTimeout(sc._t); sc.classList.remove('typing'); sc.setAttribute('data-s', '0'); var c = $('.sc-chat', sc); if (c) c.classList.remove('open'); scRender(sc); }
+});
 function pagerNext(){
   if (!PG) return;
   var n = PG.cur, pg = PG.pages[n];
+  var busy = scBusy(pg.el); if (busy) { scStep(busy); return; }
   if (n === 0) { var P = prog(PG.e.id); showPage(P.page && P.page < PG.pages.length ? P.page : 1, 1, { focus:true }); return; }
   if (pg.step != null) markStep(pg.step);
   if (n >= PG.pages.length - 1) { location.hash = 'home'; return; }
@@ -2264,10 +2451,10 @@ document.addEventListener('click', function(ev){
 });
 document.addEventListener('keydown', function(ev){
   if (!PG || ev.altKey || ev.ctrlKey || ev.metaKey || (LB && !LB.hidden)) return;
-  if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+  if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft' && ev.key !== 'PageDown' && ev.key !== 'PageUp') return;
   var t = ev.target; if (t && t.closest && t.closest('input,textarea,select,[contenteditable],.stepdeck,.cslider,.deck-panel,video')) return;
   ev.preventDefault();
-  if (ev.key === 'ArrowRight') pagerNext(); else if (PG.cur > 0) showPage(PG.cur - 1, -1, { focus:true });
+  if (ev.key === 'ArrowRight' || ev.key === 'PageDown') pagerNext(); else if (PG.cur > 0) showPage(PG.cur - 1, -1, { focus:true });
 });
 
 function onStepChange(ev){
@@ -2282,7 +2469,7 @@ function onStepChange(ev){
 function updateProgress(e){
   var P = prog(e.id), t = P.total || 0, d = doneCount(e.id);
   $$('#ep-dots li').forEach(function(li, i){ li.classList.toggle('on', !!P.steps[i]); });
-  var tx = $('#ep-ptxt'); if (tx) tx.innerHTML = P.cleared ? '<b>'+epNo(e)+' 완료</b> · '+dotFull(P.cleared) : '따라하기 <b class="num">'+d+' / '+t+'</b>';
+  var tx = $('#ep-ptxt'); if (tx) tx.innerHTML = P.cleared ? '<b>'+epNo(e)+' 완료</b> · '+dotFull(P.cleared) : '숙제 <b class="num">'+d+' / '+t+'</b>';
 }
 document.addEventListener('click', function(ev){
   var b = ev.target.closest('.step-next'); if (!b) return;
@@ -2291,7 +2478,7 @@ document.addEventListener('click', function(ev){
   var cb = document.getElementById('chk-'+e.id+'-'+(i+1));
   if (cb && !cb.checked) { cb.checked = true; P.steps[i] = true; save(); cb.closest('li.step').classList.add('done'); updateProgress(e); }
   if (PG) { pagerNext(); return; }
-  var next = document.getElementById('step-'+(i+2)) || document.getElementById('part-finish') || document.getElementById('part-complete');
+  var next = document.getElementById('step-'+(i+2)) || document.getElementById('part-complete');
   if (next) next.scrollIntoView({ behavior: smooth(), block:'start' });
 });
 function setupSlider(box){
@@ -2527,7 +2714,7 @@ function shareMsg(e, P){
   return '[RE:Quest '+epNo(e)+' 완료]\n'+
     '「'+e.title+'」\n'+
     '· 완료한 날: '+dotFull(P.cleared || TODAY_S)+'\n'+
-    (done ? '· 따라 한 단계: '+done+' / '+tot+'\n' : '')+
+    (done ? '· 숙제: '+done+' / '+tot+'\n' : '')+
     (e.summary ? '· 오늘 배운 것: '+e.summary+'\n' : '')+
     '· 가장 도움 된 단계: STEP \n'+
     '· 한 줄 소감: \n'+
@@ -2550,9 +2737,9 @@ function renderReport(e, celebrate){
     (cleared
       ? '<div class="done-badge'+(celebrate ? ' pop' : '')+'">'+badgeSVG(e)+
           '<div class="done-badge-t"><p class="done-k">'+esc(epNo(e))+' 완료!</p><h3>수고했어요. 오늘 배운 다섯 단계를 끝까지 해냈어요</h3>'+
-          '<p class="done-d num">'+dotFull(P.cleared)+(doneCount(e.id) ? ' · 따라 한 단계 '+doneCount(e.id)+' / '+(P.total || 5) : '')+'</p>'+
+          '<p class="done-d num">'+dotFull(P.cleared)+(doneCount(e.id) ? ' · 숙제 '+doneCount(e.id)+' / '+(P.total || 5) : '')+'</p>'+
           '<button type="button" class="linkish" data-act="unclear">완료 취소</button></div></div>'
-      : '<div class="done-box"><p>실습까지 해봤다면 완료 버튼을 눌러 주세요. 완료 배지가 생겨요.</p><button type="button" class="btn btn-primary" data-act="clear">'+epNo(e)+' 완료하기</button></div>')+
+      : '<div class="done-box"><p>강의를 다 보고 숙제까지 끝냈다면 완료 버튼을 눌러 주세요. 완료 배지가 생겨요.</p><button type="button" class="btn btn-primary" data-act="clear">'+epNo(e)+' 완료하기</button></div>')+
     (nexts.length ? '<div><p class="sublabel">NEXT RE:Quest · 다음에 풀어 볼 질문들</p><div class="next-grid">'+nextCardsHTML()+'</div></div>' : '')+
     '<div class="ask-more"><p>해보다가 막힌 점, 더 궁금해진 점이 다음 리퀘스트가 됩니다.</p><button type="button" class="btn btn-sm" data-act="ask">리퀘스트 보내기</button></div>';
   box.onclick = function(ev){
@@ -2846,7 +3033,7 @@ function renderLog(){
     var P = store.progress[e.id] || { steps:[], total:0 }, t = P.total || 5;
     var dots = ''; for (var i=0;i<t;i++) dots += '<i class="'+(P.steps && P.steps[i] ? 'on' : '')+'"></i>';
     var state = isCleared(e.id) ? '<span class="mine" data-m="clear">✓ 완료</span>' : (doneCount(e.id) ? '<span class="mine" data-m="doing">진행 중</span>' : '<span class="chip">시작 전</span>');
-    return '<a class="log-row" href="#'+esc(e.id)+'"><span class="pill">'+epNo(e)+'</span><span class="t"><b>'+esc(e.title)+'</b><span class="mini-dots" aria-label="따라하기 '+doneCount(e.id)+'/'+t+'">'+dots+'</span></span>'+state+'</a>';
+    return '<a class="log-row" href="#'+esc(e.id)+'"><span class="pill">'+epNo(e)+'</span><span class="t"><b>'+esc(e.title)+'</b><span class="mini-dots" aria-label="숙제 '+doneCount(e.id)+'/'+t+'">'+dots+'</span></span>'+state+'</a>';
   }).join('');
   var html =
     '<dl class="statgrid">'+
