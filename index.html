@@ -1302,6 +1302,54 @@ details.clipbox > figure.clip{margin:0 12px 12px}
 .sc-cap b{color:var(--ink)}
 .sc-ctl{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:8px;min-height:36px}
 .sc-next::after{content:" →"}
+/* 코스 2 · AI 답변 (실제 채팅 화면처럼) */
+.ai-msg{display:grid;gap:6px;justify-items:start}
+.ai-who{display:flex;align-items:center;gap:8px}
+.ai-who b{font-size:12.5px;font-weight:800;color:var(--muted);letter-spacing:.02em}
+.ai-av{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,#8ED8FF,#2F7BFF);color:#fff;font-size:10.5px;font-weight:900}
+.ai-b{width:min(100%,700px);background:var(--surface);border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:16px 20px 18px;min-width:0}
+.ai-b.ans-body{max-height:560px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.ai-b:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.md{font-size:15px;line-height:1.75;color:var(--ink)}
+.md p{margin:0 0 10px !important;font-size:15px !important;line-height:1.75 !important}
+.md .md-t{font-size:16.5px !important;font-weight:800;margin-bottom:12px !important}
+.md .md-h{margin:18px 0 6px;font-size:15.5px;font-weight:800;line-height:1.5;color:var(--ink)}
+.md strong{font-weight:800}
+.md ul{list-style:disc;margin:0 0 10px !important;padding-left:22px !important;display:grid;gap:3px}
+.md ul ul{list-style:circle;margin:4px 0 2px !important}
+.md li{margin:0 !important;padding:0;font-size:15px !important;line-height:1.7 !important}
+.md li::before{content:none !important}
+.md li::marker{color:var(--muted)}
+.md > :last-child{margin-bottom:0 !important}
+.md-tb{width:100%;border-collapse:separate;border-spacing:0;margin:6px 0 12px;font-size:14px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.md-tb th,.md-tb td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line)}
+.md-tb th{background:var(--surface-2);font-weight:700;font-size:13px;color:var(--muted)}
+.md-tb tr:last-child td{border-bottom:0}
+.sw{display:inline-flex;align-items:center;gap:5px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:0 6px;white-space:nowrap;vertical-align:1px}
+.sw i{width:10px;height:10px;border-radius:3px;border:1px solid rgba(0,0,0,.18)}
+/* 표시: 문제(빨강) · 바뀐 곳(파랑) */
+.ak{position:relative;border-radius:8px;padding:3px 6px;margin:-3px -6px;transition:box-shadow .3s,background .3s}
+.sc[data-kind="issue"] .ak{--mk:#E5484D;--mkw:rgba(229,72,77,.07)}
+.sc[data-kind="fix"] .ak{--mk:#2A63CC;--mkw:rgba(42,99,204,.07)}
+.sc[data-s="2"] .ak{box-shadow:0 0 0 2.5px var(--mk),0 0 0 6px var(--mkw);background:var(--mkw)}
+.sc[data-s="2"] .ak::after{content:attr(data-k) "  " attr(data-label);display:table;margin-top:8px;white-space:nowrap;font-size:12px;font-weight:800;line-height:1;color:#fff;background:var(--mk);border-radius:999px;padding:5px 10px;box-shadow:0 6px 14px -8px rgba(0,0,0,.5);animation:mkIn .4s cubic-bezier(.3,1.5,.5,1) both}
+.sc[data-s="2"] .ak-top::after{position:absolute;z-index:2;margin:0;top:-12px;right:10px}
+.md .ak{margin-left:-8px !important;margin-right:-8px !important;padding:4px 8px}
+.md p.ak{margin-bottom:12px !important}
+.md li.ak{padding-left:8px;margin-top:4px !important;margin-bottom:4px !important}
+
+.ai-b .sc-stack{margin:2px 0}
+/* 기준 슬라이드 캡처 */
+.sc-shot{position:relative;margin:0;display:grid;gap:6px;min-width:0}
+.sc-shot img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line-strong);background:#fff;box-shadow:0 10px 24px -18px var(--shadow)}
+.sc-shot figcaption{font-size:13px;color:var(--muted);text-align:center}
+.sc-shot-in{position:relative;display:block}
+.sc-stack{display:grid;gap:22px}
+.mk-b em{bottom:auto;top:calc(100% + 6px)}
+@media (max-width:599.98px){
+  .ai-b{padding:14px 14px 16px}
+  .ai-b.ans-body{max-height:480px}
+}
 @media (max-width:599.98px){
   .mk em{font-size:11px;padding:2px 8px 2px 3px}
   .mk em b{width:15px;height:15px;font-size:10px}
@@ -2433,6 +2481,7 @@ function scStep(sc){
   var s = +sc.getAttribute('data-s'), mx = +(sc.getAttribute('data-max') || 2);
   if (s >= mx || sc.classList.contains('typing')) return;
   sc.setAttribute('data-s', s + 1); scRender(sc);
+  if (s + 1 === 2) { var ab = $('.ans-body', sc), aks = $$('.ak', sc); if (ab && aks.length) { var R = ab.getBoundingClientRect(), t = 1e9, b = -1e9; aks.forEach(function(k){ var r = k.getBoundingClientRect(); t = Math.min(t, r.top); b = Math.max(b, r.bottom + 30); }); var d = Math.min(b - R.bottom + 12, t - R.top - 16); if (d > 0) ab.scrollTo({ top: ab.scrollTop + d, behavior: 'smooth' }); } }
   if (s === 0 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     sc.classList.add('typing'); clearTimeout(sc._t);
     sc._t = setTimeout(function(){ sc.classList.remove('typing'); }, 750);
@@ -2451,7 +2500,7 @@ document.addEventListener('click', function(ev){
   if (act === 'copy') { var t = $('.chat-t', b.closest('.sc-chat')); if (t) copyText(t.textContent.replace(/\s+$/,''), t, $('span', b)); return; }
   if (act === 'send' && sc.getAttribute('data-s') === '0') scStep(sc);
   else if (act === 'next') scStep(sc);
-  else if (act === 'reset') { clearTimeout(sc._t); sc.classList.remove('typing'); sc.setAttribute('data-s', '0'); var c = $('.sc-chat', sc); if (c) c.classList.remove('open'); scRender(sc); }
+  else if (act === 'reset') { clearTimeout(sc._t); sc.classList.remove('typing'); sc.setAttribute('data-s', '0'); var ab0 = $('.ans-body', sc); if (ab0) ab0.scrollTop = 0; var c = $('.sc-chat', sc); if (c) c.classList.remove('open'); scRender(sc); }
 });
 function pagerNext(){
   if (!PG) return;
