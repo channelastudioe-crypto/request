@@ -2009,7 +2009,7 @@ var PARTS = {
   demo:    ['기획안으로 따라 보기', '실제 프롬프트와 결과'],
   try:     ['직접 해보기', '따라 하며 완성하기'],
   finish:  ['정리', '완성본과 핵심 정리'],
-  homework:['숙제', '제주 여행 PPT 혼자 만들기'],
+  homework:['마무리', '숙제하고 완료하기'],
   request: ['REQUEST', '현업의 질문'],
   quest:   ['QUEST', '저희가 먼저 해봤습니다'],
   steps:   ['따라하기', '단계별 방법'],
@@ -2283,7 +2283,7 @@ function buildBody(e, html, startPage){
   setupClips(body);
   $$('.concepts', body).forEach(setupSlider);
   // RE:QUEST 완료
-  body.insertAdjacentHTML('beforeend', '<section class="part" id="part-complete" data-part="complete"><h3 class="sub">완료하고 공유하기</h3><div class="report" id="report"></div></section>');
+  body.insertAdjacentHTML('beforeend', '<section class="part" id="part-complete" data-part="homework"><h3 class="sub">완료하고 공유하기</h3><div class="report" id="report"></div></section>');
   renderReport(e);
   buildPages(e, body, startPage);
   save();
