@@ -1345,6 +1345,16 @@ details.clipbox > figure.clip{margin:0 12px 12px}
 .sc-shot figcaption{font-size:13px;color:var(--muted);text-align:center}
 .sc-shot-in{position:relative;display:block}
 .sc-stack{display:grid;gap:22px}
+.sc-g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}
+.sc-stack > .sc-g2{margin-top:0}
+.sc-g2 .sc-shot figcaption{font-size:12.5px}
+.sc-g2 .mk em{font-size:12px;padding:2px 9px 2px 3px}
+.sc-g2 .mk em b{width:16px;height:16px;font-size:10px}
+.fin-grid{margin-top:16px}
+[data-zoom] img{cursor:zoom-in}
+.sc-shot img{transition:box-shadow .2s}
+.sc-shot img:hover{box-shadow:0 14px 28px -16px var(--shadow)}
+.cover-shot > img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line-strong);box-shadow:0 10px 24px -16px var(--shadow)}
 .mk-b em{bottom:auto;top:calc(100% + 6px)}
 @media (max-width:599.98px){
   .ai-b{padding:14px 14px 16px}
@@ -2712,6 +2722,12 @@ function mini4Open(img){
   openLightbox(list, imgs.indexOf(img));
 }
 document.addEventListener('click', function(ev){ var im = ev.target.closest('.mini4 img[role="button"]'); if (im) mini4Open(im); });
+/* 코스 2 캡처 · 누르면 크게 보기 */
+document.addEventListener('click', function(ev){
+  var im = ev.target.closest('[data-zoom] img'); if (!im) return;
+  var box = im.closest('[data-zoom]'), imgs = Array.prototype.slice.call(box.querySelectorAll('img'));
+  openLightbox(imgs.map(function(x){ var f = x.closest('figure'), c = f && f.querySelector('figcaption'); return { src: x.currentSrc || x.src, cap: c ? c.textContent.trim() : (x.alt || '') }; }), imgs.indexOf(im));
+});
 document.addEventListener('keydown', function(ev){ if (ev.key !== 'Enter' && ev.key !== ' ') return; var im = ev.target.closest && ev.target.closest('.mini4 img[role="button"]'); if (im) { ev.preventDefault(); mini4Open(im); } });
 var clipObs = null;
 function setupClips(root){
