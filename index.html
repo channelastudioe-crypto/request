@@ -1211,6 +1211,25 @@ b.kx:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .dl-t span{font-size:13px;color:var(--muted);line-height:1.5}
 .dl-card .btn{flex:none}
 @media (max-width:519.98px){.dl-card{flex-wrap:wrap}.dl-card .btn{width:100%}}
+.pv{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);align-items:stretch;gap:10px;margin-top:22px}
+.pv-card{display:grid;gap:8px;align-content:start;padding:20px;border:1px solid var(--line-strong);border-radius:16px;background:var(--surface);min-width:0}
+.pv-card.on{border:1.5px solid var(--blue);background:var(--blue-wash)}
+.pv-top{display:flex;align-items:center;gap:8px}
+.pv-ic{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:var(--surface-2);color:var(--muted)}
+.pv-card.on .pv-ic{background:var(--blue);color:#fff}
+.pv-ic svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.pv-top small{font-size:13px;font-weight:800;color:var(--muted);letter-spacing:.01em}
+.pv-card.on .pv-top small{color:var(--blue)}
+.pv-t{font-size:21px;font-weight:900;letter-spacing:-.02em;line-height:1.35;margin-top:4px}
+.pv-l{margin:0 !important;font-size:15px !important;line-height:1.65 !important;color:var(--ink)}
+.pv-meta{margin:6px 0 0;padding:12px 0 0;border-top:1px solid var(--line);display:grid;gap:7px}
+.pv-card.on .pv-meta{border-top-color:var(--blue-line)}
+.pv-meta > div{display:flex;gap:12px;font-size:14px;line-height:1.5}
+.pv-meta dt{flex:none;width:34px;font-weight:800;color:var(--muted)}
+.pv-card.on .pv-meta dt{color:var(--blue)}
+.pv-meta dd{margin:0;color:var(--ink)}
+.pv-arrow{align-self:center;text-align:center;font-size:24px;font-weight:900;color:var(--blue)}
+@media (max-width:699.98px){.pv{grid-template-columns:minmax(0,1fr)}.pv-arrow{transform:rotate(90deg)}}
 /* 오늘의 흐름 */
 .dm-map{list-style:none;margin:20px 0 0 !important;padding:0 !important;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
 .dm-map li{margin:0 !important;display:grid;gap:2px;padding:10px 12px;background:var(--surface);border:1px solid var(--line-strong);border-radius:10px;min-width:0}
