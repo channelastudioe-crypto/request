@@ -668,7 +668,7 @@
 <section data-part="homework">
   <div class="mission">
     <span class="eyebrow">숙제 · 약 40분</span>
-    <h3>제주 4박 5일 여행 계획을 PPT 5장으로</h3>
+    <h3>제주 2박 3일 여행 계획을 PPT 5장으로</h3>
     <p>강의에서 본 다섯 단계를, 이번엔 가벼운 주제로 내 손으로 끝까지 해 봐요. 레퍼런스로 디자인 특징을 가져오고, Claude가 못 그리는 이미지는 ChatGPT에서 만들어 와서 붙여요.</p>
     <ul class="hw-meta">
       <li><b>목표</b>이미지가 들어간 제주 여행 계획 PPT 5장 완성</li>
@@ -681,113 +681,94 @@
 
     <li>
       <h3>구성안부터 받기</h3>
-      <p class="step-why">디자인은 아직이에요. 목적, 보는 사람, 장마다 담을 분량에 더해 <b>어느 장에 이미지가 들어갈지</b>까지 처음에 정해 둬요.</p>
+      <p class="step-why">디자인은 아직이에요. 목적, 보는 사람, 날짜, 예산부터 정해야 AI가 엉뚱한 방향으로 가지 않아요. 여행 스타일은 AI에게 맡겨도 돼요.</p>
       <ol class="todo">
         <li>아래 빈칸을 내 여행 계획으로 채워요.</li>
         <li>완성된 프롬프트를 복사해서 Claude에게 보내요.</li>
-        <li>장별 표에서 ‘들어갈 이미지’ 칸까지 채워졌는지 봐요.</li>
+        <li>장별 표가 나오면, 바꿀 장이 없는지 훑어봐요.</li>
       </ol>
-      <div class="builder" data-id="s1" data-tool="claude" data-label="STEP 1 · Claude에게"><pre class="builder-template">제주도 4박 5일 여행 계획을 PPT 5장으로 만들려고 해.
+      <div class="builder" data-id="s1" data-tool="claude" data-label="STEP 1 · Claude에게"><pre class="builder-template">제주도 {{여행 기간|2박 3일}} 여행 계획을 PPT 5장으로 만들려고 해.
 지금부터 5단계로 진행할 거야: 1 구성안 → 2 디자인 규칙 → 3 기준 2장 → 4 전체 생성 → 5 검수.
 내가 확정하기 전에는 다음 단계로 넘어가지 마.
 
 [이번 단계: 구성안] 디자인은 아직 하지 말고 장별 구성안을 표로 정리해줘.
-[목적] {{목적|같이 가는 친구들과 일정을 정하고 동의를 받는 것}}
-[대상] {{보는 사람|여행을 함께 가는 친구 3명}}
-[예산] {{예산|1인 60만 원 (숙소·식비·항공·렌터카 포함)}}
-[여행 메모] {{여행 메모|1일차 애월, 2일차 협재·오설록, 3일차 한라산, 4일차 성산·우도, 5일차 동문시장}}
-
-표: 장 번호 | 제목 | 핵심 메시지 1개 | 설명(최대 3개) | 들어갈 이미지
-이미지는 5장 중 2~3장에만 넣고, 나머지 장은 ‘없음’으로 적어줘.</pre></div>
+[목적] {{목적|이번 제주 여행 계획을 잘 짜서 공유하는 것}}
+[대상] {{보는 사람|같이 가는 친구 2명}}
+[날짜] {{날짜|11월 중순}}
+[예산] {{예산|인당 60만 원}}
+[선호 여행 스타일] {{선호 여행 스타일|너가 스스로 계획해줘}}</pre></div>
       <details class="clipbox hw-guide"><summary>결과 예시 보기</summary><figure class="ph" style="--ar:16/10"><span class="ph-in"><b>결과 예시 · 장별 구성안 표</b><span>대화 화면 캡처 · 준비 중</span><code>assets/ep01/hw/s1-result.png</code></span></figure></details>
-      <p class="checkpoint"><b>확인</b>목적 · 대상이 들어갔나 · 장마다 설명 3개 이내인가 · 이미지 들어갈 장이 2~3장인가</p>
-      <details class="work"><summary>업무에선 이렇게</summary>
-        <p>광고주 미팅 자료라면 자료를 첨부하고 이렇게 세 문장만 덧붙여요.</p>
-        <div class="prompt" data-label="업무 예시"><pre>광고주 미팅용 PPT야. 협찬을 결정하게 만드는 게 목적이야.
-보는 사람은 협찬을 검토 중인 광고주야.
-장마다 핵심 메시지 1개, 설명은 최대 3개로 정리해줘.</pre></div>
-      </details>
+      <p class="checkpoint"><b>확인</b>목적 · 대상 · 날짜 · 예산이 들어갔나 · 5장의 내용이 겹치지 않나</p>
     </li>
 
     <li>
-      <h3>레퍼런스로 디자인 규칙 정하기</h3>
-      <p class="step-why">“깔끔하게”보다 <b>보여 주는 게</b> 빨라요. 레퍼런스를 첨부해 특징만 뽑아 오고, 그 특징을 색 코드·크기 같은 규칙으로 바꾸게 해요.</p>
+      <h3>레퍼런스로 디자인 규칙 + 이미지 프롬프트</h3>
+      <p class="step-why">“깔끔하게”보다 <b>보여 주는 게</b> 빨라요. 레퍼런스에서 특징만 뽑아 규칙으로 바꾸고, Claude가 못 그리는 이미지는 <b>ChatGPT용 프롬프트</b>로 받아요.</p>
       <ol class="todo">
-        <li>아래에서 레퍼런스 이미지를 받아요.</li>
-        <li>같은 대화창에 레퍼런스를 첨부하고 프롬프트를 보내요.</li>
-        <li>특징 4가지와 규칙(색 코드, 폰트 크기, 이미지 배치)이 값으로 나왔는지 봐요.</li>
+        <li>아래에서 레퍼런스를 받아 같은 대화창에 첨부해요.</li>
+        <li>원하는 느낌을 내 말로 적고 프롬프트를 보내요.</li>
+        <li>특징 4가지, 규칙(색 코드·폰트 크기), 이미지 프롬프트 5개가 나왔는지 봐요.</li>
       </ol>
-      <div class="dl-card hw-ref"><span class="dl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg></span><div class="dl-t"><b>숙제용 레퍼런스 받기</b><span>여행 매거진 레퍼런스 · 이미지 3장 · 준비 중</span></div><span class="btn btn-sm hw-soon" aria-disabled="true">준비 중</span></div>
-      <div class="builder" data-id="s2" data-tool="claude" data-label="STEP 2 · Claude에게 (레퍼런스 첨부)"><pre class="builder-template">[2단계 – 디자인 규칙] 첨부한 여행 매거진 레퍼런스를 참고해서 디자인 규칙을 정해줘.
+      <div class="dl-card hw-ref"><span class="dl-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg></span><div class="dl-t"><b>숙제용 레퍼런스 받기</b><span>레퍼런스 이미지 · 준비 중</span></div><span class="btn btn-sm hw-soon" aria-disabled="true">준비 중</span></div>
+      <div class="builder" data-id="s2" data-tool="claude" data-label="STEP 2 · Claude에게 (레퍼런스 첨부)"><pre class="builder-template">첨부한 레퍼런스를 참고해서 디자인 규칙을 정해줘.
 먼저 레퍼런스의 특징을 색 · 레이아웃 · 글자 · 그래픽 요소 4가지로 짧게 뽑아줘.
 그대로 베끼지 말고, 특징만 가져와서 제주 여행에 맞게 바꿔줘.
 
-원하는 느낌: "{{원하는 느낌|여백은 여유 있게, 바다 같은 푸른 색감}}"
+원하는 느낌: "{{원하는 느낌|제주도를 떠올릴 수 있는 오브제가 있으면 좋겠고, 전체적인 컬러웨이가 야자수와 하르방을 떠올릴 수 있는 느낌이면 좋을 것 같고, 일부에 포인트 색으로 제주를 상징하는 감귤 컬러를 넣어서 보기만 해도 제주도 가고 싶은 마음이 드릉드릉하도록 만들기}}"
 규칙 항목: 화면 비율 16:9 / 배경색·강조색(색 코드) / 폰트와 크기 / 제목 위치 /
 이미지 배치(크기·모서리·여백) / 한 장 본문 영역 최대 3개
-정리된 규칙은 앞으로 만드는 모든 슬라이드에 유지해줘.</pre></div>
-      <details class="clipbox hw-guide"><summary>화면으로 보기 · 레퍼런스 첨부하기</summary><figure class="ph" style="--ar:16/9"><span class="ph-in"><b>영상 · 레퍼런스 첨부하기</b><span>10~20초 무음 루프 · 준비 중</span><code>assets/ep01/hw/s2-attach.mp4</code></span></figure></details>
-      <details class="clipbox hw-guide"><summary>결과 예시 보기</summary><figure class="ph" style="--ar:16/10"><span class="ph-in"><b>결과 예시 · 특징 4가지와 디자인 규칙</b><span>대화 화면 캡처 · 준비 중</span><code>assets/ep01/hw/s2-result.png</code></span></figure></details>
-      <p class="checkpoint"><b>확인</b>특징 4가지를 뽑았나 · 색 · 폰트 · 제목 위치 · 이미지 배치가 값으로 정해졌나</p>
+정리된 규칙은 앞으로 만드는 모든 슬라이드에 유지해줘.
+
+추가로 표지 이미지, 슬라이드 공통 배경, 키비주얼, 오브제 등 슬라이드별로 필요한 이미지 {{이미지 수|5장}}을 추려서, GPT 이미지용 프롬프트로 전달해줘.
+각 프롬프트의 공통 스타일 문구는 별도로 분리하지 말고 프롬프트 안에 넣어서, 복사 후 바로 사용할 수 있게 해줘.</pre></div>
+      <details class="clipbox hw-guide"><summary>결과 예시 보기</summary><figure class="ph" style="--ar:16/10"><span class="ph-in"><b>결과 예시 · 특징 4가지 · 디자인 규칙 · 이미지 프롬프트</b><span>대화 화면 캡처 · 준비 중</span><code>assets/ep01/hw/s2-result.png</code></span></figure></details>
+      <p class="hw-sub"><b>2-1</b> 받은 이미지 프롬프트로 ChatGPT에서 이미지 만들기</p>
+      <ol class="rt" aria-label="이미지 왕복 순서"><li class="rt-c"><small>Claude</small><b>이미지 프롬프트 받기</b><span>STEP 2 답변에 5개</span></li><li class="rt-g"><small>ChatGPT</small><b>그대로 붙여 이미지 만들기</b><span>한 개씩 · 다운로드</span></li><li class="rt-c"><small>Claude</small><b>STEP 3에서 첨부하기</b><span>같은 대화창에 5장 함께</span></li></ol>
+      <details class="clipbox hw-guide"><summary>화면으로 보기 · ChatGPT 이미지를 Claude로 가져오기</summary><figure class="ph" style="--ar:16/9"><span class="ph-in"><b>영상 · ChatGPT 이미지를 Claude로 가져오기</b><span>10~20초 무음 루프 · 준비 중</span><code>assets/ep01/hw/s2-roundtrip.mp4</code></span></figure></details>
+      <details class="clipbox hw-guide"><summary>결과 예시 보기</summary><figure class="ph" style="--ar:16/9"><span class="ph-in"><b>결과 예시 · ChatGPT로 만든 이미지 5장</b><span>대화 화면 캡처 · 준비 중</span><code>assets/ep01/hw/s2-images.png</code></span></figure></details>
+      <p class="checkpoint"><b>확인</b>특징 4가지를 뽑았나 · 색 · 폰트 · 제목 위치 · 이미지 배치가 값으로 정해졌나 · 이미지 5장을 만들었나</p>
     </li>
 
     <li>
-      <h3>기준 2장 + 이미지 한 번 왕복하기</h3>
-      <p class="step-why">Claude는 사진을 직접 만들지 못해요. 대신 <b>이미지 자리와 이미지 프롬프트</b>를 받아 ChatGPT에서 만들고, 다시 Claude로 가져와 붙여요.</p>
-      <ol class="rt" aria-label="이미지 왕복 순서"><li class="rt-c"><small>Claude</small><b>이미지 프롬프트 받기</b><span>이미지 자리마다 1개씩</span></li><li class="rt-g"><small>ChatGPT</small><b>이미지 만들기</b><span>16:9 · 글자 없이 · 다운로드</span></li><li class="rt-c"><small>Claude</small><b>첨부해서 넣기</b><span>파일 이름에 장 번호</span></li></ol>
-      <p class="hw-sub"><b>3-1</b> Claude에게 기준 2장과 이미지 프롬프트 받기</p>
-      <div class="builder" data-id="s31" data-tool="claude" data-label="3-1 · Claude에게"><pre class="builder-template">[3단계 – 기준 2장] 구성안 중 성격이 다른 2장만 먼저 만들어줘.
+      <h3>기준 2장만 먼저</h3>
+      <p class="step-why">전부 만들고 고치면 고칠 곳도 다섯 군데예요. 만든 이미지를 넣어 <b>성격이 다른 2장</b>(표지 1장, 숫자 중심 1장)으로 규칙이 맞는지 먼저 봐요.</p>
+      <ol class="todo">
+        <li>ChatGPT에서 만든 이미지를 같은 대화창에 첨부해요.</li>
+        <li>프롬프트를 보내 설명형 1장, 데이터형 1장을 받아요.</li>
+        <li>고칠 게 있으면 지금 말해요. 이후 장에 그대로 반영돼요.</li>
+      </ol>
+      <div class="builder" data-id="s3" data-tool="claude" data-label="STEP 3 · Claude에게 (이미지 첨부)"><pre class="builder-template">[3단계 – 기준 2장] 구성안 중 성격이 다른 2장만 먼저 만들어줘.
 설명형: {{설명형 장|1장 표지}} / 데이터형: {{데이터형 장|4장 예산}}
-아티팩트로 바로 볼 수 있게 만들어줘.
-
-이미지가 들어갈 곳은 회색 자리로 비워 두고,
-자리마다 ChatGPT에서 쓸 이미지 프롬프트를 따로 써줘. 조건:
-- 디자인 규칙의 색감과 맞출 것
-- 스타일: {{이미지 스타일|자연광 실사 사진}}
-- 비율은 이미지 자리 크기에 맞게
-- 이미지 안에 글자 · 로고 · 실존 인물 넣지 말 것</pre></div>
-      <p class="hw-sub"><b>3-2</b> ChatGPT에서 이미지 만들기 · Claude가 준 프롬프트 앞에 붙여요</p>
-      <div class="builder" data-id="s32" data-tool="gpt" data-label="3-2 · ChatGPT에게"><pre class="builder-template">아래 프롬프트로 이미지 1장 만들어줘. 글자는 넣지 말고, 비율은 {{비율|16:9}}로.
-
-(여기에 Claude가 써 준 이미지 프롬프트를 붙여 넣기)</pre></div>
-      <p class="hw-sub"><b>3-3</b> 받은 이미지를 Claude 대화창에 첨부하기</p>
-      <div class="builder" data-id="s33" data-tool="claude" data-label="3-3 · 다시 Claude에게 (이미지 첨부)"><pre class="builder-template">첨부한 이미지를 {{넣을 장|1장}} 이미지 자리에 넣어줘.
-자리 크기에 맞게 잘라 쓰고, 이미지 위 글자가 잘 읽히도록 필요하면 살짝 어둡게 덮어줘.</pre></div>
-      <details class="clipbox hw-guide"><summary>화면으로 보기 · ChatGPT 이미지를 Claude로 가져오기</summary><figure class="ph" style="--ar:16/9"><span class="ph-in"><b>영상 · ChatGPT 이미지를 Claude로 가져오기</b><span>10~20초 무음 루프 · 준비 중</span><code>assets/ep01/hw/s3-roundtrip.mp4</code></span></figure></details>
-      <details class="clipbox hw-guide"><summary>결과 예시 보기</summary><figure class="ph" style="--ar:16/9"><span class="ph-in"><b>결과 예시 · 이미지가 들어간 기준 2장</b><span>대화 화면 캡처 · 준비 중</span><code>assets/ep01/hw/s3-result.png</code></span></figure></details>
-      <p class="checkpoint"><b>확인</b>2장에 규칙이 반영됐나 · 이미지에 글자가 없나 · 이미지가 자리 크기에 맞게 들어갔나</p>
+아티팩트로 바로 볼 수 있게 만들어줘.</pre></div>
+      <details class="clipbox hw-guide hw-res"><summary>결과 예시 보기</summary><div class="sc-stack" data-zoom><figure class="sc-shot"><span class="sc-shot-in"><img src="assets/ep01/hw/jeju-1.webp" alt="완성 예시 1장: 표지" width="1600" height="900" loading="lazy"></span><figcaption>1 · 표지</figcaption></figure><figure class="sc-shot"><span class="sc-shot-in"><img src="assets/ep01/hw/jeju-4.webp" alt="완성 예시 4장: 예산: 인당 60만 원" width="1600" height="900" loading="lazy"></span><figcaption>4 · 예산: 인당 60만 원</figcaption></figure></div></details>
+      <p class="checkpoint"><b>확인</b>2장에 규칙이 그대로 반영됐나 · 이미지가 자리에 맞게 들어갔나</p>
     </li>
 
     <li>
       <h3>전체로 펼치기</h3>
-      <p class="step-why">이제 나머지를 만들어요. 규칙은 같게, 모양은 내용에 맞게. 이미지는 프롬프트를 <b>한 번에 표로</b> 받아 ChatGPT에서 차례로 만들어요.</p>
+      <p class="step-why">이제 나머지를 만들어요. 규칙은 같게, 모양은 내용에 맞게. 레이아웃을 하나하나 설명할 필요는 없어요.</p>
       <ol class="todo">
-        <li>프롬프트를 보내 나머지 3장과 이미지 프롬프트 표를 받아요.</li>
-        <li>ChatGPT에서 이미지를 만들고 <b>2장.png, 3장.png</b>처럼 장 번호로 이름을 붙여요.</li>
-        <li>이미지를 한꺼번에 첨부하고 넣어 달라고 해요.</li>
+        <li>프롬프트를 보내 나머지 장을 받아요.</li>
+        <li>다섯 장의 색·폰트·제목 위치가 같은지 봐요.</li>
+        <li>똑같은 모양이 반복되는 장이 있으면 바꿔 달라고 해요.</li>
       </ol>
-      <p class="hw-sub"><b>4-1</b> 나머지 3장 + 이미지 프롬프트 표 받기</p>
-      <div class="prompt" data-label="4-1 · Claude에게"><pre>기준 2장과 같은 규칙으로 나머지 3장도 만들어줘.
-색·폰트·제목 위치는 모든 장에서 같게, 레이아웃은 내용에 맞게 장마다 다르게.
-이미지가 필요한 장은 3단계처럼 자리를 비워 두고,
-ChatGPT용 프롬프트를 ‘장 번호 | 자리 | 프롬프트’ 표로 한 번에 정리해줘.</pre></div>
-      <p class="hw-sub"><b>4-2</b> 만든 이미지를 장 번호 이름으로 한꺼번에 첨부하기</p>
-      <div class="prompt" data-label="4-2 · Claude에게 (이미지 첨부)"><pre>첨부한 이미지를 파일 이름의 장 번호대로 이미지 자리에 넣어줘.</pre></div>
-      <details class="clipbox hw-guide"><summary>결과 예시 보기</summary><figure class="ph" style="--ar:16/9"><span class="ph-in"><b>결과 예시 · 완성된 5장</b><span>대화 화면 캡처 · 준비 중</span><code>assets/ep01/hw/s4-result.png</code></span></figure></details>
-      <p class="checkpoint"><b>확인</b>규칙은 유지됐나 · 같은 레이아웃이 반복되지 않나 · 이미지가 맞는 장에 들어갔나</p>
+      <div class="prompt" data-label="STEP 4 · Claude에게"><pre>기준 2장과 같은 규칙으로 나머지 장들도 만들어줘.
+색·폰트·제목 위치는 모든 장에서 같게, 레이아웃은 내용에 맞게 장마다 다르게.</pre></div>
+      <details class="clipbox hw-guide hw-res"><summary>결과 예시 보기</summary><div class="sc-g2" data-zoom><figure class="sc-shot"><span class="sc-shot-in"><img src="assets/ep01/hw/jeju-1.webp" alt="완성 예시 1장: 표지" width="1600" height="900" loading="lazy"></span><figcaption>1 · 표지</figcaption></figure><figure class="sc-shot"><span class="sc-shot-in"><img src="assets/ep01/hw/jeju-2.webp" alt="완성 예시 2장: 왜 11월 제주인가" width="1600" height="900" loading="lazy"></span><figcaption>2 · 왜 11월 제주인가</figcaption></figure><figure class="sc-shot"><span class="sc-shot-in"><img src="assets/ep01/hw/jeju-3.webp" alt="완성 예시 3장: 2박 3일 일정 한눈에" width="1600" height="900" loading="lazy"></span><figcaption>3 · 2박 3일 일정 한눈에</figcaption></figure><figure class="sc-shot"><span class="sc-shot-in"><img src="assets/ep01/hw/jeju-4.webp" alt="완성 예시 4장: 예산: 인당 60만 원" width="1600" height="900" loading="lazy"></span><figcaption>4 · 예산: 인당 60만 원</figcaption></figure><figure class="sc-shot"><span class="sc-shot-in"><img src="assets/ep01/hw/jeju-5.webp" alt="완성 예시 5장: 출발 전 체크리스트" width="1600" height="900" loading="lazy"></span><figcaption>5 · 출발 전 체크리스트</figcaption></figure></div></details>
+      <p class="checkpoint"><b>확인</b>규칙은 유지됐나 · 같은 레이아웃이 반복되지 않나</p>
     </li>
 
     <li>
-      <h3>원본과 대조하고 파일로 받기</h3>
-      <p class="step-why">AI는 완벽하지 않아요. 마지막 확인은 디자인이 아니라 <b>사실</b>이에요. 이번엔 이미지도 함께 확인해요.</p>
+      <h3>조건과 대조하고 파일로 받기</h3>
+      <p class="step-why">AI는 완벽하지 않아요. 마지막 확인은 디자인이 아니라 <b>사실</b>이에요. 이미지도 함께 확인해요.</p>
       <ol class="todo">
-        <li>메모와 PPT를 비교해 달라고 해요.</li>
+        <li>처음 정한 조건과 PPT를 비교해 달라고 해요.</li>
         <li>찾아준 곳을 고치고, 수정 가능한 PPTX 파일로 받아요.</li>
         <li>숫자·날짜·장소 이름과 이미지는 내 눈으로 한 번 더 봐요.</li>
       </ol>
-      <div class="prompt" data-label="STEP 5 · Claude에게"><pre>내 여행 메모와 완성된 PPT를 비교해서 날짜·금액·장소 이름이 다른 곳을 모두 찾아줘.
-결과는 ‘장 번호 | 문제 | 메모 내용 | 수정 제안’ 표로 정리해줘.
-이미지도 확인해줘: 장소와 맞지 않는 이미지, 이미지 속 이상한 글자나 찌그러진 부분.
+      <div class="prompt" data-label="STEP 5 · Claude에게"><pre>처음 정한 조건(날짜·인원·예산)과 완성된 PPT를 비교해서 날짜·금액·장소 이름이 맞지 않는 곳을 모두 찾아줘.
+결과는 ‘장 번호 | 문제 | 원래 조건 | 수정 제안’ 표로 정리해줘.
+이미지도 확인해줘: 내용과 맞지 않는 이미지, 이미지 속 이상한 글자나 찌그러진 부분.
 고친 다음, 내가 직접 고칠 수 있게 PPTX 파일로 만들어줘.</pre></div>
       <details class="clipbox hw-guide"><summary>화면으로 보기 · PPTX 파일로 받기</summary><figure class="ph" style="--ar:16/9"><span class="ph-in"><b>영상 · PPTX 파일로 받기</b><span>10~20초 무음 루프 · 준비 중</span><code>assets/ep01/hw/s5-pptx.mp4</code></span></figure></details>
       <details class="clipbox hw-guide"><summary>결과 예시 보기</summary><figure class="ph" style="--ar:16/10"><span class="ph-in"><b>결과 예시 · 검수 결과 표</b><span>대화 화면 캡처 · 준비 중</span><code>assets/ep01/hw/s5-result.png</code></span></figure></details>
@@ -799,11 +780,11 @@ ChatGPT용 프롬프트를 ‘장 번호 | 자리 | 프롬프트’ 표로 한 �
   <h3 class="sub">완성 예시와 비교해 보기</h3>
   <p>다섯 단계를 따라 실제로 만든 5장이에요. 내 결과와 비교해 보세요.</p>
   <div class="gallery">
-    <img src="assets/ep01/jeju-1.jpg" alt="1장: 제주 4박 5일, 서쪽에서 동쪽으로" loading="lazy">
-    <img src="assets/ep01/jeju-2.jpg" alt="2장: 일정 한눈에 보기" loading="lazy">
-    <img src="assets/ep01/jeju-3.jpg" alt="3장: 이건 꼭 하자" loading="lazy">
-    <img src="assets/ep01/jeju-4.jpg" alt="4장: 예산, 1인 60만 원 안에서" loading="lazy">
-    <img src="assets/ep01/jeju-5.jpg" alt="5장: 금요일까지 3가지만 정해요" loading="lazy">
+    <img src="assets/ep01/hw/jeju-1.webp" alt="1장: 표지 · 11월, 우리 셋의 제주" loading="lazy">
+    <img src="assets/ep01/hw/jeju-2.webp" alt="2장: 왜 11월 제주인가" loading="lazy">
+    <img src="assets/ep01/hw/jeju-3.webp" alt="3장: 2박 3일 일정 한눈에" loading="lazy">
+    <img src="assets/ep01/hw/jeju-4.webp" alt="4장: 예산: 인당 60만 원" loading="lazy">
+    <img src="assets/ep01/hw/jeju-5.webp" alt="5장: 출발 전 체크리스트" loading="lazy">
   </div>
 
   <div class="realquest">
