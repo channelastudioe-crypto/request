@@ -1283,6 +1283,25 @@ details.clipbox > .ph{margin:0 12px 12px}
 .rt span{font-size:13px;color:var(--muted);line-height:1.45}
 @media (max-width:599.98px){.rt{grid-template-columns:minmax(0,1fr);gap:22px}.rt li + li::after{content:"↓";left:50%;top:-20px;transform:translateX(-50%)}}
 .hw-ref{margin-top:14px}
+details.ddak{margin-top:16px;border:1px solid var(--blue-line);border-radius:14px;background:var(--blue-wash)}
+details.ddak > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 16px}
+details.ddak > summary::-webkit-details-marker{display:none}
+details.ddak > summary:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:14px}
+.ddak-ic{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--blue);color:#fff}
+.ddak-ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ddak-t{display:grid;gap:1px;min-width:0}
+.ddak-t b{font-size:15.5px;font-weight:800;color:var(--ink)}
+.ddak-t small{font-size:13px;color:var(--muted)}
+.ddak-chev{margin-left:auto;flex:none;width:10px;height:10px;border-right:2px solid var(--blue);border-bottom:2px solid var(--blue);transform:rotate(45deg) translate(-2px,-2px);transition:transform .25s}
+details.ddak[open] .ddak-chev{transform:rotate(-135deg) translate(-2px,-2px)}
+details.ddak[open] > summary{border-bottom:1px solid var(--blue-line)}
+.ddak-grid{padding:14px 16px 16px;margin:0 !important;animation:tipDown .3s ease both}
+.term{position:relative;display:inline;padding:0;margin:0;border:0;background:none;font:inherit;font-weight:800;color:var(--blue);cursor:help;text-decoration:underline dotted 1.5px;text-underline-offset:4px}
+.term:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:3px}
+.term-pop{position:absolute;left:50%;bottom:calc(100% + 10px);z-index:20;width:max-content;max-width:min(300px,80vw);padding:10px 13px;border-radius:10px;background:var(--ink);color:var(--bg);font-size:13.5px;font-weight:500;line-height:1.6;text-align:left;white-space:normal;box-shadow:0 10px 24px -12px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translate(calc(-50% + var(--dx,0px)),4px);transition:opacity .2s,transform .2s,visibility .2s;pointer-events:none}
+.term-pop b{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 4px;margin:0 1px;border-radius:4px;background:rgba(255,255,255,.18);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:800}
+.term-pop::after{content:"";position:absolute;left:calc(50% - var(--dx,0px));top:100%;margin-left:-6px;border:6px solid transparent;border-top-color:var(--ink)}
+.term:hover .term-pop,.term:focus-visible .term-pop,.term.open .term-pop{opacity:1;visibility:visible;transform:translate(calc(-50% + var(--dx,0px)),0)}
 /* 숙제 STEP 2 · Claude ↔ ChatGPT 이미지 왕복 애니메이션 */
 .rtv{margin-top:16px;display:grid;gap:10px}
 .rtv-stage{position:relative;container-type:inline-size;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:#fff;border:1px solid #D9DCE3;box-shadow:0 18px 40px -28px rgba(0,0,0,.45);font-size:1.75cqw;color:#1F2328;line-height:1.5;user-select:none}
@@ -2933,6 +2952,23 @@ document.addEventListener('click', function(ev){
   openLightbox(imgs.map(function(x){ var f = x.closest('figure'), c = f && f.querySelector('figcaption'); return { src: x.currentSrc || x.src, cap: c ? c.textContent.trim() : (x.alt || '') }; }), imgs.indexOf(im));
 });
 document.addEventListener('keydown', function(ev){ if (ev.key !== 'Enter' && ev.key !== ' ') return; var im = ev.target.closest && ev.target.closest('.mini4 img[role="button"]'); if (im) { ev.preventDefault(); mini4Open(im); } });
+/* 용어 말풍선 (누르거나 올리면 설명) */
+function termPlace(t){
+  var pop = t.querySelector('.term-pop'); if (!pop) return;
+  pop.style.setProperty('--dx', '0px');
+  var r = t.getBoundingClientRect(), w = pop.offsetWidth, vw = document.documentElement.clientWidth, cx = r.left + r.width/2;
+  var left = cx - w/2, dx = 0;
+  if (left < 12) dx = 12 - left; else if (left + w > vw - 12) dx = (vw - 12) - (left + w);
+  pop.style.setProperty('--dx', Math.round(dx) + 'px');
+}
+document.addEventListener('mouseover', function(ev){ var t = ev.target.closest && ev.target.closest('[data-term]'); if (t) termPlace(t); });
+document.addEventListener('focusin', function(ev){ var t = ev.target.closest && ev.target.closest('[data-term]'); if (t) termPlace(t); });
+document.addEventListener('click', function(ev){
+  var t = ev.target.closest('[data-term]');
+  Array.prototype.forEach.call(document.querySelectorAll('[data-term].open'), function(o){ if (o !== t) { o.classList.remove('open'); o.setAttribute('aria-expanded','false'); } });
+  if (t) { termPlace(t); var on = !t.classList.contains('open'); t.classList.toggle('open', on); t.setAttribute('aria-expanded', on ? 'true' : 'false'); }
+});
+document.addEventListener('keydown', function(ev){ if (ev.key === 'Escape') Array.prototype.forEach.call(document.querySelectorAll('[data-term].open'), function(o){ o.classList.remove('open'); o.setAttribute('aria-expanded','false'); }); });
 var clipObs = null;
 function setupClips(root){
   var vids = $$('figure.clip video', root);
