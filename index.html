@@ -1544,6 +1544,36 @@ details.clipbox > .hw-ai{margin:0 12px 14px}
   .stc-img{grid-column:1;grid-row:1;max-height:170px}
   .stc-n{font-size:48px}
 }
+/* 단계별 코스 재구성 */
+#part-learn h3.sub[data-step]::before{content:attr(data-step);counter-increment:none;letter-spacing:.02em}
+.take.take-in{margin-top:28px}
+/* 개념/실습 배지 */
+.kb{display:inline-flex;align-items:center;font-size:11.5px;font-weight:800;line-height:1;padding:4px 8px;border-radius:999px;letter-spacing:.02em;white-space:nowrap}
+.kb-c{color:var(--blue);background:var(--surface);border:1px solid var(--blue-line)}
+.kb-p{color:#fff;background:var(--blue);border:1px solid var(--blue)}
+.kb-done{color:#fff;background:var(--coral);border:1px solid var(--coral)}
+.bridge{margin-top:28px;display:flex;align-items:center;gap:12px;padding:0;border:0;background:none}
+.bridge .bridge-next{display:inline-block;font-size:20px;font-weight:900;font-style:italic;transform:skewX(-8deg);color:var(--blue);letter-spacing:.04em;line-height:1}
+.bridge p{margin:0 !important;font-size:13.5px;line-height:1.55;color:var(--muted)}
+.bridge p b{display:block;font-size:16px;font-weight:800;color:var(--ink)}
+.toc .toc-kind{padding:8px 0 2px 14px;list-style:none}
+.toc .toc-kind .kb{font-size:10.5px;padding:3px 7px}
+.rail-label .rail-kb{margin-left:8px;vertical-align:1px;font-size:11px;font-weight:800;padding:3px 8px;letter-spacing:.02em}
+.rail-label .rail-kb.kb-p{color:#fff;background:var(--blue)}
+.rail-label .rail-kb.kb-c{color:var(--blue);background:var(--surface)}
+.toc .toc-pg.toc-step + .toc-kind{padding-top:4px}
+.toc li.toc-pg:not(.toc-step) + li.toc-pg.toc-step{margin-top:12px}
+.hw-pp-s{font-size:12px;font-weight:600;color:var(--muted);margin-left:6px}
+.mission.mission-cov{border:0;background:none;padding:0;gap:0}
+.mission.mission-cov .eyebrow{font-size:13px;font-weight:700;color:var(--blue)}
+.mission.mission-cov h3{margin-top:8px;font-size:clamp(26px,4.6vw,36px);font-weight:900;letter-spacing:-.025em;line-height:1.3}
+.mission.mission-cov .stc{margin-top:18px}
+.mission.mission-cov .stc-img{width:100%;max-width:320px;max-height:none;height:auto;justify-self:center}
+.mission.mission-cov .stc-goal{max-width:24em}
+.hw-pills{flex-direction:column;align-items:flex-start}
+.hw-pills li{white-space:normal}
+.mission-ph{width:240px;max-width:100%;aspect-ratio:1/1;border:2px dashed var(--blue-line);border-radius:50%;display:grid;place-items:center;color:var(--muted);font-size:13px;background:var(--blue-wash)}
+@media (max-width:599.98px){.mission-ph{width:160px}}
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:100;background:rgba(10,12,16,.97);display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
 .lb-top,.lb-bot{display:flex;align-items:center;gap:12px;padding:12px 16px;color:#fff}
@@ -1626,6 +1656,7 @@ html.lb-open,html.lb-open body{overflow:hidden}
 .rm-pages button.seen::after{content:"✓";color:var(--blue);font-weight:700;font-size:12px}
 .rm-extra{display:none}
 .rm-card.open .rm-extra{display:block}
+.rm-no.is-empty{display:none}
 .rm-more{justify-self:start;margin-top:6px;background:none;border:0;padding:2px 0;color:var(--blue);font-weight:700;font-size:13px;cursor:pointer}
 @media (min-width:760px){
   .rm-wrap{padding-top:0}
@@ -1657,6 +1688,14 @@ html.lb-open,html.lb-open body{overflow:hidden}
   .rm-st:nth-child(odd) .rm-here{bottom:auto;top:-18px}
   .rm-st:nth-child(even) .rm-here{bottom:auto;top:42px}
   .rm-card > b{font-size:17px}
+  .rm.rm-dense{gap:8px}
+  .rm-dense .rm-no.is-empty{display:block;visibility:hidden}
+  .rm-dense .rm-card{padding:12px 11px 10px}
+  .rm-dense .rm-card > b{font-size:16px;word-break:keep-all}
+  .rm-dense .rm-card > small{font-size:12.5px;word-break:keep-all}
+  .rm-dense .rm-pages button{grid-template-columns:minmax(0,1fr) auto;font-size:12.5px;word-break:keep-all}
+  .rm-dense .rm-pages .num{display:none}
+  .rm-dense .rm-more{font-size:12.5px}
 }
 /* ---------- page head ---------- */
 .page-head{display:grid;gap:8px;max-width:44em}
@@ -1915,7 +1954,7 @@ body.in-ep .site-foot{display:none}
   .toc .toc-pg button.seen{color:var(--ink)}
   .toc .toc-pg button.on{color:var(--blue)}
   .toc .toc-pg.toc-step button{font-weight:700;color:var(--ink)}
-  .toc .toc-pg.toc-sub button{padding-left:24px}
+
   /* 사이드바 · 본문 구분선 */
   .toc > ol{border-left:0}
   .ep-layout{position:relative}
@@ -2051,7 +2090,7 @@ body.in-ep .site-foot{display:none}
       <header class="page-head">
         <span class="eyebrow">MY RE:Quest</span>
         <h1>내 기록</h1>
-        <p>숙제 단계를 체크하고 에피소드를 완료하면 여기에 쌓여요.</p>
+        <p>혼자 해 보기 단계를 체크하고 에피소드를 완료하면 여기에 쌓여요.</p>
       </header>
       <div id="log-body"></div>
     </div>
@@ -2185,11 +2224,18 @@ function ordinal(n){ return (n >= 1 && n <= 10 ? ORD[n-1] + ' 번째' : n + '번
 var STATUS = { received:'접수', next:'다음 후보', doing:'제작 중', done:'공개' };
 var STATUS_ORDER = ['doing','next','received','done'];
 var PARTS = {
+  intro:   ['들어가며', '5단계와 오늘의 재료'],
+  five:    ['다섯 단계로 만들기', '배우고 바로 기획안에 적용'],
+  s1:      ['STEP 1 · 구성안', '목적·대상·내용부터'],
+  s2:      ['STEP 2 · 디자인 규칙', '느낌을 규칙으로'],
+  s3:      ['STEP 3 · 기준 2장', '2장으로 먼저 확인'],
+  s4:      ['STEP 4 · 전체 확장', '규칙은 같게, 모양은 다르게'],
+  s5:      ['STEP 5 · 검수', '원본과 대조'],
   learn:   ['알고 시작하기', '다섯 단계 개념'],
   demo:    ['기획안으로 따라 보기', '실제 프롬프트와 결과'],
   try:     ['직접 해보기', '따라 하며 완성하기'],
   finish:  ['정리', '완성본과 핵심 정리'],
-  homework:['마무리', '숙제하고 완료하기'],
+  homework:['복습하기', '혼자서 다섯 단계 다시 해 보기'],
   request: ['REQUEST', '현업의 질문'],
   quest:   ['QUEST', '저희가 먼저 해봤습니다'],
   steps:   ['따라하기', '단계별 방법'],
@@ -2205,6 +2251,8 @@ var store = { progress:{}, filters:null, builder:{}, draft:null };
 try { var raw = localStorage.getItem(KEY); if (raw) { var parsed = JSON.parse(raw); if (parsed && typeof parsed === 'object') for (var k in parsed) store[k] = parsed[k]; } } catch(e){}
 store.progress = store.progress || {}; store.builder = store.builder || {};
 function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e){} }
+/* 2026-10 구조 개편(STEP별 개념+실습): 쪽 순서가 바뀌어 진행 기록을 한 번 초기화 */
+if (store.rev !== 3) { store.progress = {}; store.rev = 3; save(); }
 function prog(id){ return store.progress[id] || (store.progress[id] = { steps:[], total:0, cleared:null }); }
 function isCleared(id){ return !!(store.progress[id] && store.progress[id].cleared); }
 function doneCount(id){ var p = store.progress[id]; return p ? (p.steps || []).filter(Boolean).length : 0; }
@@ -2492,14 +2540,16 @@ function buildPages(e, body, startPage){
         k.remove(); cur = null; return;
       }
       if (k.classList.contains('page-break')) { k.remove(); newPage(); return; }
-      if (!cur || k.matches('h3.sub, .take, .mission')) newPage();
+      if (!cur || k.matches('h3.sub, .take:not(.take-in), .mission')) { var np = newPage(); var dc = k.getAttribute('data-course'); if (dc) np.part = dc; np.ord = +k.getAttribute('data-pg') || 0; }
       cur.appendChild(k);
     });
   });
+  /* 코스 재배치: data-pg 순서대로 (없는 쪽은 원래 순서로 뒤에) */
+  (function(){ var c = pages.shift(); pages.forEach(function(p, i){ if (!p.ord) p.ord = 1000 + i; }); pages.sort(function(a, b){ return a.ord - b.ord; }); pages.unshift(c); pages.forEach(function(p){ if (/^s[1-5]$/.test(p.part)) { p.sub = p.part; p.part = 'five'; } }); })();
   pages.forEach(function(p){
     p.el.tabIndex = -1;
     if (p.title) return;
-    var tc = $('[data-toc]', p.el); if (tc) { p.title = tc.getAttribute('data-toc'); return; }
+    var tc = $('[data-toc]', p.el); if (tc) { p.title = tc.getAttribute('data-toc'); p.kind = tc.getAttribute('data-type') || ''; return; }
     var t = $('h3.sub', p.el) || $('.take-h', p.el) || $('.mission h3', p.el) || $('h3', p.el);
     p.title = t ? t.textContent.trim() : (PARTS[p.part] || [p.part])[0];
   });
@@ -2539,7 +2589,9 @@ document.addEventListener('click', function(ev){
 function tocHTML(){
   return '<ol><li class="toc-pg"><button type="button" data-page="0"><span>에피소드 소개</span></button></li>'+PG.parts.map(function(pt, k){
     var items = '';
-    for (var i = pt.start; i < pt.start + pt.count; i++) items += '<li class="toc-pg'+(/^STEP \d/.test(PG.pages[i].title) ? ' toc-step' : /^프롬프트 \d+ ·/.test(PG.pages[i].title) ? ' toc-sub' : '')+'"><button type="button" data-page="'+i+'"><span>'+esc(PG.pages[i].title)+'</span></button></li>';
+    var kd = '';
+    for (var i = pt.start; i < pt.start + pt.count; i++) { var pk = PG.pages[i].kind || ''; if (pk && pk !== kd) items += '<li class="toc-kind" aria-hidden="true"><span class="kb kb-'+pk+'">'+(pk === 'c' ? '개념' : '실습')+'</span></li>'; kd = pk;
+      items += '<li class="toc-pg'+(/^STEP \d/.test(PG.pages[i].title) ? ' toc-step' : /^프롬프트 \d+ ·/.test(PG.pages[i].title) ? ' toc-sub' : '')+'"><button type="button" data-page="'+i+'"><span>'+esc(PG.pages[i].title)+'</span></button></li>'; }
     return '<li class="toc-ch" data-k="'+k+'"><button type="button" class="toc-h" aria-expanded="false" aria-controls="toc-ch-'+k+'"><span class="n">'+pad(k+1)+'</span><span class="toc-name">'+esc(partName(pt.key))+'</span><span class="toc-cnt num">'+pt.count+'쪽</span></button><ol id="toc-ch-'+k+'" hidden>'+items+'</ol></li>';
   }).join('')+'</ol>';
 }
@@ -2556,12 +2608,14 @@ function coverHTML(){
     var sub = (PARTS[pt.key] || ['', ''])[1], end = pt.start + pt.count - 1;
     var state = k === cur ? 'now' : max >= end ? 'done' : 'next';
     var items = '';
-    for (var i = pt.start; i <= end; i++) items += '<li'+(i - pt.start >= RM_SHOW ? ' class="rm-extra"' : '')+'><button type="button" data-page="'+i+'"'+(i <= max ? ' class="seen"' : '')+'><span class="num">'+i+'</span><span>'+esc(PG.pages[i].title)+'</span></button></li>';
-    var more = pt.count > RM_SHOW ? '<button type="button" class="rm-more" aria-expanded="false">+ '+(pt.count - RM_SHOW)+'쪽 더 보기</button>' : '';
+    var dense = PG.parts.length > 6, show = dense ? 2 : RM_SHOW, nm = partName(pt.key), sm = /^(STEP \d+) · (.+)$/.exec(nm);
+    if (pt.key === 'five') { for (var i = pt.start; i <= end; i++) { var ps = PG.pages[i]; if (ps.sub && (i === pt.start || PG.pages[i-1].sub !== ps.sub)) { var se = i; while (se < end && PG.pages[se+1].sub === ps.sub) se++; items += '<li><button type="button" data-page="'+i+'"'+(se <= max ? ' class="seen"' : '')+'><span class="num">'+i+'</span><span>'+esc(partName(ps.sub))+'</span></button></li>'; } } }
+    else for (var i = pt.start; i <= end; i++) items += '<li'+(i - pt.start >= show ? ' class="rm-extra"' : '')+'><button type="button" data-page="'+i+'"'+(i <= max ? ' class="seen"' : '')+'><span class="num">'+i+'</span><span>'+esc(PG.pages[i].title)+'</span></button></li>';
+    var more = pt.key !== 'five' && pt.count > show ? '<button type="button" class="rm-more" aria-expanded="false">+ '+(pt.count - show)+'쪽 더 보기</button>' : '';
     return '<li class="rm-st" data-state="'+state+'">'+
       '<div class="rm-stop">'+(state === 'now' ? '<span class="rm-here">'+(last ? '지금 여기' : '여기서 출발')+'</span>' : '')+
         '<button type="button" class="rm-node" data-page="'+pt.start+'" aria-label="'+pad(k+1)+' '+esc(partName(pt.key))+' 시작">'+(state === 'done' ? '✓' : pad(k+1))+'</button></div>'+
-      '<div class="rm-card"><span class="rm-no num">COURSE '+pad(k+1)+'</span><b>'+esc(partName(pt.key))+'</b><small>'+esc(sub)+' · '+pt.count+'쪽</small>'+
+      '<div class="rm-card"><span class="rm-no num'+(dense && !sm ? ' is-empty' : '')+'">'+(dense ? (sm ? sm[1] : '&nbsp;') : 'COURSE '+pad(k+1))+'</span><b>'+esc(dense && sm ? sm[2] : nm)+'</b><small>'+esc(sub)+' · '+pt.count+'쪽</small>'+
         '<ol class="rm-pages">'+items+'</ol>'+more+'</div></li>';
   }).join('');
   var allDone = max >= total;
@@ -2569,7 +2623,7 @@ function coverHTML(){
   return '<div class="outline">'+resume+
     '<section class="roadmap" aria-labelledby="rm-h"><div class="rm-head"><h2 id="rm-h">오늘의 로드맵</h2><p>코스 '+PG.parts.length+'개 · 총 '+total+'쪽 · 약 '+esc(PG.e.minutes)+'분</p></div>'+
     '<div class="rm-wrap">'+road+
-    '<ol class="rm">'+stations+'</ol></div></section></div>';
+    '<ol class="rm'+(PG.parts.length > 6 ? ' rm-dense' : '')+'">'+stations+'</ol></div></section></div>';
 }
 /* 로드맵 길: 실제 폭에 맞춰 곡선을 다시 그림(늘어나 찌그러지지 않게) */
 function drawRoad(){
@@ -2630,7 +2684,7 @@ function showPage(n, dir, opt){
     b.style.setProperty('--f', f + '%');
     if (j === k) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
   });
-  if (k >= 0) { var pt = PG.parts[k]; $('#rail-ch').textContent = pad(k+1)+' · '+partName(pt.key); $('#rail-of').textContent = (n - pt.start + 1)+' / '+pt.count; }
+  if (k >= 0) { var pt = PG.parts[k], sr = subRange(n); if (sr) pt = sr; var kd = pages[n].kind; $('#rail-ch').innerHTML = esc(pad(k+1)+' · '+partName(pg.sub || pt.key))+(kd ? '<span class="kb kb-'+kd+' rail-kb">'+(kd === 'c' ? '개념' : '실습')+'</span>' : ''); $('#rail-of').textContent = (n - pt.start + 1)+' / '+pt.count; }
   // pager
   var total = pages.length - 1, nx = pages[n+1];
   $('#pg-prev').classList.toggle('is-off', isCover);
@@ -2642,6 +2696,7 @@ function showPage(n, dir, opt){
   else if (!nx) lbl = '목록으로';
   else if (pg.step != null) lbl = nx.part !== pg.part ? '완료하고 '+partName(nx.part)+'로 →' : '완료하고 다음 →';
   else if (nx.part !== pg.part) lbl = partName(nx.part)+'로 →';
+  else if (nx.sub && nx.sub !== pg.sub) lbl = partName(nx.sub)+'로 →';
   else lbl = '다음 →';
   var nb = $('#pg-next'); nb.textContent = lbl; nb.classList.toggle('btn-primary', !!nx);
   // toc: 지금 보는 코스만 펼치고, 나머지는 접어 두기 (코스 이름을 누르면 펼침/접힘)
@@ -2759,6 +2814,12 @@ function pagerNext(){
   if (n >= PG.pages.length - 1) { location.hash = 'home'; return; }
   showPage(n + 1, 1, { focus:true });
 }
+/* 묶은 코스(다섯 단계로 만들기) 안에서 지금 STEP의 범위 */
+function subRange(n){
+  var ps = PG.pages, sb = ps[n] && ps[n].sub; if (!sb) return null;
+  var a = n, b = n; while (a > 1 && ps[a-1].sub === sb) a--; while (b < ps.length - 1 && ps[b+1].sub === sb) b++;
+  return { key:sb, start:a, count:b - a + 1 };
+}
 function gotoPart(key){
   if (PG) { for (var i = 0; i < PG.pages.length; i++) if (PG.pages[i].part === key) { showPage(i, 1, { focus:true }); return; } }
   var t = document.getElementById('part-'+key); if (t) t.scrollIntoView({ behavior: smooth(), block:'start' });
@@ -2787,7 +2848,7 @@ function onStepChange(ev){
 function updateProgress(e){
   var P = prog(e.id), t = P.total || 0, d = doneCount(e.id);
   $$('#ep-dots li').forEach(function(li, i){ li.classList.toggle('on', !!P.steps[i]); });
-  var tx = $('#ep-ptxt'); if (tx) tx.innerHTML = P.cleared ? '<b>'+epNo(e)+' 완료</b> · '+dotFull(P.cleared) : '숙제 <b class="num">'+d+' / '+t+'</b>';
+  var tx = $('#ep-ptxt'); if (tx) tx.innerHTML = P.cleared ? '<b>'+epNo(e)+' 완료</b> · '+dotFull(P.cleared) : '혼자 해 보기 <b class="num">'+d+' / '+t+'</b>';
 }
 document.addEventListener('click', function(ev){
   var b = ev.target.closest('.step-next'); if (!b) return;
@@ -3055,7 +3116,7 @@ function shareMsg(e, P){
   return '[RE:Quest '+epNo(e)+' 완료]\n'+
     '「'+e.title+'」\n'+
     '· 완료한 날: '+dotFull(P.cleared || TODAY_S)+'\n'+
-    (done ? '· 숙제: '+done+' / '+tot+'\n' : '')+
+    (done ? '· 혼자 해 보기: '+done+' / '+tot+'\n' : '')+
     (e.summary ? '· 오늘 배운 것: '+e.summary+'\n' : '')+
     '· 가장 도움 된 단계: STEP \n'+
     '· 한 줄 소감: \n'+
@@ -3078,9 +3139,9 @@ function renderReport(e, celebrate){
     (cleared
       ? '<div class="done-badge'+(celebrate ? ' pop' : '')+'">'+badgeSVG(e)+
           '<div class="done-badge-t"><p class="done-k">'+esc(epNo(e))+' 완료!</p><h3>수고했어요. 오늘 배운 다섯 단계를 끝까지 해냈어요</h3>'+
-          '<p class="done-d num">'+dotFull(P.cleared)+(doneCount(e.id) ? ' · 숙제 '+doneCount(e.id)+' / '+(P.total || 5) : '')+'</p>'+
+          '<p class="done-d num">'+dotFull(P.cleared)+(doneCount(e.id) ? ' · 혼자 해 보기 '+doneCount(e.id)+' / '+(P.total || 5) : '')+'</p>'+
           '<button type="button" class="linkish" data-act="unclear">완료 취소</button></div></div>'
-      : '<div class="done-box"><p>강의를 다 보고 숙제까지 끝냈다면 완료 버튼을 눌러 주세요. 완료 배지가 생겨요.</p><button type="button" class="btn btn-primary" data-act="clear">'+epNo(e)+' 완료하기</button></div>')+
+      : '<div class="done-box"><p>강의를 다 보고 혼자 해 보기까지 끝냈다면 완료 버튼을 눌러 주세요. 완료 배지가 생겨요.</p><button type="button" class="btn btn-primary" data-act="clear">'+epNo(e)+' 완료하기</button></div>')+
     (nexts.length ? '<div><p class="sublabel">NEXT RE:Quest · 다음에 풀어 볼 질문들</p><div class="next-grid">'+nextCardsHTML()+'</div></div>' : '')+
     '<div class="ask-more"><p>해보다가 막힌 점, 더 궁금해진 점이 다음 리퀘스트가 됩니다.</p><button type="button" class="btn btn-sm" data-act="ask">리퀘스트 보내기</button></div>';
   box.onclick = function(ev){
@@ -3374,7 +3435,7 @@ function renderLog(){
     var P = store.progress[e.id] || { steps:[], total:0 }, t = P.total || 5;
     var dots = ''; for (var i=0;i<t;i++) dots += '<i class="'+(P.steps && P.steps[i] ? 'on' : '')+'"></i>';
     var state = isCleared(e.id) ? '<span class="mine" data-m="clear">✓ 완료</span>' : (doneCount(e.id) ? '<span class="mine" data-m="doing">진행 중</span>' : '<span class="chip">시작 전</span>');
-    return '<a class="log-row" href="#'+esc(e.id)+'"><span class="pill">'+epNo(e)+'</span><span class="t"><b>'+esc(e.title)+'</b><span class="mini-dots" aria-label="숙제 '+doneCount(e.id)+'/'+t+'">'+dots+'</span></span>'+state+'</a>';
+    return '<a class="log-row" href="#'+esc(e.id)+'"><span class="pill">'+epNo(e)+'</span><span class="t"><b>'+esc(e.title)+'</b><span class="mini-dots" aria-label="혼자 해 보기 '+doneCount(e.id)+'/'+t+'">'+dots+'</span></span>'+state+'</a>';
   }).join('');
   var html =
     '<dl class="statgrid">'+
