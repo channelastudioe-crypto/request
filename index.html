@@ -1574,14 +1574,36 @@ details.clipbox > .hw-ai{margin:0 12px 14px}
 .hw-pills li{white-space:normal}
 .mission-ph{width:240px;max-width:100%;aspect-ratio:1/1;border:2px dashed var(--blue-line);border-radius:50%;display:grid;place-items:center;color:var(--muted);font-size:13px;background:var(--blue-wash)}
 @media (max-width:599.98px){.mission-ph{width:160px}}
+.ppt-shot .ppt-art{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line)}
+.vs2{margin-top:22px;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:14px}
+.vs-card{margin:0;display:grid;gap:10px;padding:16px;border-radius:16px;border:1px solid var(--line);background:var(--surface);cursor:zoom-in;transition:transform .2s ease,box-shadow .2s ease}
+.vs-card:hover{transform:translateY(-3px);box-shadow:0 18px 30px -22px var(--shadow)}
+.vs-good{border-color:var(--blue-line);background:var(--blue-wash)}
+.vs-k{justify-self:start;font-size:12.5px;font-weight:800;letter-spacing:.02em;padding:4px 10px;border-radius:999px;color:#fff;background:var(--coral)}
+.vs-good .vs-k{background:var(--blue)}
+.vs-th{position:relative;display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line-strong);box-shadow:0 10px 22px -16px var(--shadow)}
+.vs-th img{display:block;width:100%;height:auto}
+.vs-bad .vs-th img{filter:saturate(.85)}
+.vs-n{pointer-events:none;position:absolute;right:8px;bottom:8px;font-size:12px;font-weight:800;color:#fff;background:rgba(20,24,32,.72);border-radius:999px;padding:3px 9px}
+.vs-tap{pointer-events:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:13px;font-weight:700;color:#fff;background:rgba(20,24,32,.6);border-radius:999px;padding:7px 14px;opacity:0;transition:opacity .2s}
+.vs-card:hover .vs-tap{opacity:1}
+.vs-card figcaption{display:grid;gap:2px;font-size:13.5px;color:var(--muted)}
+.vs-card figcaption b{font-size:16px;color:var(--ink)}
+.vs-arrow{font-size:22px;font-weight:900;color:var(--blue)}
+@media (max-width:599.98px){.vs2{grid-template-columns:minmax(0,1fr)}.vs-arrow{justify-self:center;transform:rotate(90deg)}.vs-tap{opacity:1}}
+.term-note-p{text-align:right}
+.term-note{margin:16px 0 0 !important;font-size:14px !important;color:var(--muted);line-height:1.6}
+.term-note b{display:inline-block;margin-right:8px;font-size:12px;font-weight:800;color:var(--blue);background:var(--blue-wash);border:1px solid var(--blue-line);border-radius:999px;padding:2px 9px;vertical-align:1px}
+.vs-card.vs-lock{cursor:default}
+.vs-card.vs-lock:hover{transform:none;box-shadow:none}
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:100;background:rgba(10,12,16,.97);display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
 .lb-top,.lb-bot{display:flex;align-items:center;gap:12px;padding:12px 16px;color:#fff}
 .lb-count{font-size:14px;font-weight:700;white-space:nowrap}
 .lb-cap{flex:1;min-width:0;font-size:14px;color:#C9CDD6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .lb-x{width:40px;height:40px;border-radius:50%;border:1px solid #fff4;background:#fff1;color:#fff;font-size:18px;cursor:pointer}
-.lb-stage{display:grid;place-items:center;padding:0 12px;min-height:0}
-.lb-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:6px;background:#FAFAF7}
+.lb-stage{position:relative;min-height:0;overflow:hidden}
+.lb-stage img{position:absolute;inset:0;margin:auto;max-width:calc(100% - 24px);max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:6px;background:#FAFAF7}
 .lb-bot{justify-content:space-between}
 .lb-bot button{flex:none;white-space:nowrap;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid #fff4;background:#fff1;color:#fff;font-size:14px;font-weight:700;cursor:pointer}
 .lb-bot button:disabled{opacity:.3;cursor:default}
@@ -2235,7 +2257,7 @@ var PARTS = {
   demo:    ['기획안으로 따라 보기', '실제 프롬프트와 결과'],
   try:     ['직접 해보기', '따라 하며 완성하기'],
   finish:  ['정리', '완성본과 핵심 정리'],
-  homework:['복습하기', '혼자서 다섯 단계 다시 해 보기'],
+  homework:['실습하기', '혼자서 다섯 단계 다시 해 보기'],
   request: ['REQUEST', '현업의 질문'],
   quest:   ['QUEST', '저희가 먼저 해봤습니다'],
   steps:   ['따라하기', '단계별 방법'],
@@ -3023,11 +3045,12 @@ function mini4Open(img){
 document.addEventListener('click', function(ev){ var im = ev.target.closest('.mini4 img[role="button"]'); if (im) mini4Open(im); });
 /* 코스 2 캡처 · 누르면 크게 보기 */
 document.addEventListener('click', function(ev){
-  var im = ev.target.closest('[data-zoom] img'); if (!im) return;
+  var im = ev.target.closest('[data-zoom] img'); if (!im) { var vc = ev.target.closest('.vs-card[data-zoom]'); im = vc && vc.querySelector('img'); } if (!im) return;
   var box = im.closest('[data-zoom]'), imgs = Array.prototype.slice.call(box.querySelectorAll('img'));
-  openLightbox(imgs.map(function(x){ var f = x.closest('figure'), c = f && f.querySelector('figcaption'); return { src: x.currentSrc || x.src, cap: c ? c.textContent.trim() : (x.alt || '') }; }), imgs.indexOf(im));
+  openLightbox(imgs.map(function(x){ var f = x.closest('figure'), c = f && f.querySelector('figcaption'); return { src: x.currentSrc || x.src, cap: x.getAttribute('data-cap') || (c ? c.textContent.trim() : (x.alt || '')) }; }), imgs.indexOf(im));
 });
 document.addEventListener('keydown', function(ev){ if (ev.key !== 'Enter' && ev.key !== ' ') return; var im = ev.target.closest && ev.target.closest('.mini4 img[role="button"]'); if (im) { ev.preventDefault(); mini4Open(im); } });
+document.addEventListener('keydown', function(ev){ if (ev.key !== 'Enter' && ev.key !== ' ') return; var im = ev.target.closest && ev.target.closest('[data-zoom] img[role="button"]'); if (im) { ev.preventDefault(); im.click(); } });
 /* 용어 말풍선 (누르거나 올리면 설명) */
 function termPlace(t){
   var pop = t.querySelector('.term-pop'); if (!pop) return;
