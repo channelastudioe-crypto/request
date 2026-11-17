@@ -2342,7 +2342,7 @@ function epCardHTML(e, isLatest){
     '<div class="thumb">'+(th ? '<img src="'+esc(th)+'" alt="" loading="lazy">' : '')+(e.thumbHover ? '<img class="th-b" src="'+esc(e.thumbHover)+'" alt="" loading="lazy">' : '')+'</div>'+
     '<div class="body"><div class="ep-top"><span class="pill'+(isLatest?' solid':'')+'">'+epNo(e)+'</span>'+(isLatest?'<span class="new">최신</span>':'')+'<span class="date num">'+dotFull(e.date)+'</span></div>'+
     '<h3>'+titleHTML(e)+'</h3>'+(e.lead ? '<p class="lead">'+esc(e.lead)+'</p>' : '')+
-    '<div class="ep-foot"><span class="ep-tags"><span class="ep-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="11" rx="2"/><path d="M12 16v3M8 19h8"/></svg>'+esc(e.category)+'</span><span class="ep-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>'+esc(e.minutes)+'분</span></span>'+mineHTML(e)+'</div></div></a>';
+    '<div class="ep-foot"><span class="ep-tags"><span class="ep-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="11" rx="2"/><path d="M12 16v3M8 19h8"/></svg>'+esc(e.category)+'</span></span>'+mineHTML(e)+'</div></div></a>';
 }
 
 /* ---------- router ---------- */
@@ -2451,7 +2451,6 @@ function renderEpisode(id, startPage){
       '<p class="lead">'+esc(e.lead)+'</p>'+
       '<dl class="hero-facts">'+
         '<div><dt>분야</dt><dd>'+esc(e.category)+'</dd></div>'+
-        '<div><dt>소요시간</dt><dd>'+esc(e.minutes)+'분</dd></div>'+
         '<div><dt>준비물</dt><dd>'+esc(e.needs || '-')+'</dd></div>'+
       '</dl>'+
     '</article>';
